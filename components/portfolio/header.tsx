@@ -1,7 +1,8 @@
 "use client";
 
-import { useI18n, type Language } from "@/lib/i18n";
 import { useTheme } from "@/lib/theme";
+import { Lang } from "@/models/enums";
+import { NavDict } from "@/models/types";
 import {
   BookOpen,
   Briefcase,
@@ -12,17 +13,23 @@ import {
   User,
   X,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const sections = [
-  { id: "information", icon: User },
-  { id: "skills", icon: Briefcase },
-  { id: "experience", icon: FileText },
-  { id: "publications", icon: BookOpen },
-];
-
-const Header = () => {
-  const { language, setLanguage, t } = useI18n();
+const Header = ({
+  dict,
+  selectedLang,
+}: {
+  dict: NavDict;
+  selectedLang: Lang;
+}) => {
+  const sections = [
+    { id: "information", label: dict.information, icon: User },
+    { id: "skills", label: dict.skills, icon: Briefcase },
+    { id: "experience", label: dict.experience, icon: FileText },
+    { id: "publications", label: dict.publications, icon: BookOpen },
+  ];
+  const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("information");
@@ -67,6 +74,10 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
+  const handlerLanguage = (lang: Lang) => () => {
+    router.push(`/${lang}`);
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -102,7 +113,7 @@ const Header = () => {
                   }`}
                 >
                   <Icon className="h-4 w-4" />
-                  <span>{t(section.id)}</span>
+                  <span>{section.label}</span>
                   {isActive && (
                     <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full" />
                   )}
@@ -115,12 +126,12 @@ const Header = () => {
           <div className="flex items-center gap-2">
             {/* Language Selector */}
             <div className="flex items-center rounded-lg border border-border bg-secondary/50 p-0.5">
-              {(["en", "es"] as Language[]).map((lang) => (
+              {[Lang.en, Lang.es].map((lang) => (
                 <button
-                  key={lang}
-                  onClick={() => setLanguage(lang)}
+                  key={lang.toUpperCase()}
+                  onClick={handlerLanguage(lang)}
                   className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
-                    language === lang
+                    selectedLang === lang
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
@@ -180,7 +191,7 @@ const Header = () => {
                 }`}
               >
                 <Icon className="h-4 w-4" />
-                <span>{t(section.id)}</span>
+                <span>{section.label}</span>
               </button>
             );
           })}

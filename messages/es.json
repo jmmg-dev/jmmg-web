@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "information": "Información",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "publications": "Publicaciones"
+  },
+  "info": {
+    "hero": {
+      "frontEndArchitect": "Arquitecto Front End",
+      "cv": "CV",
+      "spain": "España",
+      "onlyFullRemote": "Solo Teletrabajo"
+    },
+    "career": "Carrera",
+    "degrees": "Estudios",
+    "professionalMilestones": "Hitos Profesionales",
+    "hobbies": "Hobbies",
+
+    "careerDescription": "Tengo más de 20 años de experiencia en la industria del software y he trabajado para grandes empresas como Repsol, Vodafone, Línea Directa, Banco Santander, entre otras. En muchos de estos proyectos, he sido responsable de diseñar y liderar la arquitectura Front End desde cero, lo que me ha permitido consolidar una sólida experiencia en este campo. Mi rol no solo ha involucrado la creación de arquitecturas robustas, sino también proporcionar liderazgo técnico a equipos de desarrollo Front End, estableciendo mejores prácticas para garantizar la entrega de aplicaciones escalables y de alta calidad."
+  },
+  "skills": {
+    "technicalSkills": "Habilidades técnicas",
+    "professionalGrowth": "Crecimiento profesional",
+    "languages": "Idiomas",
+    "businessSkills": "Habilidades de negocio",
+    "architecturalVision": "Visión arquitectónica",
+    "standardsAndBestPractices": "Estándares y mejores prácticas",
+    "problemSolving": "Resolución de problemas",
+    "teamManagement": "Gestión de equipos",
+    "spanish": "Español",
+    "english": "Inglés"
+  },
+  "experience": {
+    "projects": "Proyectos",
+    "technologies": "Tecnologías",
+    "currently": "Actualmente"
+  },
+  "publications": {
+    "intro": "Siempre he estado profundamente agradecido a todos aquellos desarrolladores que han compartido desinteresadamente su conocimiento con la comunidad. Debo una parte significativa de mi formación profesional a muchos de ellos. En los últimos meses, he comenzado a compartir mi propio conocimiento, contribuyendo así con mi pequeña parte a la comunidad."
+  },
+  "degrees": {
+    "webDev": "Técnico Superior en Desarrollo de Aplicaciones Web",
+    "computerScience": "Ingeniería Técnica en Informática de Gestión"
+  },
+  "milestones": {
+    "1": "Primera Arquitectura Front End desde cero",
+    "2": "Lideré equipo de 8 desarrolladores",
+    "3": "Implementación de micro-frontends",
+    "4": "Creación de Design System",
+    "5": "Desarrollador certificado en Angular"
+  },
+  "footer": "Todos los derechos reservados."
+}
