@@ -1,10 +1,10 @@
 "use server";
 
-import ExperienceSection from "@/components/portfolio/experience-section";
-import Header from "@/components/portfolio/header";
-import InformationSection from "@/components/portfolio/information-section";
-import PublicationsSection from "@/components/portfolio/publications-section";
-import SkillsSection from "@/components/portfolio/skills-section";
+import ExperienceSection from "@/components/portfolio/ExperienceSection";
+import Header from "@/components/portfolio/Header";
+import InformationSection from "@/components/portfolio/InformationSection";
+import PublicationsSection from "@/components/portfolio/PublicationsSection";
+import SkillsSection from "@/components/portfolio/SkillsSection";
 import { Lang } from "@/models/enums";
 
 const Portfolio = async ({ params }: { params: { lang: Lang } }) => {

@@ -31,7 +31,7 @@
   --chart-5: oklch(0.55 0.15 200);
   --radius: 0.625rem;
   --neon: oklch(0.5 0.18 240);
-  --neon-glow: 0 0 15px oklch(0.5 0.18 240 / 0.2);
+  --neon-glow: 0 0 15px oklch(0.5 0.18 240 / 0.3);
   --glass: oklch(1 0 0 / 0.95);
   --glass-border: oklch(0.9 0.01 250);
 }
@@ -205,6 +205,10 @@ section {
 }
 
 .dark .card-interactive:hover {
+  box-shadow: var(--neon-glow);
+}
+
+.light .card-interactive:hover {
   box-shadow: var(--neon-glow);
 }
 

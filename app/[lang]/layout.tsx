@@ -1,8 +1,9 @@
-import { I18nProvider } from "@/lib/i18n";
-import { ThemeProvider } from "@/lib/theme";
+import { ThemeProviders } from "@/components/ThemeProviders";
+import { Theme } from "@/models/enums";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
+import { cookies } from "next/headers";
 import "./globals.css";
 
 const inter = Inter({
@@ -64,15 +65,17 @@ type RootLayoutProps = {
   children: React.ReactNode;
 };
 
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = async ({ children }: RootLayoutProps) => {
+  const cookieStore = await cookies();
+  const theme = cookieStore.get("theme")?.value || Theme.dark;
   return (
-    <html lang="en" className="dark bg-background" suppressHydrationWarning>
+    <html lang="en" className={theme} suppressHydrationWarning>
       <body
         className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        <ThemeProvider>
-          <I18nProvider>{children}</I18nProvider>
-        </ThemeProvider>
+        <ThemeProviders initialTheme={theme as Theme}>
+          {children}
+        </ThemeProviders>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
