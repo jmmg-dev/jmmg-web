@@ -76,6 +76,7 @@ const Header = ({
 
   const handlerLanguage = (lang: Lang) => () => {
     router.push(`/${lang}`);
+    router.refresh();
   };
 
   return (

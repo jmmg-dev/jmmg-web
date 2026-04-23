@@ -1,85 +1,67 @@
-import { ThemeProviders } from "@/components/ThemeProviders";
-import { Theme } from "@/models/enums";
-import { Analytics } from "@vercel/analytics/next";
-import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
-import { cookies } from "next/headers";
-import "./globals.css";
+import { Lang } from "@/models/enums";
+import { Metadata } from "next";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
-
-export const metadata: Metadata = {
-  title: "Juan Manuel Muñoz González | Front End Architect",
-  description:
-    "Portfolio of Juan Manuel Muñoz González - Front End Architect with 20+ years of experience in software development, specializing in Angular, React, and enterprise architecture.",
-  keywords: [
-    "Front End Architect",
-    "Angular",
-    "React",
-    "TypeScript",
-    "JavaScript",
-    "Web Development",
-    "Software Architecture",
-  ],
-  authors: [{ name: "Juan Manuel Muñoz González" }],
-  creator: "Juan Manuel Muñoz González",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    alternateLocale: "es_ES",
-    title: "Juan Manuel Muñoz González | Front End Architect",
-    description:
-      "Portfolio showcasing 20+ years of Front End development experience",
-    siteName: "JM Portfolio",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Juan Manuel Muñoz González | Front End Architect",
-    description:
-      "Portfolio showcasing 20+ years of Front End development experience",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+type Props = {
+  params: Promise<{ lang: Lang }>;
 };
 
-export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f5f7fa" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1d2e" },
-  ],
-  width: "device-width",
-  initialScale: 1,
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
 
-type RootLayoutProps = {
+  const isEs = lang === Lang.es;
+
+  return {
+    title: isEs
+      ? "Juan Manuel Muñoz González | Arquitecto Front End"
+      : "Juan Manuel Muñoz González | Front End Architect",
+    description: isEs
+      ? "Portfolio de Juan Manuel Muñoz González - Arquitecto Front End con más de 20 años de experiencia en desarrollo de software, especializado en Angular, React y arquitectura empresarial."
+      : "Portfolio of Juan Manuel Muñoz González - Front End Architect with 20+ years of experience in software development, specializing in Angular, React, and enterprise architecture.",
+    keywords: [
+      "Front End Architect",
+      "Angular",
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Software Architecture",
+      isEs ? "Arquitectura de Software" : "Web Architecture",
+    ],
+    authors: [{ name: "Juan Manuel Muñoz González" }],
+    creator: "Juan Manuel Muñoz González",
+    openGraph: {
+      type: "website",
+      locale: isEs ? "es_ES" : "en_US",
+      title: isEs
+        ? "Juan Manuel Muñoz González | Arquitecto Front End"
+        : "Juan Manuel Muñoz González | Front End Architect",
+      description: isEs
+        ? "Portfolio con más de 20 años de experiencia en desarrollo Front End"
+        : "Portfolio showcasing 20+ years of Front End development experience",
+      siteName: "JM Portfolio",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: isEs
+        ? "Juan Manuel Muñoz González | Arquitecto Front End"
+        : "Juan Manuel Muñoz González | Front End Architect",
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      languages: {
+        "es-ES": "/es",
+        "en-US": "/en",
+      },
+    },
+  };
+}
+
+export default async function LangLayout({
+  children,
+}: {
   children: React.ReactNode;
-};
-
-const RootLayout = async ({ children }: RootLayoutProps) => {
-  const cookieStore = await cookies();
-  const theme = cookieStore.get("theme")?.value || Theme.dark;
-  return (
-    <html lang="en" className={theme} suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}
-      >
-        <ThemeProviders initialTheme={theme as Theme}>
-          {children}
-        </ThemeProviders>
-        {process.env.NODE_ENV === "production" && <Analytics />}
-      </body>
-    </html>
-  );
-};
-
-export default RootLayout;
+}) {
+  return <>{children}</>;
+}
