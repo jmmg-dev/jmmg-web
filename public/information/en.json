@@ -2,6 +2,9 @@
   "personalInfo": {
     "name": "Juan Manuel Muñoz González",
     "date": "15/05/1984",
+    "city": "Málaga",
+    "country": "Spain",
+    "urlIn": "https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/",
     "email": "jmmgoz@gmail.com",
     "position": "Front End Architect",
     "hobbies": [
@@ -40,19 +43,19 @@
     ]
   },
   "professionalInfo": {
-    "career": "<p>I have more than 20 years of experience in the software industry and have worked for major companies such as Repsol, Vodafone, Línea Directa, Banco Santander, among others. In many of these projects, I have been responsible for designing and leading the Front End architecture from scratch, which has allowed me to consolidate solid expertise in this field. My role has not only involved creating robust architectures, but also providing technical leadership to Front End development teams, establishing best practices to ensure the delivery of scalable, high-quality applications.<p>In addition to leading, I am actively involved in development, which allows me to stay up to date with the latest technological trends and continue adding value as a hands-on developer. This practical and up-to-date approach is key to ensuring the success of the projects I lead.</p><p>I have strong Back End knowledge and advanced experience in UX/UI, which provides me with a comprehensive view of the technical needs of any application.<p><p>In 2022, I had the opportunity to lead the architecture of Repsol’s ARIA project, which was a key component of the Stock Control application. This project was recognized in 2023 with the Best in Class award at Expoquimia. Thanks to this success, I became a reference within Repsol for Front End architecture.</p><p>Currently, I am leading the development of the Front End architecture of an application designed to manage the digital signature of all proposals issued by the Congress of Deputies and the main bodies of the Spanish public administration. This project is based on a modular microsites architecture, combined with the creation of a custom component library. This solution not only optimizes development speed and robustness, but also enables greater independence between modules, positioning itself as a key innovation in the future of web development.</p>",
+    "career": "I have more than 20 years of experience in the software industry and have worked for major companies such as Repsol, Vodafone, Línea Directa, Banco Santander, among others. In many of these projects, I have been responsible for designing and leading the Front End architecture from scratch, which has allowed me to consolidate solid expertise in this field.\n\n My role has not only involved creating robust architectures, but also providing technical leadership to Front End development teams, establishing best practices to ensure the delivery of scalable, high-quality applications.In addition to leading, I am actively involved in development, which allows me to stay up to date with the latest technological trends and continue adding value as a hands-on developer. This practical and up-to-date approach is key to ensuring the success of the projects I lead. I have strong Back End knowledge and advanced experience in UX/UI, which provides me with a comprehensive view of the technical needs of any application.\n\n In 2022, I had the opportunity to lead the architecture of Repsol’s ARIA project, which was a key component of the Stock Control application. This project was recognized in 2023 with the Best in Class award at Expoquimia. Thanks to this success, I became a reference within Repsol for Front End architecture.\n\n Currently, I am leading the development of the Front End architecture of an application designed to manage the digital signature of all proposals issued by the Congress of Deputies and the main bodies of the Spanish public administration. This project is based on a modular microsites architecture, combined with the creation of a custom component library. This solution not only optimizes development speed and robustness, but also enables greater independence between modules, positioning itself as a key innovation in the future of web development.",
     "degrees": [
       {
         "name": "Electronic Engineering",
         "institution": "University of Málaga",
-        "endDate": 2022,
-        "startDate": 2019
+        "endDate": 2005,
+        "startDate": 2002
       },
       {
         "name": "FP2 Software Development",
         "institution": "Martín Rivero High School",
-        "endDate": 2004,
-        "startDate": 2006
+        "endDate": 2006,
+        "startDate": 2004
       }
     ],
     "milestones": [

@@ -5,13 +5,16 @@ export interface Hobbie {
 export interface PersonalInfo {
   name: string;
   date: string;
+  city: string;
+  country: string;
+  urlIn: string;
   email: string;
   position: string;
   hobbies: Hobbie[];
 }
 
 export interface Degree {
-  title: string;
+  name: string;
   institution: string;
   endDate: number;
   startDate: number;
@@ -52,7 +55,7 @@ export interface Proyect {
 }
 
 export interface Experience {
-  title: string;
+  position: string;
   description: string;
   startDate: string;
   endDate: string;

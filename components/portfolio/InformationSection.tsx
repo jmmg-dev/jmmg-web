@@ -1,6 +1,7 @@
 "use server";
 
-import { degrees, hobbies, milestones, personalInfo } from "@/lib/data";
+import { hobbies, milestones, personalInfo } from "@/lib/data";
+import { Information } from "@/models/interfaces";
 import { InformationDict } from "@/models/types";
 import {
   AlertTriangle,
@@ -9,7 +10,6 @@ import {
   Calendar,
   Footprints,
   Gamepad2,
-  GraduationCap,
   Heart,
   Linkedin,
   Mail,
@@ -19,6 +19,7 @@ import {
   Waves,
 } from "lucide-react";
 import Image from "next/image";
+import { Degrees } from "./degrees/Degrees";
 
 const hobbyIcons: Record<string, React.ElementType> = {
   hiking: Footprints,
@@ -30,7 +31,13 @@ const hobbyIcons: Record<string, React.ElementType> = {
   travel: Plane,
 };
 
-const InformationSection = async ({ dict }: { dict: InformationDict }) => {
+const InformationSection = async ({
+  dict,
+  information,
+}: {
+  dict: InformationDict;
+  information: Information;
+}) => {
   //const { t, language } = useI18n();
 
   return (
@@ -58,36 +65,39 @@ const InformationSection = async ({ dict }: { dict: InformationDict }) => {
               {dict.hero.frontEndArchitect}
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 tracking-tight text-balance">
-              {personalInfo.name}
+              {information.personalInfo.name}
             </h1>
 
             {/* Contact Details */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-muted-foreground mb-8">
               <a
-                href={`mailto:${personalInfo.email}`}
+                href={`mailto:${information.personalInfo.email}`}
                 className="flex items-center gap-2 hover:text-primary transition-colors link-underline"
               >
                 <Mail className="w-4 h-4" />
-                <span className="text-sm">{personalInfo.email}</span>
+                <span className="text-sm">
+                  {information.personalInfo.email}
+                </span>
               </a>
               <span className="hidden sm:inline text-border">|</span>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
                 <span className="text-sm">
-                  {personalInfo.location.city}, {dict.hero.spain}
+                  {information.personalInfo.city},{" "}
+                  {information.personalInfo.country}
                 </span>
               </div>
               <span className="hidden sm:inline text-border">|</span>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4" />
-                <span className="text-sm">{personalInfo.birthDate}</span>
+                <span className="text-sm">{information.personalInfo.date}</span>
               </div>
             </div>
 
             {/* Badges */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
               <a
-                href={personalInfo.linkedIn}
+                href={information.personalInfo.urlIn}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
@@ -111,39 +121,15 @@ const InformationSection = async ({ dict }: { dict: InformationDict }) => {
             <span className="w-8 h-0.5 bg-primary rounded-full" />
             {dict.career}
           </h2>
-          <p className="text-muted-foreground leading-relaxed text-pretty  text-lg">
-            {dict.careerDescription}
+          <p className="whitespace-pre-line text-muted-foreground leading-relaxed text-pretty">
+            {information.professionalInfo.career}
           </p>
         </div>
 
         {/* Degrees & Milestones Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {/* Degrees */}
-          <div className="bg-card border border-border rounded-xl p-6 card-interactive">
-            <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
-              <GraduationCap className="w-5 h-5 text-primary" />
-              {dict.degrees}
-            </h3>
-            <div className="space-y-6">
-              {degrees.map((degree, index) => (
-                <div
-                  key={index}
-                  className="relative pl-6 border-l-2 border-primary/30"
-                >
-                  <div className="absolute -left-1.5 top-0 w-3 h-3 rounded-full bg-primary" />
-                  <p className="font-semibold text-foreground">
-                    {degree.title.es}
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {degree.institution}
-                  </p>
-                  <span className="inline-block mt-2 text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">
-                    {degree.year}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <Degrees dict={dict} degrees={information.professionalInfo.degrees} />
 
           {/* Professional Milestones */}
           <div className="bg-card border border-border rounded-xl p-6 card-interactive">

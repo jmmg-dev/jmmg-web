@@ -1,5 +1,6 @@
 "use server";
 
+import { getInformationAction } from "@/actions/information";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import Header from "@/components/portfolio/Header";
 import InformationSection from "@/components/portfolio/InformationSection";
@@ -10,12 +11,13 @@ import { Lang } from "@/models/enums";
 const Portfolio = async ({ params }: { params: { lang: Lang } }) => {
   const { lang } = await params;
   const dict = (await import(`@/messages/${lang}.json`)).default;
+  const information = await getInformationAction(lang);
 
   return (
     <div className="min-h-screen bg-background">
       <Header dict={dict.nav} selectedLang={lang} />
       <main>
-        <InformationSection dict={dict.info} />
+        <InformationSection information={information} dict={dict.info} />
         <SkillsSection />
         <ExperienceSection />
         <PublicationsSection />
