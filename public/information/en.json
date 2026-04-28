@@ -9,20 +9,24 @@
     "position": "Front End Architect",
     "hobbies": [
       {
+        "label": "Dogs",
+        "icon": "dog"
+      },
+      {
         "label": "Hiking",
         "icon": "footprints"
       },
       {
         "label": "Fishing",
-        "icon": "fishing-rod"
+        "icon": "fishing-hook"
       },
       {
         "label": "Kayaking",
         "icon": "kayak"
       },
       {
-        "label": "Running",
-        "icon": "sport-shoe"
+        "label": "Football",
+        "icon": "volleyball"
       },
       {
         "label": "Cinema",
@@ -33,12 +37,13 @@
         "icon": "music"
       },
       {
-        "label": "Guitars",
-        "icon": "guitar"
+        "label": "Gaming",
+        "icon": "gamepad"
       },
+
       {
-        "label": "Dogs",
-        "icon": "dog"
+        "label": "Travel",
+        "icon": "plane"
       }
     ]
   },

@@ -1,5 +1,4 @@
 "use server";
-
 import { Degree } from "@/models/interfaces";
 import { InformationDict } from "@/models/types";
 import { GraduationCap } from "lucide-react";

@@ -1,6 +1,6 @@
 export interface Hobbie {
   label: string;
-  icon: React.ElementType;
+  icon: string;
 }
 export interface PersonalInfo {
   name: string;
@@ -21,7 +21,7 @@ export interface Degree {
 }
 
 export interface Milestone {
-  title: string;
+  name: string;
   description: string;
   date: number;
 }
