@@ -1,7 +1,14 @@
 "use server";
 import { PersonalInfo } from "@/models/interfaces";
 import { InformationDict } from "@/models/types";
-import { AlertTriangle, Calendar, Linkedin, Mail, MapPin } from "lucide-react";
+import {
+  AlertTriangle,
+  Calendar,
+  Download,
+  Linkedin,
+  Mail,
+  MapPin,
+} from "lucide-react";
 import Image from "next/image";
 
 export const Hero = async ({
@@ -26,7 +33,7 @@ export const Hero = async ({
         </div>
       </div>
 
-      <div className="flex-1 text-center lg:text-left">
+      <div className="flex-1 text-center lg:text-left xl:bg-[url('/images/th.svg')]  xl:bg-no-repeat xl:bg-cover xl:bg-right">
         <p className="text-primary text-2xl font-medium mb-2 tracking-wide uppercase">
           {dict.hero.frontEndArchitect}
         </p>
@@ -72,6 +79,15 @@ export const Hero = async ({
               {dict.hero.onlyFullRemote}
             </span>
           </div>
+          <a
+            href={personalInfo.urlIn}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 rounded-lg border border-red-300 text-red-400 hover:opacity-90 transition-opacity"
+          >
+            <Download className="w-4 h-4" />
+            <span className="text-sm font-medium">CV.pdf</span>
+          </a>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import DynamicIcon from "../DynamicIcon";
 export const HobbiesItem = ({ hobby }: { hobby: Hobbie }) => {
   return (
     <div
-      className="flex items-center gap-2 px-4 py-2 rounded-lg bg-secondary/50 text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
+      className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/50  text-primary transition-colors"
       title={hobby.label}
     >
       <DynamicIcon name={hobby.icon} className="w-4 h-4" />
