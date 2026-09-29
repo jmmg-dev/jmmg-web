@@ -23,13 +23,7 @@ export const PublicationCard = ({
       <div className="flex flex-col lg:flex-row">
         {/* Image */}
         <div className="relative w-full lg:w-80 h-52 lg:h-auto flex-shrink-0 overflow-hidden">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent lg:bg-gradient-to-r" />
+          <Image src={image} alt={title} fill className="object-cover" />
         </div>
 
         {/* Content */}

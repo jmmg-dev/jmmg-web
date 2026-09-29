@@ -43,6 +43,7 @@ export const translations: Translations = {
   skillsGroupBack: { en: "Back", es: "Back" },
   skillsGroupInfra: { en: "Infra", es: "Infra" },
   skillsGroupAI: { en: "AI", es: "IA" },
+  skillsGroupDoc: { en: "Documentation", es: "Documentación" },
   skillsGroupStyles: { en: "Styles", es: "Estilos" },
   skillsGroupArchitectureMonolith: { en: "Monolithic Architecture", es: "Arquitectura Monolítica" },
   skillsGroupArchitectureMicrofrontend: { en: "Micro-frontend Architecture", es: "Arquitectura Micro-frontend" },
@@ -69,8 +70,8 @@ export const translations: Translations = {
 
   // Publications Section
   publicationsIntro: {
-    en: "I have always been deeply grateful to all those developers who have selflessly shared their knowledge with the community. I owe a significant part of my professional training to many of them. In recent months, I have begun to share my own knowledge, thus contributing my small part to the community.",
-    es: "Siempre he estado profundamente agradecido a todos aquellos desarrolladores que han compartido desinteresadamente su conocimiento con la comunidad. Debo una parte significativa de mi formación profesional a muchos de ellos. En los últimos meses, he comenzado a compartir mi propio conocimiento, contribuyendo así con mi pequeña parte a la comunidad.",
+    en: "I have always been deeply grateful to all those developers who have selflessly made their knowledge available to the community. I owe a significant part of my professional training to many of them. In recent months, I have started sharing my own knowledge, contributing my own small part to this community.",
+    es: "Siempre he estado profundamente agradecido a todos aquellos desarrolladores que, de manera desinteresada, han puesto sus conocimientos a disposición de la comunidad. A muchos de ellos les debo una parte importante de mi formación profesional. En los últimos meses he comenzado a compartir mis propios conocimientos, aportando así mi granito de arena a esta comunidad.",
   },
 
   // Degrees

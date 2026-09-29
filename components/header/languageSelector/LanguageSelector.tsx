@@ -15,7 +15,7 @@ export const LanguageSelector = ({
         <button
           key={lang.toUpperCase()}
           onClick={() => onSelect(lang)}
-          className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
+          className={`px-2.5 py-1 text-xs font-medium rounded-md cursor-pointer transition-all duration-200 ${
             selectedLang === lang
               ? "bg-primary text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"

@@ -3,7 +3,7 @@
 import { useTheme } from "@/lib/theme";
 import { Lang } from "@/models/enums";
 import { NavDict } from "@/models/types";
-import { BookOpen, Briefcase, FileText, Menu, User, X } from "lucide-react";
+import { BookOpen, FileText, Menu, Settings, User, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LanguageSelector } from "./languageSelector/LanguageSelector";
@@ -19,7 +19,7 @@ const Header = ({
 }) => {
   const sections: NavSection[] = [
     { id: "information", label: dict.information, icon: User },
-    { id: "skills", label: dict.skills, icon: Briefcase },
+    { id: "skills", label: dict.skills, icon: Settings },
     { id: "experience", label: dict.experience, icon: FileText },
     { id: "publications", label: dict.publications, icon: BookOpen },
   ];
@@ -85,7 +85,7 @@ const Header = ({
           {/* Logo / Name */}
           <button
             onClick={() => scrollToSection("information")}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 cursor-pointer"
           >
             <span className="text-xl font-bold tracking-tight">
               <span className="neon-text">JM</span>

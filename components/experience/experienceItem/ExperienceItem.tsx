@@ -1,6 +1,6 @@
 import type { experiences } from "@/lib/data";
 import type { Language } from "@/lib/i18n";
-import { Briefcase, Calendar, ExternalLink } from "lucide-react";
+import { UserRound, Calendar } from "lucide-react";
 import { CompanyLogo } from "../companyLogo/CompanyLogo";
 
 type Experience = (typeof experiences)[number];
@@ -52,19 +52,23 @@ export const ExperienceItem = ({
           {/* Role */}
           <div className="flex items-start gap-3 mb-4">
             <div className="p-2 rounded-lg bg-primary/10 flex-shrink-0">
-              <Briefcase className="w-4 h-4 text-primary" />
+              <UserRound className="w-4 h-4 text-primary" />
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              {experience.role[language]}
+            <p className="text-sm leading-relaxed">
+              <span className="text-foreground font-semibold">
+                {experience.role[language]}:
+              </span>{" "}
+              <span className="text-muted-foreground">
+                {experience.description[language]}
+              </span>
             </p>
           </div>
 
           {/* Projects */}
           {experience.projects.map((project, projectIndex) => (
             <div key={projectIndex} className="mb-4">
-              <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+              <h4 className="font-semibold text-foreground mb-2">
                 {project.name}
-                <ExternalLink className="w-3 h-3 text-muted-foreground" />
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.description[language]}

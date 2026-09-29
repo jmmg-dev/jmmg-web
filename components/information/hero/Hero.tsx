@@ -41,7 +41,7 @@ export const Hero = async ({
           <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-70 lg:h-70">
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/20 to-transparent dark:neon-border" />
             <Image
-              src="/images/profile.jpg"
+              src="/images/photo.webp"
               alt={personalInfo.name}
               fill
               className="rounded-2xl object-cover grayscale"

@@ -16,7 +16,7 @@ const PublicationsSection = () => {
             <span className="w-8 h-0.5 bg-primary rounded-full" />
             {t("publications")}
           </h2>
-          <p className="text-muted-foreground leading-relaxed text-pretty max-w-3xl italic">
+          <p className="text-muted-foreground leading-relaxed text-pretty italic">
             {t("publicationsIntro")}
           </p>
         </div>
