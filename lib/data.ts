@@ -10,23 +10,89 @@ export const personalInfo = {
   profileImage: "/images/profile.jpg",
 };
 
-export const technicalSkills = [
-  { name: "Angular", level: 95 },
-  { name: "Angular Material", level: 90 },
-  { name: "BackBone", level: 70 },
-  { name: "BootStrap", level: 85 },
-  { name: "Brain.js (AI)", level: 60 },
-  { name: "CSS 3", level: 95 },
-  { name: "Express", level: 80 },
-  { name: "Full Rest", level: 90 },
-  { name: "HTML 5", level: 95 },
-  { name: "JavaScript", level: 95 },
-  { name: "TypeScript", level: 95 },
-  { name: "React", level: 85 },
-  { name: "Node.js", level: 80 },
-  { name: "NgRx", level: 90 },
-  { name: "RxJS", level: 90 },
-  { name: "Sass", level: 85 },
+export const technicalSkillGroups = [
+  {
+    id: "skillsGroupArchitectureMicrofrontend",
+    skills: [
+      { name: "Design System", level: 97 },
+      { name: "Module Federation", level: 95 },
+      { name: "Single-spa.js", level: 95 },
+      { name: "Vite Federation", level: 90 },
+    ],
+  },
+  {
+    id: "skillsGroupArchitectureMonolith",
+    skills: [{ name: "Nx", level: 80 }],
+  },
+  {
+    id: "skillsGroupAngular",
+    skills: [
+      { name: "Angular", level: 95 },
+      { name: "Angular Material", level: 90 },
+      { name: "NgRx", level: 95 },
+      { name: "RxJS", level: 90 },
+      { name: "Signals", level: 95 },
+      { name: "SSR", level: 90 },
+      { name: "Standalone Components", level: 95 },
+    ],
+  },
+  {
+    id: "skillsGroupReact",
+    skills: [
+      { name: "Next.js", level: 90 },
+      { name: "React", level: 85 },
+      { name: "Redux", level: 85 },
+      { name: "Server Components", level: 90 },
+      { name: "shadcn/ui", level: 92 },
+      { name: "SSR", level: 93 },
+    ],
+  },
+  {
+    id: "skillsGroupOthers",
+    skills: [
+      { name: "BackBone", level: 80 },
+      { name: "Vue.js", level: 85 },
+    ],
+  },
+  {
+    id: "skillsGroupStyles",
+    skills: [
+      { name: "BootStrap", level: 95 },
+      { name: "CSS 3", level: 90 },
+      { name: "Less", level: 91 },
+      { name: "Sass", level: 92 },
+      { name: "Tailwind", level: 85 },
+    ],
+  },
+  {
+    id: "skillsGroupBack",
+    skills: [
+      { name: "Express", level: 77 },
+      { name: "NestJS", level: 75 },
+      { name: "Slim (PHP)", level: 75 },
+    ],
+  },
+  {
+    id: "skillsGroupInfra",
+    skills: [
+      { name: "AWS", level: 70 },
+      { name: "Azure", level: 65 },
+      { name: "GitHub", level: 90 },
+      { name: "GitLab", level: 85 },
+      { name: "Supabase", level: 70 },
+      { name: "Vercel", level: 71 },
+    ],
+  },
+  {
+    id: "skillsGroupAI",
+    skills: [
+      { name: "Claude Code", level: 95 },
+      { name: "GitHub Copilot", level: 90 },
+      { name: "MCP", level: 85 },
+      { name: "Prompt Engineering", level: 90 },
+      { name: "Skill Creation", level: 85 },
+    ],
+  },
 ];
 
 export const professionalGrowthData = [
@@ -77,27 +143,31 @@ export const professionalGrowthData = [
     2020: 0,
     2022: 30,
     2024: 50,
-    2026: 70,
+    2026: 80,
   },
   {
     skill: "English",
     2020: 40,
     2022: 50,
     2024: 55,
-    2026: 65,
+    2026: 70,
   },
 ];
 
 export const languageSkills = [
   { name: "spanish", level: 100, isNative: true },
-  { name: "english", level: 65, isNative: false },
+  { name: "english", level: 70, isNative: false },
 ];
 
 export const businessSkills = [
   { name: "architecturalVision", level: 95 },
   { name: "standardsAndBestPractices", level: 95 },
-  { name: "problemSolving", level: 90 },
-  { name: "teamManagement", level: 85 },
+  { name: "problemSolving", level: 99 },
+  { name: "teamManagement", level: 95 },
+  { name: "technicalDecisions", level: 95 },
+  { name: "technicalLeadership", level: 95 },
+  { name: "technicalMentoring", level: 95 },
+  { name: "uxUiSupport", level: 90 },
 ];
 
 export const experiences = [
@@ -152,7 +222,14 @@ export const experiences = [
         },
       },
     ],
-    technologies: ["Angular", "TypeScript", "RxJS", "NgRx", "SCSS", "REST APIs"],
+    technologies: [
+      "Angular",
+      "TypeScript",
+      "RxJS",
+      "NgRx",
+      "SCSS",
+      "REST APIs",
+    ],
   },
   {
     company: "Accenture",
@@ -172,7 +249,13 @@ export const experiences = [
         },
       },
     ],
-    technologies: ["Angular", "React", "TypeScript", "Micro-frontends", "Design Systems"],
+    technologies: [
+      "Angular",
+      "React",
+      "TypeScript",
+      "Micro-frontends",
+      "Design Systems",
+    ],
   },
   {
     company: "GoldenRace",
@@ -200,7 +283,8 @@ export const publications = [
   {
     title: "CRUD Angular + NgRx with signals",
     date: "01/2026",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202026-04-20%20084741-KnQrpjB0DboNg7P2iE9Otlv67Xx95Y.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202026-04-20%20084741-KnQrpjB0DboNg7P2iE9Otlv67Xx95Y.png",
     description: {
       en: "CRUD Angular + NgRx with Signals is a reference website and repository that shows how to build a complete CRUD application using Angular, NgRx, and Signals. It is aimed at junior and senior developers interested in architecture, state management, and recommended patterns. The project includes unit and end-to-end (E2E) tests.",
       es: "CRUD Angular + NgRx con Signals es un sitio web de referencia y repositorio que muestra cómo construir una aplicación CRUD completa usando Angular, NgRx y Signals. Está dirigido a desarrolladores junior y senior interesados en arquitectura, gestión de estado y patrones recomendados. El proyecto incluye pruebas unitarias y de extremo a extremo (E2E).",
@@ -211,7 +295,8 @@ export const publications = [
   {
     title: "CSS Layout Lab",
     date: "10/2025",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202026-04-20%20084741-KnQrpjB0DboNg7P2iE9Otlv67Xx95Y.png",
+    image:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Captura%20de%20pantalla%202026-04-20%20084741-KnQrpjB0DboNg7P2iE9Otlv67Xx95Y.png",
     description: {
       en: "CSS Layout Lab is an interactive space to learn and experiment with the different ways of building layouts in CSS: from classic models like block and inline, to modern tools like flexbox and grid.",
       es: "CSS Layout Lab es un espacio interactivo para aprender y experimentar con las diferentes formas de construir layouts en CSS: desde modelos clásicos como block e inline, hasta herramientas modernas como flexbox y grid.",
@@ -223,23 +308,56 @@ export const publications = [
 
 export const degrees = [
   {
-    title: { en: "Web Development Advanced Technician", es: "Técnico Superior en Desarrollo de Aplicaciones Web" },
+    title: {
+      en: "Web Development Advanced Technician",
+      es: "Técnico Superior en Desarrollo de Aplicaciones Web",
+    },
     institution: "IES Campanillas",
     year: "2006",
   },
   {
-    title: { en: "Computer Science Degree", es: "Ingeniería Técnica en Informática de Gestión" },
+    title: {
+      en: "Computer Science Degree",
+      es: "Ingeniería Técnica en Informática de Gestión",
+    },
     institution: "Universidad de Málaga",
     year: "2008",
   },
 ];
 
 export const milestones = [
-  { year: "2024", title: { en: "First Front End Architecture from scratch", es: "Primera Arquitectura Front End desde cero" } },
-  { year: "2023", title: { en: "Led team of 8 developers", es: "Lideré equipo de 8 desarrolladores" } },
-  { year: "2022", title: { en: "Micro-frontend implementation", es: "Implementación de micro-frontends" } },
-  { year: "2021", title: { en: "Design System creation", es: "Creación de Design System" } },
-  { year: "2020", title: { en: "Angular certified developer", es: "Desarrollador certificado en Angular" } },
+  {
+    year: "2024",
+    title: {
+      en: "First Front End Architecture from scratch",
+      es: "Primera Arquitectura Front End desde cero",
+    },
+  },
+  {
+    year: "2023",
+    title: {
+      en: "Led team of 8 developers",
+      es: "Lideré equipo de 8 desarrolladores",
+    },
+  },
+  {
+    year: "2022",
+    title: {
+      en: "Micro-frontend implementation",
+      es: "Implementación de micro-frontends",
+    },
+  },
+  {
+    year: "2021",
+    title: { en: "Design System creation", es: "Creación de Design System" },
+  },
+  {
+    year: "2020",
+    title: {
+      en: "Angular certified developer",
+      es: "Desarrollador certificado en Angular",
+    },
+  },
 ];
 
 export const hobbies = [

@@ -2,7 +2,7 @@
 
 import { useI18n } from "@/lib/i18n";
 import {
-  technicalSkills,
+  technicalSkillGroups,
   professionalGrowthData,
   languageSkills,
   businessSkills,
@@ -21,6 +21,12 @@ const SkillsSection = () => {
     "2022": item[2022],
     "2024": item[2024],
     "2026": item[2026],
+  }));
+
+  const translatedTechnicalSkillGroups = technicalSkillGroups.map((group) => ({
+    id: group.id,
+    label: t(group.id),
+    skills: group.skills,
   }));
 
   const translatedLanguages = languageSkills.map((lang) => ({
@@ -49,10 +55,13 @@ const SkillsSection = () => {
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <TechnicalSkills title={t("technicalSkills")} skills={technicalSkills} />
+          <TechnicalSkills
+            title={t("technicalSkills")}
+            groups={translatedTechnicalSkillGroups}
+          />
           <ProfessionalGrowthChart title={t("professionalGrowth")} data={chartData} />
-          <LanguageSkills title={t("languages")} languages={translatedLanguages} />
           <BusinessSkills title={t("businessSkills")} skills={translatedBusinessSkills} />
+          <LanguageSkills title={t("languages")} languages={translatedLanguages} />
         </div>
       </div>
     </section>
