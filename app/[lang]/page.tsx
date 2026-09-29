@@ -1,6 +1,6 @@
 import { getInformationAction } from "@/actions/information";
 import ExperienceSection from "@/components/portfolio/experience/ExperienceSection";
-import Header from "@/components/portfolio/Header";
+import Header from "@/components/portfolio/header/Header";
 import InformationSection from "@/components/portfolio/information/InformationSection";
 import PublicationsSection from "@/components/portfolio/PublicationsSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";

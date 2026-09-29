@@ -3,18 +3,12 @@
 import { useTheme } from "@/lib/theme";
 import { Lang } from "@/models/enums";
 import { NavDict } from "@/models/types";
-import {
-  BookOpen,
-  Briefcase,
-  FileText,
-  Menu,
-  Moon,
-  Sun,
-  User,
-  X,
-} from "lucide-react";
+import { BookOpen, Briefcase, FileText, Menu, User, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { LanguageSelector } from "./languageSelector/LanguageSelector";
+import { NavLinks, type NavSection } from "./navLinks/NavLinks";
+import { ThemeToggle } from "./themeToggle/ThemeToggle";
 
 const Header = ({
   dict,
@@ -23,7 +17,7 @@ const Header = ({
   dict: NavDict;
   selectedLang: Lang;
 }) => {
-  const sections = [
+  const sections: NavSection[] = [
     { id: "information", label: dict.information, icon: User },
     { id: "skills", label: dict.skills, icon: Briefcase },
     { id: "experience", label: dict.experience, icon: FileText },
@@ -74,7 +68,7 @@ const Header = ({
     setIsMenuOpen(false);
   };
 
-  const handlerLanguage = (lang: Lang) => () => {
+  const handlerLanguage = (lang: Lang) => {
     router.push(`/${lang}`);
     router.refresh();
   };
@@ -100,60 +94,22 @@ const Header = ({
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
-            {sections.map((section) => {
-              const Icon = section.icon;
-              const isActive = activeSection === section.id;
-              return (
-                <button
-                  key={section.id}
-                  onClick={() => scrollToSection(section.id)}
-                  className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    isActive
-                      ? "text-primary neon-text"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{section.label}</span>
-                  {isActive && (
-                    <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary rounded-full" />
-                  )}
-                </button>
-              );
-            })}
+            <NavLinks
+              sections={sections}
+              activeSection={activeSection}
+              onSelect={scrollToSection}
+              variant="desktop"
+            />
           </nav>
 
           {/* Right side controls */}
           <div className="flex items-center gap-2">
-            {/* Language Selector */}
-            <div className="flex items-center rounded-lg border border-border bg-secondary/50 p-0.5">
-              {[Lang.en, Lang.es].map((lang) => (
-                <button
-                  key={lang.toUpperCase()}
-                  onClick={handlerLanguage(lang)}
-                  className={`px-2.5 py-1 text-xs font-medium rounded-md transition-all duration-200 ${
-                    selectedLang === lang
-                      ? "bg-primary text-primary-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {lang.toUpperCase()}
-                </button>
-              ))}
-            </div>
+            <LanguageSelector
+              selectedLang={selectedLang}
+              onSelect={handlerLanguage}
+            />
 
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </button>
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
             {/* Mobile Menu Button */}
             <button
@@ -178,24 +134,12 @@ const Header = ({
         }`}
       >
         <nav className="glass px-4 py-4 space-y-1">
-          {sections.map((section) => {
-            const Icon = section.icon;
-            const isActive = activeSection === section.id;
-            return (
-              <button
-                key={section.id}
-                onClick={() => scrollToSection(section.id)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
-                  isActive
-                    ? "bg-primary/10 text-primary neon-text"
-                    : "text-muted-foreground hover:text-foreground hover:bg-secondary"
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-                <span>{section.label}</span>
-              </button>
-            );
-          })}
+          <NavLinks
+            sections={sections}
+            activeSection={activeSection}
+            onSelect={scrollToSection}
+            variant="mobile"
+          />
         </nav>
       </div>
     </header>
