@@ -3,7 +3,7 @@ import ExperienceSection from "@/components/portfolio/experience/ExperienceSecti
 import Header from "@/components/portfolio/header/Header";
 import InformationSection from "@/components/portfolio/information/InformationSection";
 import PublicationsSection from "@/components/portfolio/PublicationsSection";
-import SkillsSection from "@/components/portfolio/SkillsSection";
+import SkillsSection from "@/components/portfolio/skills/SkillsSection";
 import { Lang } from "@/models/enums";
 
 const Portfolio = async ({ params }: { params: { lang: Lang } }) => {
