@@ -1,5 +1,5 @@
 import { Hobbie } from "@/models/interfaces";
-import DynamicIcon from "../../DynamicIcon";
+import DynamicIcon from "@/components/icon/DynamicIcon";
 
 export const HobbiesItem = ({ hobby }: { hobby: Hobbie }) => {
   return (

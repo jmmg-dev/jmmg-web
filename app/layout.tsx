@@ -1,4 +1,4 @@
-import { ThemeProviders } from "@/components/ThemeProviders";
+import { ThemeProviders } from "@/app/theme/ThemeProviders";
 import { Lang, Theme } from "@/models/enums";
 import { Analytics } from "@vercel/analytics/next";
 import { Viewport } from "next";
