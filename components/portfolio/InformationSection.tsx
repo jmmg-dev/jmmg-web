@@ -5,7 +5,7 @@ import { InformationDict } from "@/models/types";
 import { CareerDescription } from "./CareerDescription";
 import { Degrees } from "./degrees/Degrees";
 import { Hero } from "./Hero";
-import { Hobbies } from "./Hobbies/Hobbies";
+import { Hobbies } from "./hobbies/Hobbies";
 import { Milestones } from "./milestones/Milestones";
 
 const InformationSection = async ({

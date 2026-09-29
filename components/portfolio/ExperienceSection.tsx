@@ -1,8 +1,8 @@
 "use client";
 
-import { Briefcase, Calendar, ExternalLink } from "lucide-react";
-import { useI18n, type Language } from "@/lib/i18n";
 import { experiences } from "@/lib/data";
+import { useI18n, type Language } from "@/lib/i18n";
+import { Briefcase, Calendar, ExternalLink } from "lucide-react";
 
 type CompanyLogoProps = {
   company: string;
@@ -10,10 +10,14 @@ type CompanyLogoProps = {
 
 const CompanyLogo = ({ company }: CompanyLogoProps) => {
   const logoClasses = "text-xl font-bold";
-  
+
   switch (company.toLowerCase()) {
     case "vintegris":
-      return <span className={`${logoClasses} text-primary neon-text italic`}>vintegris</span>;
+      return (
+        <span className={`${logoClasses} text-primary neon-text italic`}>
+          vintegris
+        </span>
+      );
     case "signicat":
       return (
         <span className="bg-emerald-600 text-white px-4 py-1.5 rounded-lg font-bold text-lg">
@@ -28,13 +32,17 @@ const CompanyLogo = ({ company }: CompanyLogoProps) => {
       );
     case "goldenrace":
       return (
-        <span className={`${logoClasses} uppercase tracking-wider text-foreground`}>
+        <span
+          className={`${logoClasses} uppercase tracking-wider text-foreground`}
+        >
           <span className="font-black">Golden</span>
           <span className="font-light">Race</span>
         </span>
       );
     default:
-      return <span className={`${logoClasses} text-foreground`}>{company}</span>;
+      return (
+        <span className={`${logoClasses} text-foreground`}>{company}</span>
+      );
   }
 };
 
@@ -74,20 +82,28 @@ const ExperienceSection = () => {
                   <div className="absolute left-0 md:left-1/2 top-0 w-4 h-4 rounded-full bg-primary border-4 border-background transform md:-translate-x-1/2 hidden md:block neon-glow" />
 
                   {/* Date Column */}
-                  <div className={`md:w-1/2 ${isEven ? "md:text-right md:pr-12" : "md:text-left md:pl-12"}`}>
-                    <div className={`flex items-center gap-2 text-muted-foreground mb-4 ${isEven ? "md:justify-end" : "md:justify-start"}`}>
+                  <div
+                    className={`md:w-1/2 ${isEven ? "md:text-right md:pr-12" : "md:text-left md:pl-12"}`}
+                  >
+                    <div
+                      className={`flex items-center gap-2 text-muted-foreground mb-4 ${isEven ? "md:justify-end" : "md:justify-start"}`}
+                    >
                       <Calendar className="w-4 h-4" />
                       <span className="text-sm font-mono">
                         {exp.startDate} - {displayEndDate}
                       </span>
                     </div>
-                    <div className={`${isEven ? "md:flex md:justify-end" : ""}`}>
+                    <div
+                      className={`${isEven ? "md:flex md:justify-end" : ""}`}
+                    >
                       <CompanyLogo company={exp.company} />
                     </div>
                   </div>
 
                   {/* Content Column */}
-                  <div className={`md:w-1/2 ${isEven ? "md:pl-12" : "md:pr-12"}`}>
+                  <div
+                    className={`md:w-1/2 ${isEven ? "md:pl-12" : "md:pr-12"}`}
+                  >
                     <div className="bg-card border border-border rounded-xl p-6 card-interactive">
                       {/* Role */}
                       <div className="flex items-start gap-3 mb-4">
@@ -114,7 +130,7 @@ const ExperienceSection = () => {
 
                       {/* Technologies */}
                       <div className="pt-4 border-t border-border">
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2 items-center justify-center">
                           {exp.technologies.map((tech) => (
                             <span
                               key={tech}

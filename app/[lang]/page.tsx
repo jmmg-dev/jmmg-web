@@ -1,5 +1,3 @@
-"use server";
-
 import { getInformationAction } from "@/actions/information";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import Header from "@/components/portfolio/Header";
