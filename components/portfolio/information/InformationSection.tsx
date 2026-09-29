@@ -2,9 +2,9 @@
 
 import { Information } from "@/models/interfaces";
 import { InformationDict } from "@/models/types";
-import { CareerDescription } from "./CareerDescription";
+import { CareerDescription } from "./careerDescription/CareerDescription";
 import { Degrees } from "./degrees/Degrees";
-import { Hero } from "./Hero";
+import { Hero } from "./hero/Hero";
 import { Hobbies } from "./hobbies/Hobbies";
 import { Milestones } from "./milestones/Milestones";
 

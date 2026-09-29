@@ -1,7 +1,7 @@
 import { getInformationAction } from "@/actions/information";
 import ExperienceSection from "@/components/portfolio/ExperienceSection";
 import Header from "@/components/portfolio/Header";
-import InformationSection from "@/components/portfolio/InformationSection";
+import InformationSection from "@/components/portfolio/information/InformationSection";
 import PublicationsSection from "@/components/portfolio/PublicationsSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";
 import { Lang } from "@/models/enums";

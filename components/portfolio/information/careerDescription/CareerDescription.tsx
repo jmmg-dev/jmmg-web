@@ -1,6 +1,6 @@
 "use server";
 import { InformationDict } from "@/models/types";
-import { ProfessionalInfo } from "../../models/interfaces";
+import { ProfessionalInfo } from "@/models/interfaces";
 export const CareerDescription = async ({
   dict,
   professionalInfo,
