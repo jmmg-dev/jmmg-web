@@ -14,14 +14,14 @@ type TechnicalSkillsProps = {
 
 export const TechnicalSkills = ({ title, groups }: TechnicalSkillsProps) => {
   return (
-    <div className="bg-card border border-border rounded-xl p-6 card-interactive">
+    <div className="bg-card border border-border rounded-xl p-6 card-interactive flex flex-col lg:h-140">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-2 rounded-lg bg-primary/10">
           <Settings className="w-5 h-5 text-primary" />
         </div>
         <h3 className="text-xl font-bold text-foreground">{title}</h3>
       </div>
-      <div className="space-y-6 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+      <div className="space-y-6 flex-1 min-h-0 overflow-y-auto pr-2 custom-scrollbar">
         {groups.map((group) => (
           <div key={group.id}>
             <p className="text-xs font-semibold tracking-wide text-muted-foreground mb-3">

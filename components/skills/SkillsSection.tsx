@@ -33,7 +33,7 @@ const SkillsSection = () => {
     id: lang.name,
     label: t(lang.name),
     level: lang.level,
-    isNative: lang.isNative,
+    info: t(lang.info),
   }));
 
   const translatedBusinessSkills = businessSkills.map((skill) => ({
@@ -59,9 +59,26 @@ const SkillsSection = () => {
             title={t("technicalSkills")}
             groups={translatedTechnicalSkillGroups}
           />
-          <ProfessionalGrowthChart title={t("professionalGrowth")} data={chartData} />
-          <BusinessSkills title={t("businessSkills")} skills={translatedBusinessSkills} />
-          <LanguageSkills title={t("languages")} languages={translatedLanguages} />
+          <div className="flex flex-col gap-8 lg:h-140">
+            <div className="flex-3 min-h-0">
+              <BusinessSkills
+                title={t("businessSkills")}
+                skills={translatedBusinessSkills}
+              />
+            </div>
+            <div className="flex-2 min-h-0">
+              <LanguageSkills
+                title={t("languages")}
+                languages={translatedLanguages}
+              />
+            </div>
+          </div>
+          <div className="lg:col-span-2">
+            <ProfessionalGrowthChart
+              title={t("professionalGrowth")}
+              data={chartData}
+            />
+          </div>
         </div>
       </div>
     </section>

@@ -155,8 +155,8 @@ export const professionalGrowthData = [
 ];
 
 export const languageSkills = [
-  { name: "spanish", level: 100, isNative: true },
-  { name: "english", level: 70, isNative: false },
+  { name: "spanish", level: 100, info: "languageInfoNative" },
+  { name: "english", level: 70, info: "languageInfoProfessional" },
 ];
 
 export const businessSkills = [

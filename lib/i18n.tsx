@@ -59,6 +59,8 @@ export const translations: Translations = {
   uxUiSupport: { en: "UX/UI support", es: "Soporte UX/UI" },
   spanish: { en: "Spanish", es: "Español" },
   english: { en: "English", es: "Inglés" },
+  languageInfoNative: { en: "Native", es: "Nativo" },
+  languageInfoProfessional: { en: "Professional", es: "Ámbito profesional" },
 
   // Experience Section
   projects: { en: "Projects", es: "Proyectos" },
