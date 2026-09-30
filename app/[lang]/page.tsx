@@ -8,17 +8,24 @@ import { Lang } from "@/models/enums";
 
 const Portfolio = async ({ params }: { params: { lang: Lang } }) => {
   const { lang } = await params;
-  const dict = (await import(`@/messages/${lang}.json`)).default;
-  const information = await getInformationAction(lang);
+  const data = await getInformationAction(lang);
 
   return (
     <div className="min-h-screen bg-background">
-      <Header dict={dict.nav} selectedLang={lang} />
+      <Header dict={data.nav} selectedLang={lang} />
       <main>
-        <InformationSection information={information} dict={dict.info} />
-        <SkillsSection />
-        <ExperienceSection />
-        <PublicationsSection />
+        <InformationSection information={data} dict={data.info} />
+        <SkillsSection title={data.nav.skills} dict={data.skills} />
+        <ExperienceSection
+          title={data.nav.experience}
+          currentlyLabel={data.experience.currently}
+          lang={lang}
+        />
+        <PublicationsSection
+          title={data.nav.publications}
+          intro={data.publications.intro}
+          lang={lang}
+        />
 
         {/* Footer */}
         <footer className="py-8 border-t border-border">
@@ -26,7 +33,7 @@ const Portfolio = async ({ params }: { params: { lang: Lang } }) => {
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
               <p>
                 &copy; {new Date().getFullYear()} JMMG.
-                <span className="ms-2"> {dict.footer} </span>
+                <span className="ms-2"> {data.footer} </span>
               </p>
             </div>
           </div>

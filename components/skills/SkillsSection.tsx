@@ -1,19 +1,25 @@
 "use client";
 
-import { useI18n } from "@/lib/i18n";
 import {
   technicalSkillGroups,
   professionalGrowthData,
   languageSkills,
   businessSkills,
 } from "@/lib/data";
+import { SkillsDict } from "@/models/types";
 import { TechnicalSkills } from "./technicalSkills/TechnicalSkills";
 import { ProfessionalGrowthChart } from "./professionalGrowthChart/ProfessionalGrowthChart";
 import { LanguageSkills } from "./languageSkills/LanguageSkills";
 import { BusinessSkills } from "./businessSkills/BusinessSkills";
 
-const SkillsSection = () => {
-  const { t } = useI18n();
+const SkillsSection = ({
+  title,
+  dict,
+}: {
+  title: string;
+  dict: SkillsDict;
+}) => {
+  const t = dict as unknown as Record<string, string>;
 
   const chartData = professionalGrowthData.map((item) => ({
     name: item.skill,
@@ -25,20 +31,20 @@ const SkillsSection = () => {
 
   const translatedTechnicalSkillGroups = technicalSkillGroups.map((group) => ({
     id: group.id,
-    label: t(group.id),
+    label: t[group.id],
     skills: group.skills,
   }));
 
   const translatedLanguages = languageSkills.map((lang) => ({
     id: lang.name,
-    label: t(lang.name),
+    label: t[lang.name],
     level: lang.level,
-    info: t(lang.info),
+    info: t[lang.info],
   }));
 
   const translatedBusinessSkills = businessSkills.map((skill) => ({
     id: skill.name,
-    label: t(skill.name),
+    label: t[skill.name],
     level: skill.level,
   }));
 
@@ -49,33 +55,33 @@ const SkillsSection = () => {
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 flex items-center gap-3">
             <span className="w-8 h-0.5 bg-primary rounded-full" />
-            {t("skills")}
+            {title}
           </h2>
         </div>
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <TechnicalSkills
-            title={t("technicalSkills")}
+            title={dict.technicalSkills}
             groups={translatedTechnicalSkillGroups}
           />
           <div className="flex flex-col gap-8 lg:h-140">
-            <div className="flex-3 min-h-0">
+            <div className="lg:flex-3 lg:min-h-0">
               <BusinessSkills
-                title={t("businessSkills")}
+                title={dict.businessSkills}
                 skills={translatedBusinessSkills}
               />
             </div>
-            <div className="flex-2 min-h-0">
+            <div className="lg:flex-2 lg:min-h-0">
               <LanguageSkills
-                title={t("languages")}
+                title={dict.languages}
                 languages={translatedLanguages}
               />
             </div>
           </div>
           <div className="lg:col-span-2">
             <ProfessionalGrowthChart
-              title={t("professionalGrowth")}
+              title={dict.professionalGrowth}
               data={chartData}
             />
           </div>

@@ -1,15 +1,3 @@
-export const personalInfo = {
-  name: "Juan Manuel Muñoz González",
-  email: "jmmugoz@gmail.com",
-  birthDate: "15/05/1984",
-  location: {
-    city: "Málaga",
-    country: "Spain",
-  },
-  linkedIn: "https://www.linkedin.com/in/juanmamunoz/",
-  profileImage: "/images/profile.jpg",
-};
-
 export const technicalSkillGroups = [
   {
     id: "skillsGroupArchitectureMicrofrontend",
@@ -494,7 +482,7 @@ export const experiences = [
 
 export const publications = [
   {
-    title: "CRUD Angular + NgRx with signals",
+    title: "Angular + NgRx with Signals",
     date: "01/2026",
     image: "/images/publications/crudngrx.webp",
     description: {
@@ -503,6 +491,7 @@ export const publications = [
     },
     websiteUrl: "https://juanmamunoz.github.io/crud-ngrx-signals/#/login",
     githubUrl: "https://github.com/JuanmaMunoz/crud-ngrx-signals",
+    technologies: ["Angular", "NgRx", "Signals"],
   },
   {
     title: "CSS Layout Lab",
@@ -514,6 +503,7 @@ export const publications = [
     },
     websiteUrl: "https://juanmamunoz.github.io/css-layout-lab/#/home",
     githubUrl: null,
+    technologies: ["CSS 3", "HTML 5"],
   },
   {
     title: "Signals Vs Subjects Vs NgRx",
@@ -525,6 +515,7 @@ export const publications = [
     },
     websiteUrl: "https://juanmamunoz.github.io/signalsVsRxJsVsNgRx/#/",
     githubUrl: null,
+    technologies: ["Signals", "RxJS", "NgRx"],
   },
   {
     title: "Play RxJS",
@@ -536,69 +527,6 @@ export const publications = [
     },
     websiteUrl: "https://juanmamunoz.github.io/playRxjs/#/home",
     githubUrl: null,
+    technologies: ["RxJS"],
   },
-];
-
-export const degrees = [
-  {
-    title: {
-      en: "Web Development Advanced Technician",
-      es: "Técnico Superior en Desarrollo de Aplicaciones Web",
-    },
-    institution: "IES Campanillas",
-    year: "2006",
-  },
-  {
-    title: {
-      en: "Computer Science Degree",
-      es: "Ingeniería Técnica en Informática de Gestión",
-    },
-    institution: "Universidad de Málaga",
-    year: "2008",
-  },
-];
-
-export const milestones = [
-  {
-    year: "2024",
-    title: {
-      en: "First Front End Architecture from scratch",
-      es: "Primera Arquitectura Front End desde cero",
-    },
-  },
-  {
-    year: "2023",
-    title: {
-      en: "Led team of 8 developers",
-      es: "Lideré equipo de 8 desarrolladores",
-    },
-  },
-  {
-    year: "2022",
-    title: {
-      en: "Micro-frontend implementation",
-      es: "Implementación de micro-frontends",
-    },
-  },
-  {
-    year: "2021",
-    title: { en: "Design System creation", es: "Creación de Design System" },
-  },
-  {
-    year: "2020",
-    title: {
-      en: "Angular certified developer",
-      es: "Desarrollador certificado en Angular",
-    },
-  },
-];
-
-export const hobbies = [
-  "hiking",
-  "swimming",
-  "gaming",
-  "music",
-  "cycling",
-  "badminton",
-  "travel",
 ];

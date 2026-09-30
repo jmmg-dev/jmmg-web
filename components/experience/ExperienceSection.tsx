@@ -1,12 +1,16 @@
-"use client";
-
 import { experiences } from "@/lib/data";
-import { useI18n } from "@/lib/i18n";
+import { Lang } from "@/models/enums";
 import { ExperienceItem } from "./experienceItem/ExperienceItem";
 
-const ExperienceSection = () => {
-  const { t, language } = useI18n();
-
+const ExperienceSection = ({
+  title,
+  currentlyLabel,
+  lang,
+}: {
+  title: string;
+  currentlyLabel: string;
+  lang: Lang;
+}) => {
   return (
     <section id="experience" className="py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,7 +18,7 @@ const ExperienceSection = () => {
         <div className="mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 flex items-center gap-3">
             <span className="w-8 h-0.5 bg-primary rounded-full" />
-            {t("experience")}
+            {title}
           </h2>
         </div>
 
@@ -30,8 +34,8 @@ const ExperienceSection = () => {
                 key={exp.company}
                 experience={exp}
                 isEven={index % 2 === 0}
-                language={language}
-                currentlyLabel={t("currently")}
+                lang={lang}
+                currentlyLabel={currentlyLabel}
               />
             ))}
           </div>

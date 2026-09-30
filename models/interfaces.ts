@@ -2,6 +2,7 @@ export interface Hobbie {
   label: string;
   icon: string;
 }
+
 export interface PersonalInfo {
   name: string;
   date: string;
@@ -23,72 +24,79 @@ export interface Degree {
 export interface Milestone {
   name: string;
   description: string;
-  date: number;
-}
-
-export interface skill {
-  name: string;
-  description?: string;
-  value: number;
-}
-
-export interface Arquitecture {
-  name: string;
-  description: string;
-  img: string;
-}
-
-export interface Publications {
   date: string;
-  title: string;
-  description: string;
-  url: string;
-  urlRepository: string;
-  img: string;
-}
-
-export interface Proyect {
-  title: string;
-  description: string;
-  client: string;
-  technologies: string[];
-}
-
-export interface Experience {
-  position: string;
-  description: string;
-  startDate: string;
-  endDate: string;
-  company: string;
-  poyects: Proyect[];
-}
-
-export interface ProfessionalSkills {
-  frontendEcosystem: skill[];
-  legacyMaster: skill[];
-  testsAutomation: skill[];
-  communication: skill[];
-  backend: skill[];
-  uIEngineeringAndStyling: skill[];
-  cloudAndDeployment: skill[];
-  backendAsAService: skill[];
-  versionControlAndCI: skill[];
-  aIForDevelopment: skill[];
-  arquitectures: Arquitecture[];
 }
 
 export interface ProfessionalInfo {
   career: string;
   degrees: Degree[];
   milestones: Milestone[];
-  professionalSkills: ProfessionalSkills;
-  businessSkills: skill[];
-  languageSkills: skill[];
-  experiences: Experience[];
+}
+
+export interface NavLabels {
+  information: string;
+  skills: string;
+  experience: string;
+  publications: string;
+}
+
+export interface InfoLabels {
+  hero: {
+    frontEndArchitect: string;
+    onlyFullRemote: string;
+  };
+  career: string;
+  degrees: string;
+  professionalMilestones: string;
+  hobbies: string;
+}
+
+export interface SkillsLabels {
+  technicalSkills: string;
+  skillsGroupAngular: string;
+  skillsGroupReact: string;
+  skillsGroupOthers: string;
+  skillsGroupBack: string;
+  skillsGroupInfra: string;
+  skillsGroupAI: string;
+  skillsGroupDoc: string;
+  skillsGroupStyles: string;
+  skillsGroupArchitectureMonolith: string;
+  skillsGroupArchitectureMicrofrontend: string;
+  professionalGrowth: string;
+  languages: string;
+  businessSkills: string;
+  architecturalVision: string;
+  standardsAndBestPractices: string;
+  problemSolving: string;
+  teamManagement: string;
+  technicalDecisions: string;
+  technicalLeadership: string;
+  technicalMentoring: string;
+  uxUiSupport: string;
+  spanish: string;
+  english: string;
+  languageInfoNative: string;
+  languageInfoProfessional: string;
+}
+
+export interface ExperienceLabels {
+  projects: string;
+  technologies: string;
+  currently: string;
+}
+
+export interface PublicationsLabels {
+  intro: string;
 }
 
 export interface Information {
+  nav: NavLabels;
+  info: InfoLabels;
+  skills: SkillsLabels;
+  experience: ExperienceLabels;
+  publications: PublicationsLabels;
+  footer: string;
   personalInfo: PersonalInfo;
   professionalInfo: ProfessionalInfo;
-  experiences: Experience[];
 }

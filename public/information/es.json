@@ -1,0 +1,146 @@
+{
+  "nav": {
+    "information": "Información",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "publications": "Publicaciones"
+  },
+  "info": {
+    "hero": {
+      "frontEndArchitect": "Arquitecto Front End",
+      "onlyFullRemote": "Solo Teletrabajo"
+    },
+    "career": "Carrera",
+    "degrees": "Estudios",
+    "professionalMilestones": "Hitos Profesionales",
+    "hobbies": "Hobbies"
+  },
+  "skills": {
+    "technicalSkills": "Habilidades técnicas",
+    "skillsGroupAngular": "Ecosistema Angular",
+    "skillsGroupReact": "Ecosistema React",
+    "skillsGroupOthers": "Otros Frameworks JS",
+    "skillsGroupBack": "Back",
+    "skillsGroupInfra": "Infra",
+    "skillsGroupAI": "IA",
+    "skillsGroupDoc": "Documentación",
+    "skillsGroupStyles": "Estilos",
+    "skillsGroupArchitectureMonolith": "Arquitectura Monolítica",
+    "skillsGroupArchitectureMicrofrontend": "Arquitectura Micro-frontend",
+    "professionalGrowth": "Crecimiento profesional",
+    "languages": "Idiomas",
+    "businessSkills": "Habilidades de negocio",
+    "architecturalVision": "Visión arquitectónica",
+    "standardsAndBestPractices": "Estándares y buenas prácticas",
+    "problemSolving": "Resolución de problemas",
+    "teamManagement": "Gestión de equipos",
+    "technicalDecisions": "Decisiones técnicas",
+    "technicalLeadership": "Liderazgo técnico",
+    "technicalMentoring": "Mentorización técnica",
+    "uxUiSupport": "Soporte UX/UI",
+    "spanish": "Español",
+    "english": "Inglés",
+    "languageInfoNative": "Nativo",
+    "languageInfoProfessional": "Ámbito profesional"
+  },
+  "experience": {
+    "projects": "Proyectos",
+    "technologies": "Tecnologías",
+    "currently": "Actualmente"
+  },
+  "publications": {
+    "intro": "Siempre he estado profundamente agradecido a todos aquellos desarrolladores que, de manera desinteresada, han puesto sus conocimientos a disposición de la comunidad. A muchos de ellos les debo una parte importante de mi formación profesional. En los últimos meses he comenzado a compartir mis propios conocimientos, aportando así mi granito de arena a esta comunidad."
+  },
+  "footer": "Todos los derechos reservados.",
+  "personalInfo": {
+    "name": "Juan Manuel Muñoz González",
+    "date": "15/05/1984",
+    "city": "Málaga",
+    "country": "España",
+    "urlIn": "https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/",
+    "email": "jmmugoz@gmail.com",
+    "position": "Front End Architect",
+    "hobbies": [
+      {
+        "label": "Perros",
+        "icon": "dog"
+      },
+      {
+        "label": "Senderismo",
+        "icon": "footprints"
+      },
+      {
+        "label": "Pesca",
+        "icon": "fishing-hook"
+      },
+      {
+        "label": "Kayak",
+        "icon": "kayak"
+      },
+      {
+        "label": "Fútbol",
+        "icon": "goal"
+      },
+      {
+        "label": "Cine",
+        "icon": "clapperboard"
+      },
+      {
+        "label": "Música",
+        "icon": "music"
+      },
+      {
+        "label": "Videojuegos",
+        "icon": "gamepad"
+      },
+      {
+        "label": "Viajar",
+        "icon": "plane"
+      }
+    ]
+  },
+  "professionalInfo": {
+    "career": "Tengo más de 20 años de experiencia en la industria del software y he trabajado para grandes empresas como Repsol, Vodafone, Línea Directa, Banco Santander, entre otras. En muchos de estos proyectos, he sido responsable de diseñar, documentar y liderar la arquitectura Front End desde cero, lo que me ha permitido consolidar una sólida experiencia en este campo.\n\n Mi rol no solo ha involucrado la creación de arquitecturas robustas, sino también proporcionar liderazgo técnico a equipos de desarrollo Front End, estableciendo mejores prácticas para garantizar la entrega de aplicaciones escalables y de alta calidad. Además de liderar, me involucro activamente en el desarrollo, lo que me permite mantenerme al día con las últimas tendencias tecnológicas y seguir aportando valor como un desarrollador más. Este enfoque práctico y actualizado es clave para asegurar el éxito de los proyectos que lidero. Cuento con sólidos conocimientos de Back End y experiencia avanzada en UX/UI, lo que me proporciona una visión integral de las necesidades técnicas de cualquier aplicación.\n\n En 2022, tuve la oportunidad de liderar la arquitectura del proyecto ARIA de Repsol, una pieza clave del aplicativo Stock Control. Este proyecto fue reconocido en 2023 con el premio Best in Class en Expoquimia. Gracias a este éxito, me convertí en un referente para Repsol en arquitectura Front End.\n\n En 2024, lideré el desarrollo de la arquitectura Front End de una aplicación destinada a gestionar la firma digital de todas las propuestas emitidas por el Congreso de los Diputados y los principales organismos de la administración pública española. Este proyecto se basa en una arquitectura modular de microsites, junto con la creación de una librería de componentes personalizada. Esta solución no solo optimiza la velocidad y robustez del desarrollo, sino que también permite una mayor independencia entre los módulos, posicionándose como una innovación clave en el futuro del desarrollo web.\n\n Actualmente, lidero la arquitectura Front End de la integración de los paquetes de Perfect Stay en la plataforma HotelBeds para HBX Group, la mayor B2B bedbank del mundo. También he liderado la arquitectura Front End detrás del reciente rebranding de HotelBeds, con el que la compañía ha presentado su nueva identidad de marca y diseños. Es uno de los proyectos técnicamente más exigentes en los que he trabajado, dada la escala y complejidad de los sistemas distribuidos de HBX Group.",
+    "degrees": [
+      {
+        "name": "Ingeniería Electrónica",
+        "institution": "Universidad de Málaga",
+        "endDate": 2005,
+        "startDate": 2002
+      },
+      {
+        "name": "FP2 Desarrollo de Aplicaciones Informáticas",
+        "institution": "I.E.S. Martín Rivero",
+        "endDate": 2006,
+        "startDate": 2004
+      }
+    ],
+    "milestones": [
+      {
+        "name": "Plexus: HotelBeds - Perfect Stay (HBX Group)",
+        "description": "Lideré la arquitectura Front End de la integración de los paquetes de Perfect Stay en la plataforma HotelBeds de HBX Group, la mayor B2B bedbank del mundo, dentro de un sistema distribuido de gran complejidad.",
+        "date": "2026"
+      },
+      {
+        "name": "Vintegris: nebulaSUITE 2.0",
+        "description": "Creación de la arquitectura Front End de nebulaSUITE 2.0, una plataforma para la gestión de certificados digitales y documentos firmados electrónicamente, utilizada por el Congreso de los Diputados, principales organismos de la administración pública y entidades bancarias.",
+        "date": "2024"
+      },
+      {
+        "name": "Repsol: ARIA - Stock Control",
+        "description": "Creación de la arquitectura Front End de ARIA - Stock Control, una aplicación galardonada con el premio Best in Class en Expoquimia 2023, reconocida como la mejor solución de gestión química del mercado.",
+        "date": "2022"
+      },
+      {
+        "name": "Vodafone: IDM",
+        "description": "Creación de la arquitectura web de Vodafone IDM, la plataforma encargada de la administración de identidades.",
+        "date": "2020"
+      },
+      {
+        "name": "Línea Directa: Aplicación de Asistencia en Carretera",
+        "description": "Diseño y desarrollo de la arquitectura Front End de la primera aplicación web de seguimiento de asistencia en carretera. El proyecto tuvo una gran repercusión mediática, apareciendo en medios nacionales con Matías Prats como protagonista.",
+        "date": "2016"
+      }
+    ]
+  }
+}

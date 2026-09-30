@@ -1,5 +1,5 @@
 import type { experiences } from "@/lib/data";
-import type { Language } from "@/lib/i18n";
+import type { Lang } from "@/models/enums";
 import { UserRound, Calendar } from "lucide-react";
 import { CompanyLogo } from "../companyLogo/CompanyLogo";
 
@@ -8,14 +8,14 @@ type Experience = (typeof experiences)[number];
 type ExperienceItemProps = {
   experience: Experience;
   isEven: boolean;
-  language: Language;
+  lang: Lang;
   currentlyLabel: string;
 };
 
 export const ExperienceItem = ({
   experience,
   isEven,
-  language,
+  lang,
   currentlyLabel,
 }: ExperienceItemProps) => {
   const displayEndDate = experience.endDate || currentlyLabel;
@@ -56,10 +56,10 @@ export const ExperienceItem = ({
             </div>
             <p className="text-sm leading-relaxed">
               <span className="text-foreground font-semibold">
-                {experience.role[language]}:
+                {experience.role[lang]}:
               </span>{" "}
               <span className="text-muted-foreground">
-                {experience.description[language]}
+                {experience.description[lang]}
               </span>
             </p>
           </div>
@@ -71,7 +71,7 @@ export const ExperienceItem = ({
                 {project.name}
               </h4>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                {project.description[language]}
+                {project.description[lang]}
               </p>
             </div>
           ))}
