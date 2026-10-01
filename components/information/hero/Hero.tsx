@@ -22,14 +22,14 @@ export const Hero = async ({
     <div className="relative rounded-2xl overflow-hidden mb-20">
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-bg-dark.jpg"
+          src="/images/hero-bg-dark.webp"
           alt="Web Architecture Background"
           fill
           className="object-cover hidden dark:block"
           priority
         />
         <Image
-          src="/images/hero-bg-light.jpg"
+          src="/images/hero-bg-light.webp"
           alt="Web Architecture Background"
           fill
           className="object-cover block dark:hidden"
@@ -81,30 +81,32 @@ export const Hero = async ({
           </div>
 
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3">
-            <a
-              href={personalInfo.urlIn}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-            >
-              <Linkedin className="w-4 h-4" />
-              <span className="text-sm font-medium">LinkedIn</span>
-            </a>
-            <div className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/50 text-primary">
+            <div className="flex items-center gap-3">
+              <a
+                href={personalInfo.urlIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
+              >
+                <Download className="w-4 h-4" />
+                <span className="text-sm font-medium">CV.pdf</span>
+              </a>
+              <a
+                href={personalInfo.urlIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/50 bg-transparent text-primary hover:bg-primary/10 transition-colors"
+              >
+                <Linkedin className="w-4 h-4" />
+                <span className="text-sm font-medium">LinkedIn</span>
+              </a>
+            </div>
+            <div className="flex items-center gap-2 text-primary dark:text-white">
               <AlertTriangle className="w-4 h-4" />
               <span className="text-sm font-medium">
                 {dict.hero.onlyFullRemote}
               </span>
             </div>
-            <a
-              href={personalInfo.urlIn}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
-            >
-              <Download className="w-4 h-4" />
-              <span className="text-sm font-medium">CV.pdf</span>
-            </a>
           </div>
         </div>
       </div>

@@ -41,7 +41,15 @@
     "spanish": "Español",
     "english": "Inglés",
     "languageInfoNative": "Nativo",
-    "languageInfoProfessional": "Ámbito profesional"
+    "languageInfoProfessional": "Ámbito profesional",
+    "growthArchitecture": "Arquitectura",
+    "growthMicrofrontends": "Micro-frontends",
+    "growthTechnicalLeadership": "Liderazgo técnico",
+    "growthBestPractices": "Buenas prácticas",
+    "growthDocumentation": "Documentación",
+    "growthMentoring": "Mentorización",
+    "growthAppliedAI": "IA aplicada",
+    "growthEnglish": "Inglés"
   },
   "experience": {
     "projects": "Proyectos",

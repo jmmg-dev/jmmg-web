@@ -22,7 +22,7 @@ const SkillsSection = ({
   const t = dict as unknown as Record<string, string>;
 
   const chartData = professionalGrowthData.map((item) => ({
-    name: item.skill,
+    name: t[item.skill],
     "2020": item[2020],
     "2022": item[2022],
     "2024": item[2024],

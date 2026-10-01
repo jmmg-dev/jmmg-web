@@ -23,9 +23,21 @@ export const PublicationCard = ({
   return (
     <div className="group bg-card border border-border rounded-xl card-interactive h-full p-6">
       <div className="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-4 mb-4">
-        <div className="relative w-full max-w-sm mx-auto h-48 sm:w-52 sm:h-32 sm:max-w-none sm:mx-0 shrink-0 rounded-xl overflow-hidden border border-border">
-          <Image src={image} alt={title} fill className="object-cover" />
-        </div>
+        {websiteUrl ? (
+          <a
+            href={websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative w-full max-w-sm mx-auto h-48 sm:w-52 sm:h-32 sm:max-w-none sm:mx-0 shrink-0 rounded-xl overflow-hidden border border-border block"
+            aria-label={`Visit ${title} website`}
+          >
+            <Image src={image} alt={title} fill className="object-cover" />
+          </a>
+        ) : (
+          <div className="relative w-full max-w-sm mx-auto h-48 sm:w-52 sm:h-32 sm:max-w-none sm:mx-0 shrink-0 rounded-xl overflow-hidden border border-border">
+            <Image src={image} alt={title} fill className="object-cover" />
+          </div>
+        )}
 
         <div className="flex-1 min-w-0">
           <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">

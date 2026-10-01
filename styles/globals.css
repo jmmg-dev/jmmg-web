@@ -146,6 +146,10 @@
 }
 
 .progress-track {
+  background: linear-gradient(to right, oklch(0.75 0.14 200), var(--neon));
+}
+
+.dark .progress-track {
   background: linear-gradient(to right, var(--neon), oklch(0.6 0.18 160));
 }
 

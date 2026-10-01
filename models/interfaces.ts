@@ -78,6 +78,14 @@ export interface SkillsLabels {
   english: string;
   languageInfoNative: string;
   languageInfoProfessional: string;
+  growthArchitecture: string;
+  growthMicrofrontends: string;
+  growthTechnicalLeadership: string;
+  growthBestPractices: string;
+  growthDocumentation: string;
+  growthMentoring: string;
+  growthAppliedAI: string;
+  growthEnglish: string;
 }
 
 export interface ExperienceLabels {
