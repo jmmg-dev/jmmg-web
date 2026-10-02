@@ -27,12 +27,15 @@ export const Hero = async ({
           fill
           className="object-cover hidden dark:block"
           priority
+          fetchPriority="high"
         />
         <Image
           src="/images/hero-bg-light.webp"
           alt="Web Architecture Background"
           fill
           className="object-cover block dark:hidden"
+          priority
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/100 via-background/90 to-background/10" />
       </div>
@@ -46,6 +49,7 @@ export const Hero = async ({
               fill
               className="rounded-2xl object-cover grayscale"
               priority
+              fetchPriority="high"
             />
           </div>
         </div>

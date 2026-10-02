@@ -36,9 +36,7 @@ const Header = ({
 
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      setScrollProgress(
-        docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0,
-      );
+      setScrollProgress(docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0);
 
       const sectionElements = sections.map((s) => ({
         id: s.id,
@@ -56,9 +54,21 @@ const Header = ({
       }
     };
 
+    let rafId: number | null = null;
+    const onScroll = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        handleScroll();
+        rafId = null;
+      });
+    };
+
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+    };
   }, []);
 
   const scrollToSection = (sectionId: string) => {
