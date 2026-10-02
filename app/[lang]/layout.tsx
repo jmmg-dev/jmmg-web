@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/constants";
 import { Lang } from "@/models/enums";
 import { Metadata } from "next";
 
@@ -11,6 +12,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const isEs = lang === Lang.es;
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: isEs
       ? "Juan Manuel Muñoz González | Arquitecto Front End"
       : "Juan Manuel Muñoz González | Front End Architect",
@@ -70,6 +72,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "es-ES": "/es",
         "en-US": "/en",
       },
+    },
+    verification: {
+      google: "M42-CWYHkJsp3HGRXlv_ynK4N46oRi8Y6txTAqY311k",
     },
   };
 }

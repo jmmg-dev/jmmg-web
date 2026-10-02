@@ -17,7 +17,7 @@ export const Milestones = async ({
         <Award className="w-5 h-5 text-primary" />
         {dict.professionalMilestones}
       </h3>
-      <div className="space-y-4 max-h-[200px] overflow-y-auto">
+      <div className="space-y-4 lg:max-h-[200px] lg:overflow-y-auto">
         {milestones.map((milestone, index) => (
           <MilestoneItem key={index} milestone={milestone} />
         ))}

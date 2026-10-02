@@ -67,9 +67,9 @@ export const ExperienceItem = ({
           {/* Projects */}
           {experience.projects.map((project, projectIndex) => (
             <div key={projectIndex} className="mb-4">
-              <h4 className="font-semibold text-foreground mb-2">
+              <h3 className="font-semibold text-foreground mb-2">
                 {project.name}
-              </h4>
+              </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {project.description[lang]}
               </p>
