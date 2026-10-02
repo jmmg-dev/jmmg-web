@@ -15,17 +15,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       ? "Juan Manuel Muñoz González | Arquitecto Front End"
       : "Juan Manuel Muñoz González | Front End Architect",
     description: isEs
-      ? "Portfolio de Juan Manuel Muñoz González - Arquitecto Front End con más de 20 años de experiencia en desarrollo de software, especializado en Angular, React y arquitectura empresarial."
-      : "Portfolio of Juan Manuel Muñoz González - Front End Architect with 20+ years of experience in software development, specializing in Angular, React, and enterprise architecture.",
-    keywords: [
-      "Front End Architect",
-      "Angular",
-      "React",
-      "TypeScript",
-      "JavaScript",
-      "Software Architecture",
-      isEs ? "Arquitectura de Software" : "Web Architecture",
-    ],
+      ? "Portfolio de Juan Manuel Muñoz González, Arquitecto Front End con más de 20 años de experiencia liderando arquitecturas micro-frontend, sistemas a gran escala y desarrollo asistido por IA para empresas como Repsol, Accenture y HBX Group."
+      : "Portfolio of Juan Manuel Muñoz González, Front End Architect with 20+ years of experience leading micro-frontend architectures, enterprise-scale systems, and AI-assisted development for companies like Repsol, Accenture, and HBX Group.",
+    keywords: isEs
+      ? [
+          "Arquitecto Front End",
+          "Micro-frontends",
+          "Module Federation",
+          "Angular",
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Liderazgo Técnico",
+          "Desarrollo Asistido por IA",
+          "Arquitectura Empresarial",
+        ]
+      : [
+          "Front End Architect",
+          "Micro-frontends",
+          "Module Federation",
+          "Angular",
+          "Next.js",
+          "React",
+          "TypeScript",
+          "Technical Leadership",
+          "AI-Assisted Development",
+          "Enterprise Architecture",
+        ],
     authors: [{ name: "Juan Manuel Muñoz González" }],
     creator: "Juan Manuel Muñoz González",
     openGraph: {
@@ -35,8 +51,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ? "Juan Manuel Muñoz González | Arquitecto Front End"
         : "Juan Manuel Muñoz González | Front End Architect",
       description: isEs
-        ? "Portfolio con más de 20 años de experiencia en desarrollo Front End"
-        : "Portfolio showcasing 20+ years of Front End development experience",
+        ? "Arquitecto Front End especializado en arquitecturas micro-frontend, liderazgo técnico y desarrollo asistido por IA."
+        : "Front End Architect specializing in micro-frontend architectures, technical leadership, and AI-assisted development.",
       siteName: "JM Portfolio",
     },
     twitter: {

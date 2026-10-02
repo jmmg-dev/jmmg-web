@@ -28,10 +28,17 @@ const Header = ({
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("information");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(
+        docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0,
+      );
 
       const sectionElements = sections.map((s) => ({
         id: s.id,
@@ -143,6 +150,12 @@ const Header = ({
           />
         </nav>
       </div>
+
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute bottom-0 left-0 h-0.5 bg-primary neon-glow transition-[width] duration-150 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
     </header>
   );
 };
