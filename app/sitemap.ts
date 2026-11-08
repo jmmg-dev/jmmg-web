@@ -1,22 +1,17 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/constants";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const page = (path: string): MetadataRoute.Sitemap => {
   const languages = {
-    en: `${SITE_URL}/en`,
-    es: `${SITE_URL}/es`,
+    en: `${SITE_URL}/en${path}`,
+    es: `${SITE_URL}/es${path}`,
   };
-
   return [
-    {
-      url: languages.en,
-      lastModified: new Date(),
-      alternates: { languages },
-    },
-    {
-      url: languages.es,
-      lastModified: new Date(),
-      alternates: { languages },
-    },
+    { url: languages.en, lastModified: new Date(), alternates: { languages } },
+    { url: languages.es, lastModified: new Date(), alternates: { languages } },
   ];
+};
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  return [...page(""), ...page("/cv")];
 }

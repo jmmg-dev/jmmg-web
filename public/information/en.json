@@ -1,5 +1,7 @@
 {
   "nav": {
+    "projects": "Projects",
+    "cv": "CV",
     "information": "Information",
     "skills": "Skills",
     "experience": "Experience",
@@ -150,5 +152,46 @@
         "date": "2016"
       }
     ]
+  },
+  "projects": {
+    "eyebrow": "Side projects",
+    "title": "Things I design and build",
+    "intro": "Free, open learning tools and developer utilities I build outside work. Each one is a real product: designed, built and deployed end to end.",
+    "visit": "Visit site",
+    "code": "Source code",
+    "comingSoon": "Coming soon",
+    "viewCv": "View my CV",
+    "cvTitle": "CV",
+    "discover": "Discover",
+    "showcase": "Featured projects",
+    "pause": "Pause",
+    "play": "Play"
+  },
+  "hero": {
+    "label": "Introduction",
+    "subtitle": "Passion for dev",
+    "architecture": {
+      "title": "Architecture",
+      "description": "Over 20 years designing, documenting and leading Front End architectures from scratch for Repsol, Vodafone, Banco Santander and HBX Group: modular, scalable systems built so teams can ship fast and with quality."
+    },
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "cv": "View my CV",
+    "scroll": "Skip to content",
+    "ux": {
+      "title": "UX / UI",
+      "description": "Advanced UX/UI experience: I design clear, consistent interfaces backed by design systems and custom component libraries, with accessibility and performance in mind. A complete view that connects what users see with how it is built underneath."
+    },
+    "dev": {
+      "title": "Dev",
+      "experience": "Over 20 years in the software industry and, even while leading architectures, I still code as one more member of the team: clean, tested code built to scale on projects like Repsol ARIA, awarded Best in Class at Expoquimia.",
+      "skills": "Angular and its ecosystem (NgRx, Signals, RxJS), React and Next.js, TypeScript, Node, micro-frontends, testing and modern CSS. I pick the tool for the problem, not the other way round.",
+      "community": "I owe a lot to the people who share what they know, so I give something back: kitforweb, CSS Layout Lab, Play RxJS and other free, open guides for junior and senior developers."
+    },
+    "ai": {
+      "title": "AI",
+      "control": "I use AI as one more tool under my control: Claude Code and GitHub Copilot work within my rules, my architecture and my standards. I make the decisions, review every change and own the result.",
+      "productivity": "AI multiplies my productivity: I delegate repetitive work, explore alternatives in parallel and keep several fronts moving at once without losing quality, so my time goes where it really adds value."
+    }
   }
 }

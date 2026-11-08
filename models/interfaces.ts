@@ -34,6 +34,8 @@ export interface ProfessionalInfo {
 }
 
 export interface NavLabels {
+  projects: string;
+  cv: string;
   information: string;
   skills: string;
   experience: string;
@@ -98,12 +100,57 @@ export interface PublicationsLabels {
   intro: string;
 }
 
+export interface ProjectsLabels {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  visit: string;
+  code: string;
+  comingSoon: string;
+  viewCv: string;
+  cvTitle: string;
+  discover: string;
+  showcase: string;
+  pause: string;
+  play: string;
+}
+
+export interface HeroLabels {
+  label: string;
+  subtitle: string;
+  architecture: {
+    title: string;
+    description: string;
+  };
+  ux: {
+    title: string;
+    description: string;
+  };
+  dev: {
+    title: string;
+    experience: string;
+    skills: string;
+    community: string;
+  };
+  ai: {
+    title: string;
+    control: string;
+    productivity: string;
+  };
+  linkedin: string;
+  email: string;
+  cv: string;
+  scroll: string;
+}
+
 export interface Information {
   nav: NavLabels;
   info: InfoLabels;
   skills: SkillsLabels;
   experience: ExperienceLabels;
   publications: PublicationsLabels;
+  projects: ProjectsLabels;
+  hero: HeroLabels;
   footer: string;
   personalInfo: PersonalInfo;
   professionalInfo: ProfessionalInfo;

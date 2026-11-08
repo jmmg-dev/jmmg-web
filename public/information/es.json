@@ -1,5 +1,7 @@
 {
   "nav": {
+    "projects": "Proyectos",
+    "cv": "CV",
     "information": "Información",
     "skills": "Habilidades",
     "experience": "Experiencia",
@@ -150,5 +152,46 @@
         "date": "2016"
       }
     ]
+  },
+  "projects": {
+    "eyebrow": "Proyectos personales",
+    "title": "Lo que diseño y construyo",
+    "intro": "Herramientas de aprendizaje y utilidades para desarrolladores, gratuitas y abiertas, que construyo fuera del trabajo. Cada una es un producto real: diseñado, desarrollado y desplegado de principio a fin.",
+    "visit": "Ver web",
+    "code": "Código fuente",
+    "comingSoon": "Próximamente",
+    "viewCv": "Ver mi CV",
+    "cvTitle": "CV",
+    "discover": "Descubrir",
+    "showcase": "Proyectos destacados",
+    "pause": "Pausar",
+    "play": "Reproducir"
+  },
+  "hero": {
+    "label": "Presentación",
+    "subtitle": "Pasión por el dev",
+    "architecture": {
+      "title": "Arquitectura",
+      "description": "Más de 20 años diseñando, documentando y liderando arquitecturas Front End desde cero para Repsol, Vodafone, Banco Santander o HBX Group: sistemas modulares, escalables y pensados para que los equipos entreguen rápido y con calidad."
+    },
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "cv": "Ver mi CV",
+    "scroll": "Ir al contenido",
+    "ux": {
+      "title": "UX / UI",
+      "description": "Experiencia avanzada en UX/UI: diseño interfaces claras y coherentes, con sistemas de diseño y librerías de componentes propias, cuidando la accesibilidad y el rendimiento. Una visión integral que une lo que el usuario ve con cómo está construido por dentro."
+    },
+    "dev": {
+      "title": "Dev",
+      "experience": "Más de 20 años en la industria del software y, aun liderando arquitecturas, sigo programando como uno más del equipo: código limpio, probado y pensado para escalar en proyectos como ARIA de Repsol, premiado como Best in Class en Expoquimia.",
+      "skills": "Angular y su ecosistema (NgRx, Signals, RxJS), React y Next.js, TypeScript, Node, micro-frontends, testing y CSS moderno. Elijo la herramienta según el problema, no al revés.",
+      "community": "Le debo mucho a quienes comparten su conocimiento, así que aporto mi granito de arena: kitforweb, CSS Layout Lab, Play RxJS y otras guías gratuitas y abiertas para desarrolladores junior y senior."
+    },
+    "ai": {
+      "title": "IA",
+      "control": "Uso la IA como una herramienta más bajo mi control: Claude Code y GitHub Copilot trabajan con mis reglas, mi arquitectura y mis estándares. Yo decido, reviso cada cambio y respondo del resultado.",
+      "productivity": "La IA multiplica mi productividad: delego tareas repetitivas, exploro alternativas en paralelo y llevo varios frentes a la vez sin perder calidad, para dedicar mi tiempo a lo que de verdad aporta valor."
+    }
   }
 }

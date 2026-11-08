@@ -4,25 +4,37 @@ import { useTheme } from "@/lib/theme";
 import { Lang } from "@/models/enums";
 import { NavDict } from "@/models/types";
 import { BookOpen, FileText, Menu, Settings, User, X } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LanguageSelector } from "./languageSelector/LanguageSelector";
 import { NavLinks, type NavSection } from "./navLinks/NavLinks";
+import { PageSwitch, type Page } from "./pageSwitch/PageSwitch";
 import { ThemeToggle } from "./themeToggle/ThemeToggle";
 
 const Header = ({
   dict,
   selectedLang,
+  page,
+  hideAtTop = false,
 }: {
   dict: NavDict;
   selectedLang: Lang;
+  page: Page;
+  /** Oculta la cabecera hasta que se hace scroll (hero a pantalla completa de la home). */
+  hideAtTop?: boolean;
 }) => {
-  const sections: NavSection[] = [
-    { id: "information", label: dict.information, icon: User },
-    { id: "skills", label: dict.skills, icon: Settings },
-    { id: "experience", label: dict.experience, icon: FileText },
-    { id: "publications", label: dict.publications, icon: BookOpen },
-  ];
+  // Las secciones con scroll solo existen en la página del CV
+  const sections: NavSection[] =
+    page === "cv"
+      ? [
+          { id: "information", label: dict.information, icon: User },
+          { id: "skills", label: dict.skills, icon: Settings },
+          { id: "experience", label: dict.experience, icon: FileText },
+          { id: "publications", label: dict.publications, icon: BookOpen },
+        ]
+      : [];
+  const pageLabels = { projects: dict.projects, cv: dict.cv };
   const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -87,7 +99,7 @@ const Header = ({
   };
 
   const handlerLanguage = (lang: Lang) => {
-    router.push(`/${lang}`);
+    router.push(page === "cv" ? `/${lang}/cv` : `/${lang}`);
     router.refresh();
   };
 
@@ -95,20 +107,26 @@ const Header = ({
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? "glass shadow-lg" : "bg-transparent"
+      } ${
+        hideAtTop && !isScrolled && !isMenuOpen
+          ? "pointer-events-none -translate-y-full opacity-0 has-focus-visible:pointer-events-auto has-focus-visible:translate-y-0 has-focus-visible:opacity-100"
+          : ""
       }`}
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo / Name */}
-          <button
-            onClick={() => scrollToSection("information")}
+          <Link
+            href={`/${selectedLang}`}
             className="flex items-center gap-2 cursor-pointer"
+            aria-label={dict.projects}
           >
             <span className="text-xl font-bold tracking-tight">
               <span className="neon-text">JM</span>
               <span className="text-muted-foreground font-light">MG</span>
+              <span className="neon-text text-sm">.dev</span>
             </span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
@@ -122,6 +140,15 @@ const Header = ({
 
           {/* Right side controls */}
           <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <PageSwitch
+                lang={selectedLang}
+                current={page}
+                labels={pageLabels}
+                variant="desktop"
+              />
+            </div>
+
             <LanguageSelector
               selectedLang={selectedLang}
               onSelect={handlerLanguage}
@@ -148,10 +175,17 @@ const Header = ({
       {/* Mobile Menu */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isMenuOpen ? "max-h-64 border-t border-border" : "max-h-0"
+          isMenuOpen ? "max-h-96 border-t border-border" : "max-h-0"
         }`}
       >
         <nav className="glass px-4 py-4 space-y-1">
+          <PageSwitch
+            lang={selectedLang}
+            current={page}
+            labels={pageLabels}
+            variant="mobile"
+            onNavigate={() => setIsMenuOpen(false)}
+          />
           <NavLinks
             sections={sections}
             activeSection={activeSection}

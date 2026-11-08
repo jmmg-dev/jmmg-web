@@ -8,12 +8,14 @@ export function middleware(request: NextRequest) {
   const themeCookie = request.cookies.get("theme")?.value;
   const langCookie = request.cookies.get("lang")?.value;
 
-  const hasLocale = pathname === "/es" || pathname === "/en";
+  // "/es", "/en" y sus subrutas ("/en/cv")
+  const hasLocale = /^\/(es|en)(\/|$)/.test(pathname);
 
   if (!hasLocale) {
     const targetLang = langCookie || Lang.en;
+    const rest = pathname === "/" ? "/" : pathname;
     const redirectResponse = NextResponse.redirect(
-      new URL(`/${targetLang}/`, request.url),
+      new URL(`/${targetLang}${rest}`, request.url),
     );
 
     if (!themeCookie) {
