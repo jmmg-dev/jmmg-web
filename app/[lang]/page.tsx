@@ -102,7 +102,7 @@ const ProjectsPage = async ({ params }: Props) => {
         </section>
 
         <ProjectsSection lang={lang} dict={dict} />
-        <Footer text={data.footer} />
+        <Footer lang={lang} data={data} />
       </main>
     </div>
   );

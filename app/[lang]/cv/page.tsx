@@ -49,7 +49,7 @@ const CvPage = async ({ params }: Props) => {
           intro={data.publications.intro}
           lang={lang}
         />
-        <Footer text={data.footer} />
+        <Footer lang={lang} data={data} />
       </main>
     </div>
   );

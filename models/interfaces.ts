@@ -152,6 +152,7 @@ export interface Information {
   projects: ProjectsLabels;
   hero: HeroLabels;
   footer: string;
+  footerConnect: string;
   personalInfo: PersonalInfo;
   professionalInfo: ProfessionalInfo;
 }
