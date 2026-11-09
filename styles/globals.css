@@ -1887,6 +1887,44 @@ section {
   opacity: 0.7;
 }
 
+/* Botones de acción (LinkedIn, CV, correo), como los de las plataformas de streaming:
+   el principal relleno y los demás translúcidos */
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--hero-fg) 16%, transparent);
+  color: var(--hero-fg);
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-btn[data-variant="primary"] {
+  background: var(--hero-fg);
+  color: var(--hero-bg);
+}
+
+.hero-btn:hover {
+  background: color-mix(in srgb, var(--hero-fg) 28%, transparent);
+  transform: translateY(-1px);
+}
+
+.hero-btn[data-variant="primary"]:hover {
+  background: color-mix(in srgb, var(--hero-fg) 85%, transparent);
+}
+
+.hero-btn:focus-visible {
+  outline: 2px solid var(--hero-neon);
+  outline-offset: 3px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-frame:is([data-state="active"], [data-state="previous"]),
   .hero-intro-brand,

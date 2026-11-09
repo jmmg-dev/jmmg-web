@@ -12,7 +12,6 @@ import {
   Check,
   SendHorizontal,
   Sparkles,
-  type LucideIcon,
 } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
@@ -124,14 +123,6 @@ const TypeLine = ({ parts, cursor }: { parts: TypePart[]; cursor: string }) => (
   </p>
 );
 
-type HeroLink = {
-  href: string;
-  label: string;
-  icon?: LucideIcon;
-  /** Logo de una web en lugar de un icono. */
-  image?: string;
-  crop?: boolean;
-};
 
 type Slide = {
   id: string;
@@ -139,7 +130,6 @@ type Slide = {
   intro?: boolean;
   title?: string;
   description?: string;
-  links: HeroLink[];
   /** Diapositiva sin imágenes: cuánto dura. */
   duration?: number;
   frames: Frame[];
@@ -153,7 +143,6 @@ const INTRO_STYLE = { bg: DARK_BG, tone: "dark" as Tone };
 
 const frameKey = ({ slide, frame }: Position) => `${slide}-${frame}`;
 
-const isExternal = (href: string) => /^(https?:|mailto:)/.test(href);
 
 export const HeroCarousel = ({
   lang,
@@ -168,14 +157,8 @@ export const HeroCarousel = ({
   email: string;
   controls: { pause: string; play: string };
 }) => {
-  const contact: HeroLink[] = [
-    { href: linkedin, label: dict.linkedin, icon: Linkedin },
-    { href: `mailto:${email}`, label: dict.email, icon: Mail },
-    { href: `/${lang}/cv`, label: dict.cv, icon: FileUser },
-  ];
-
   // Enlaces a mis webs, con su logo
-  const projects: HeroLink[] = PROJECTS.flatMap((p) => {
+  const projects = PROJECTS.flatMap((p) => {
     const href = p.url ?? p.repo;
     return href ? [{ href, label: p.name, image: p.logo.icon.src, crop: p.logo.icon.crop }] : [];
   });
@@ -191,12 +174,11 @@ export const HeroCarousel = ({
   });
 
   const slides: Slide[] = [
-    { id: "intro", intro: true, links: contact, duration: INTRO_MS, frames: [] },
+    { id: "intro", intro: true, duration: INTRO_MS, frames: [] },
     {
       id: "architecture",
       title: dict.architecture.title,
       description: dict.architecture.description,
-      links: contact,
       frames: [
         { ...shot("architecture-1", 2322, 1306), src: "/hero/architecture-1.svg", motion: "pan-x", duration: 5500, ...INTRO_STYLE },
         { ...shot("architecture-2", 2101, 2934), src: "/hero/architecture-2.svg", motion: "pan-y", duration: 6500, ...INTRO_STYLE },
@@ -206,7 +188,6 @@ export const HeroCarousel = ({
       id: "ux",
       title: dict.ux.title,
       description: dict.ux.description,
-      links: projects,
       frames: [
         { scene: "type-kitforweb", duration: 1800, ...kit },
         { ...shot("kit-0", 1854, 833), motion: "reveal", duration: 3200, ...kit },
@@ -217,7 +198,6 @@ export const HeroCarousel = ({
     {
       id: "dev",
       title: dict.dev.title,
-      links: projects,
       frames: [
         { scene: "type-code", duration: 3000, ...code, description: dict.dev.experience },
         { scene: "tech-icons", duration: 6800, ...tech, description: dict.dev.skills },
@@ -226,7 +206,6 @@ export const HeroCarousel = ({
     {
       id: "ai",
       title: dict.ai.title,
-      links: contact,
       frames: [
         { ...shot("ia", 1672, 941), motion: "appear", overlay: "prompt", duration: 5600, ...INTRO_STYLE, description: dict.ai.control },
         { ...shot("ia-2", 1672, 941), motion: "float", overlay: "answer", duration: 8500, ...INTRO_STYLE, description: dict.ai.productivity },
@@ -508,36 +487,48 @@ export const HeroCarousel = ({
       {/* Abajo: enlaces y descripción */}
       <div className="absolute inset-x-0 bottom-0 px-4 pb-8 sm:px-8 sm:pb-10 lg:px-12 lg:pb-14">
         <div className="flex flex-col-reverse gap-6 pr-14 md:flex-row md:items-end md:gap-10">
-          <ul key={`links-${pos.slide}`} className="hero-in flex shrink-0 gap-3 md:w-72" style={{ "--i": 2 } as CSSProperties}>
-            {slide.links.map(({ href, label, icon: Icon, image, crop }) => {
-              const content = image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={image} alt="" className={`hero-icon-logo ${crop ? "object-left" : ""}`} />
-              ) : (
-                Icon && <Icon className="h-5 w-5" />
-              );
-              return (
+          {/* Enlaces fijos en todas las secciones menos la entrada: mis webs, LinkedIn, CV y correo */}
+          {!slide.intro && (
+          <div className="hero-in flex shrink-0 flex-col gap-3 md:w-72" style={{ "--i": 2 } as CSSProperties}>
+            <ul className="flex gap-3">
+              {projects.map(({ href, label, image, crop }) => (
                 <li key={href}>
-                  {isExternal(href) ? (
-                    <a
-                      href={href}
-                      target={href.startsWith("http") ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      title={label}
-                      className="hero-icon"
-                    >
-                      {content}
-                    </a>
-                  ) : (
-                    <Link href={href} aria-label={label} title={label} className="hero-icon">
-                      {content}
-                    </Link>
-                  )}
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    title={label}
+                    className="hero-icon"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={image} alt="" className={`hero-icon-logo ${crop ? "object-left" : ""}`} />
+                  </a>
                 </li>
-              );
-            })}
-          </ul>
+              ))}
+            </ul>
+            <div className="grid grid-cols-2 gap-3">
+              <a
+                href={linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hero-btn"
+                data-variant="primary"
+              >
+                <Linkedin aria-hidden className="h-5 w-5" />
+                {dict.linkedin}
+              </a>
+              <Link href={`/${lang}/cv`} className="hero-btn">
+                <FileUser aria-hidden className="h-5 w-5" />
+                {dict.cv}
+              </Link>
+            </div>
+            <a href={`mailto:${email}`} className="hero-btn">
+              <Mail aria-hidden className="h-5 w-5" />
+              {dict.email}
+            </a>
+          </div>
+          )}
 
           {description && (
             <p
