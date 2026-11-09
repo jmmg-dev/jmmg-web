@@ -6,8 +6,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Hay un package-lock.json en la carpeta de usuario: sin esto Next toma esa
-  // carpeta como raíz y el watcher deja de ver cambios (CSS desactualizado, 404).
+  // There is a package-lock.json in the user folder: without this Next takes that
+  // folder as the root and the watcher stops seeing changes (stale CSS, 404s).
   turbopack: {
     root: import.meta.dirname,
   },

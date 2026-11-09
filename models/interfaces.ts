@@ -130,7 +130,6 @@ export interface HeroLabels {
     title: string;
     experience: string;
     skills: string;
-    community: string;
   };
   ai: {
     title: string;

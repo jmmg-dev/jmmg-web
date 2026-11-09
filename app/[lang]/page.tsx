@@ -18,7 +18,7 @@ const ProjectsPage = async ({ params }: Props) => {
   const { lang } = await params;
   const data = await getInformationAction(lang);
   const dict = data.projects;
-  // Mis webs, enlazadas junto a la descripción (CSS Layout Lab aún no tiene web: va a su repositorio)
+  // My websites, linked next to the description (falls back to the repository when there is no site)
   const projectLinks = PROJECTS.flatMap((p) => {
     const href = p.url ?? p.repo;
     return href ? [{ ...p, href }] : [];
@@ -49,7 +49,7 @@ const ProjectsPage = async ({ params }: Props) => {
               <h1 className="mt-4 text-3xl font-bold tracking-tight text-balance sm:text-5xl">
                 {dict.title}
               </h1>
-              {/* Foto, nombre y enlace al CV */}
+              {/* Photo, name and link to the CV */}
               <div className="mt-8 flex items-center justify-center gap-5 sm:justify-start">
                 <Image
                   src="/images/photo.webp"
@@ -72,7 +72,7 @@ const ProjectsPage = async ({ params }: Props) => {
               </div>
             </div>
             <div className="lg:col-span-5 lg:pt-10">
-              {/* Logos de mis webs, enlazados */}
+              {/* Linked logos of my websites */}
               <ul className="mb-6 flex gap-8 sm:gap-4">
                 {projectLinks.map((p) => (
                   <li key={p.id}>

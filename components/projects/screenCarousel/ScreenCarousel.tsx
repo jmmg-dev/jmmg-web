@@ -13,8 +13,8 @@ type ScreenCarouselProps = {
 };
 
 /**
- * Ventana de navegador que pasa de una pantalla a otra de la web.
- * Solo avanza mientras está visible y si el usuario no pide reducir el movimiento.
+ * Browser window that cycles through the website's screens.
+ * It only advances while visible and when the user has not asked for reduced motion.
  */
 export const ScreenCarousel = ({ screens, host, alt, eager = false }: ScreenCarouselProps) => {
   const ref = useRef<HTMLDivElement>(null);

@@ -22,7 +22,7 @@ export const Hero = async ({
     <div className="relative rounded-2xl overflow-hidden mb-20">
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-bg-dark.webp"
+          src="/images/cv/hero-bg-dark.webp"
           alt="Web Architecture Background"
           fill
           className="object-cover hidden dark:block"
@@ -30,7 +30,7 @@ export const Hero = async ({
           fetchPriority="high"
         />
         <Image
-          src="/images/hero-bg-light.webp"
+          src="/images/cv/hero-bg-light.webp"
           alt="Web Architecture Background"
           fill
           className="object-cover block dark:hidden"

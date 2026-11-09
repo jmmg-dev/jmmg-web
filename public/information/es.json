@@ -186,8 +186,7 @@
     "dev": {
       "title": "Dev",
       "experience": "Más de 20 años en la industria del software y, aun liderando arquitecturas, sigo programando como uno más del equipo: código limpio, probado y pensado para escalar en proyectos como ARIA de Repsol, premiado como Best in Class en Expoquimia.",
-      "skills": "Angular y su ecosistema (NgRx, Signals, RxJS), React y Next.js, TypeScript, Node, micro-frontends, testing y CSS moderno. Elijo la herramienta según el problema, no al revés.",
-      "community": "Le debo mucho a quienes comparten su conocimiento, así que aporto mi granito de arena: kitforweb, CSS Layout Lab, Play RxJS y otras guías gratuitas y abiertas para desarrolladores junior y senior."
+      "skills": "Angular y su ecosistema (NgRx, Signals, RxJS), React y Next.js, TypeScript, Node, micro-frontends, testing y CSS moderno. Elijo la herramienta según el problema, no al revés."
     },
     "ai": {
       "title": "IA",

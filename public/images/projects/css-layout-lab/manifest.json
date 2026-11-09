@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-09T22:38:22.019Z",
+  "source": "https://css-layout-lab-pearl.vercel.app",
+  "url": "https://css-layout-lab-pearl.vercel.app",
+  "screens": [
+    {
+      "path": "",
+      "image": "/images/projects/css-layout-lab/en-desktop-screen-1.webp"
+    },
+    {
+      "path": "/flex",
+      "image": "/images/projects/css-layout-lab/en-desktop-screen-2.webp"
+    },
+    {
+      "path": "/grid",
+      "image": "/images/projects/css-layout-lab/en-desktop-screen-3.webp"
+    },
+    {
+      "path": "/grid/grid-template-areas",
+      "image": "/images/projects/css-layout-lab/en-desktop-screen-4.webp"
+    }
+  ],
+  "mobile": "/images/projects/css-layout-lab/en-mobile-full.webp"
+}

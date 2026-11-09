@@ -6,9 +6,9 @@ import Link from "next/link";
 
 const GITHUB_ORG = "https://github.com/jmmg-dev";
 
-/** Pie de página: marca y lema, mis webs, enlaces de contacto y copyright. */
+/** Footer: brand and tagline, my websites, contact links and copyright. */
 export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
-  // Mis webs; CSS Layout Lab va a su repositorio hasta que tenga web publicada
+  // My websites; falls back to the repository when a project has no published site
   const projects = PROJECTS.flatMap((p) => {
     const href = p.url ?? p.repo;
     return href ? [{ ...p, href }] : [];
@@ -32,14 +32,14 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
 
   return (
     <footer className="relative border-t border-border bg-secondary/20">
-      {/* Línea de luz en el color del tema */}
+      {/* Light line in the theme colour */}
       <div
         aria-hidden
         className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent"
       />
 
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 md:grid-cols-12 lg:px-8">
-        {/* Marca, lema y quién soy */}
+        {/* Brand, tagline and who I am */}
         <div className="md:col-span-5">
           <Link
             href={`/${lang}`}
@@ -60,7 +60,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
           </p>
         </div>
 
-        {/* Mis webs y contacto, en dos columnas también en móvil */}
+        {/* My websites and contact, in two columns on mobile too */}
         <div className="grid grid-cols-2 gap-8 md:col-span-7">
           <nav aria-label={data.nav.projects}>
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
@@ -95,7 +95,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
             </ul>
           </nav>
 
-          {/* LinkedIn, GitHub y CV */}
+          {/* LinkedIn, GitHub and CV */}
           <nav aria-label={data.footerConnect}>
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               {data.footerConnect}
@@ -138,7 +138,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
 
       {/* Copyright */}
       <div className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-4 py-6 text-xs text-muted-foreground sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-muted-foreground sm:px-6 lg:px-8">
           <p>
             &copy; {new Date().getFullYear()} JMMG.dev. {data.footer}
           </p>

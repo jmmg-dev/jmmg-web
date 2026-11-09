@@ -21,10 +21,10 @@ const Header = ({
   dict: NavDict;
   selectedLang: Lang;
   page: Page;
-  /** Oculta la cabecera hasta que se hace scroll (hero a pantalla completa de la home). */
+  /** Hides the header until the page is scrolled (full-screen hero on the home page). */
   hideAtTop?: boolean;
 }) => {
-  // Las secciones con scroll solo existen en la página del CV
+  // The scroll sections only exist on the CV page
   const sections: NavSection[] =
     page === "cv"
       ? [

@@ -17,25 +17,25 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
 /**
- * - pan-x / pan-x-rev: más ancha que la pantalla, se recorre de izquierda a derecha o al revés.
- * - pan-y: más alta que la pantalla, se recorre de arriba a abajo.
- * - reveal: cubre la pantalla y entra como JMMG en la entrada (de grande y desenfocada a su tamaño).
- * - still: cubre la pantalla y solo aparece con el fundido.
- * - appear: imagen recortada (con transparencia), centrada y grande; entra como JMMG y se queda quieta.
- * - float: imagen recortada (con transparencia), centrada y grande; entra aún más grande, se asienta
- *   en su tamaño y al final se aleja y desaparece.
+ * - pan-x / pan-x-rev: wider than the screen, panned left to right or the other way round.
+ * - pan-y: taller than the screen, panned top to bottom.
+ * - reveal: covers the screen and enters like JMMG in the intro (from big and blurred to its size).
+ * - still: covers the screen and only fades in.
+ * - appear: cut-out image (with transparency), centred and large; enters like JMMG and stays still.
+ * - float: cut-out image (with transparency), centred and large; enters even bigger, settles
+ *   at its size and at the end zooms out and disappears.
  */
 type Motion = "pan-x" | "pan-x-rev" | "pan-y" | "float" | "appear" | "reveal" | "still";
 
-/** Tono del fondo de la imagen: decide si el texto va en claro o en oscuro. */
+/** Tone of the image background: decides whether the text is light or dark. */
 type Tone = "dark" | "light";
 
 type FrameBase = {
   duration: number;
-  /** Color de fondo de la imagen: el hero lo toma para que no queden huecos. */
+  /** Background colour of the image: the hero takes it so no gaps show. */
   bg: string;
   tone: Tone;
-  /** Si la tiene, sustituye a la descripción de la diapositiva mientras se ve esta imagen. */
+  /** If set, replaces the slide description while this image is shown. */
   description?: string;
 };
 
@@ -45,28 +45,28 @@ type ImageFrame = FrameBase & {
   height: number;
   motion: Motion;
   /**
-   * Animación encima de la imagen:
-   * - prompt: se escribe "Run all the tasks" en una caja de prompt de IA y se envía.
-   * - answer: la IA responde y va completando las tareas.
+   * Animation on top of the image:
+   * - prompt: "Run all the tasks" is typed into an AI prompt box and sent.
+   * - answer: the AI replies and completes the tasks one by one.
    */
   overlay?: "prompt" | "answer";
 };
 
 /**
- * Escenas animadas:
- * - type-kitforweb: se escribe "kitforweb" con su tipografía y su cursor, y se pulsa intro.
- * - logo-playrxjs: el logo de Play RxJS entra de grande a su tamaño, como JMMG en la entrada,
- *   con dos bolas de su diagrama de canicas girando alrededor en sentidos contrarios
- *   hasta que salen disparadas cada una hacia un lado.
- * - type-code: sobre una captura de código se escribe "npm run dev" y se pulsa intro.
- * - tech-icons: los logos de las tecnologías se superponen y desaparecen, cada uno con un efecto.
+ * Animated scenes:
+ * - type-kitforweb: "kitforweb" is typed in its typeface with its cursor, then enter is pressed.
+ * - logo-playrxjs: the Play RxJS logo shrinks from big to its size, like JMMG in the intro,
+ *   with two balls from its marble diagram orbiting it in opposite directions
+ *   until each one shoots off to one side.
+ * - type-code: "npm run dev" is typed over a code capture, then enter is pressed.
+ * - tech-icons: the technology logos overlap and disappear, each one with its own effect.
  */
 type Scene = "type-kitforweb" | "logo-playrxjs" | "type-code" | "tech-icons";
 type SceneFrame = FrameBase & { scene: Scene };
 
 type Frame = ImageFrame | SceneFrame;
 
-/** Texto que se escribe, por trozos con su color. */
+/** Typed text, split into chunks with their colour. */
 type TypePart = { text: string; color: string };
 
 const KITFORWEB: TypePart[] = [
@@ -75,11 +75,10 @@ const KITFORWEB: TypePart[] = [
   { text: "web", color: "#E2E8F0" },
 ];
 
-// Colores del tema oscuro de VS Code, como en la captura de fondo
-// Siempre en inglés, como se escribiría a un agente de IA
+// Always in English, as you would write to an AI agent
 const RUN_ALL_TASKS: TypePart[] = [{ text: "Run all the tasks", color: "#E2E8F0" }];
 
-// Respuesta de la IA: las mismas tareas que su panel en la imagen
+// AI answer: the same tasks as the panel in the image
 const AI_ANSWER = "On it! Running your tasks in parallel:";
 const AI_TASKS = [
   "Implement authentication",
@@ -88,6 +87,7 @@ const AI_TASKS = [
   "Deploy to production",
 ];
 
+// VS Code dark theme colours, as in the background capture
 const NPM_RUN_DEV: TypePart[] = [
   { text: "$ ", color: "#6A9955" },
   { text: "npm ", color: "#DCDCAA" },
@@ -95,18 +95,18 @@ const NPM_RUN_DEV: TypePart[] = [
   { text: "dev", color: "#CE9178" },
 ];
 
-/** Logos de tecnologías y el efecto con el que entra y sale cada uno. */
+/** Technology logos and the effect each one enters and leaves with. */
 const TECH = [
-  { src: "/hero/tech/angular.svg", fx: "flip" },
-  { src: "/hero/tech/nextjs.svg", fx: "glitch" },
-  { src: "/hero/tech/nestjs.webp", fx: "blur" },
-  { src: "/hero/tech/tailwind.svg", fx: "skew" },
-  { src: "/hero/tech/docker.svg", fx: "iris" },
-  { src: "/hero/tech/rxjs.svg", fx: "spin" },
-  { src: "/hero/tech/webpack.svg", fx: "warp" },
+  { src: "/images/carousel/tech/angular.svg", fx: "flip" },
+  { src: "/images/carousel/tech/nextjs.svg", fx: "glitch" },
+  { src: "/images/carousel/tech/nestjs.webp", fx: "blur" },
+  { src: "/images/carousel/tech/tailwind.svg", fx: "skew" },
+  { src: "/images/carousel/tech/docker.svg", fx: "iris" },
+  { src: "/images/carousel/tech/rxjs.svg", fx: "spin" },
+  { src: "/images/carousel/tech/webpack.svg", fx: "warp" },
 ] as const;
 
-/** Línea que se escribe letra a letra con su cursor; al acabar se "pulsa intro". */
+/** Line typed letter by letter with its cursor; at the end "enter" is pressed. */
 const TypeLine = ({ parts, cursor }: { parts: TypePart[]; cursor: string }) => (
   <p
     className="hero-type"
@@ -126,11 +126,11 @@ const TypeLine = ({ parts, cursor }: { parts: TypePart[]; cursor: string }) => (
 
 type Slide = {
   id: string;
-  /** Sin título ni descripción: diapositiva de entrada con la marca. */
+  /** No title or description: intro slide with the brand. */
   intro?: boolean;
   title?: string;
   description?: string;
-  /** Diapositiva sin imágenes: cuánto dura. */
+  /** Slide without images: how long it lasts. */
   duration?: number;
   frames: Frame[];
 };
@@ -157,7 +157,7 @@ export const HeroCarousel = ({
   email: string;
   controls: { pause: string; play: string };
 }) => {
-  // Enlaces a mis webs, con su logo
+  // Links to my websites, with their logo
   const projects = PROJECTS.flatMap((p) => {
     const href = p.url ?? p.repo;
     return href ? [{ href, label: p.name, image: p.logo.icon.src, crop: p.logo.icon.crop }] : [];
@@ -168,7 +168,7 @@ export const HeroCarousel = ({
   const code = { bg: "#1E1E1E", tone: "dark" as Tone };
   const tech = { bg: "#07070D", tone: "dark" as Tone };
   const shot = (name: string, width: number, height: number) => ({
-    src: `/hero/${name}.webp`,
+    src: `/images/carousel/${name}.webp`,
     width,
     height,
   });
@@ -180,8 +180,8 @@ export const HeroCarousel = ({
       title: dict.architecture.title,
       description: dict.architecture.description,
       frames: [
-        { ...shot("architecture-1", 2322, 1306), src: "/hero/architecture-1.svg", motion: "pan-x", duration: 5500, ...INTRO_STYLE },
-        { ...shot("architecture-2", 2101, 2934), src: "/hero/architecture-2.svg", motion: "pan-y", duration: 6500, ...INTRO_STYLE },
+        { ...shot("architecture-1", 2322, 1306), src: "/images/carousel/architecture-1.svg", motion: "pan-x", duration: 5500, ...INTRO_STYLE },
+        { ...shot("architecture-2", 2101, 2934), src: "/images/carousel/architecture-2.svg", motion: "pan-y", duration: 6500, ...INTRO_STYLE },
       ],
     },
     {
@@ -214,12 +214,12 @@ export const HeroCarousel = ({
   ];
 
   const ref = useRef<HTMLElement>(null);
-  // `previous`: imagen que se queda debajo mientras entra la nueva con el fundido.
+  // `previous`: image that stays underneath while the new one fades in.
   const [{ pos, previous }, setStep] = useState<{ pos: Position; previous: Position | null }>({
     pos: { slide: 0, frame: 0 },
     previous: null,
   });
-  // Las imágenes se piden por diapositivas: la actual y la siguiente.
+  // Images are requested per slide: the current one and the next.
   const [loadedUpTo, setLoadedUpTo] = useState(1);
   const [userPaused, setUserPaused] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -256,7 +256,7 @@ export const HeroCarousel = ({
   const { bg, tone } = current ?? INTRO_STYLE;
   const description = current?.description ?? slide.description;
 
-  // Pausa: abajo a la derecha en escritorio y junto a los enlaces de arriba en móvil
+  // Pause: bottom right on desktop, next to the top links on mobile
   const pauseButton = (className: string) => (
     <button
       type="button"
@@ -277,10 +277,10 @@ export const HeroCarousel = ({
       : { slide: (pos.slide + 1) % slides.length, frame: 0 };
   const nextKey = frameKey(nextPos);
 
-  // Temporizador de cada imagen: al acabar pasa a la siguiente. Al pausar guarda lo que
-  // le queda y al reanudar sigue desde ahí, igual que las animaciones CSS (data-paused).
-  // Antes era una animación CSS invisible, pero si acababa antes de que React cargara
-  // la página se perdía el aviso y el carrusel se quedaba parado.
+  // Timer for each image: when it ends, the next one starts. Pausing stores the time
+  // left and resuming continues from there, like the CSS animations (data-paused).
+  // It used to be an invisible CSS animation, but if it ended before React hydrated
+  // the page the event was lost and the carousel got stuck.
   const timer = useRef({ key: "", remaining: 0 });
   useEffect(() => {
     if (timer.current.key !== activeKey) timer.current = { key: activeKey, remaining: duration };
@@ -293,7 +293,7 @@ export const HeroCarousel = ({
     };
   }, [activeKey, duration, playing, next]);
 
-  // Descarga y decodifica la siguiente imagen antes de que le toque, para que entre sin esperas.
+  // Downloads and decodes the next image ahead of time, so it enters without delay.
   useEffect(() => {
     const img = ref.current?.querySelector(`[data-frame="${nextKey}"]`);
     if (img instanceof HTMLImageElement && img.src) img.decode().catch(() => {});
@@ -310,7 +310,7 @@ export const HeroCarousel = ({
       data-slide={slide.id}
       data-paused={playing ? undefined : ""}
     >
-      {/* Imágenes de todas las diapositivas, apiladas; la activa aparece con un fundido */}
+      {/* Images of every slide, stacked; the active one fades in */}
       {slides.map((s, si) =>
         s.frames.map((f, fi) => {
           const key = frameKey({ slide: si, frame: fi });
@@ -331,7 +331,7 @@ export const HeroCarousel = ({
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={si <= loadedUpTo ? "/hero/code.webp" : undefined}
+                      src={si <= loadedUpTo ? "/images/carousel/code.webp" : undefined}
                       width={1827}
                       height={964}
                       alt=""
@@ -366,7 +366,7 @@ export const HeroCarousel = ({
                     <span className="hero-orbit-ring" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/logos/playrxjs/logo-play-rxjs.svg"
+                      src="/images/logos/playrxjs/logo-play-rxjs.svg"
                       width={484}
                       height={106}
                       alt=""
@@ -415,7 +415,7 @@ export const HeroCarousel = ({
 
       <div aria-hidden className="hero-scrim pointer-events-none absolute inset-0" />
 
-      {/* Animaciones encima de las imágenes (prompt y respuesta de la IA) */}
+      {/* Animations on top of the images (AI prompt and answer) */}
       {slides.map((s, si) =>
         s.frames.map((f, fi) => {
           if (!("overlay" in f) || !f.overlay) return null;
@@ -481,7 +481,7 @@ export const HeroCarousel = ({
         </div>
       ) : (
         <div key={`copy-${pos.slide}`} className="absolute inset-0">
-          {/* Arriba a la izquierda: marca y título de la sección */}
+          {/* Top left: brand and section title */}
           <div className="absolute top-6 left-4 sm:top-8 sm:left-8 lg:left-12">
             <p className="hero-in text-xl font-bold tracking-tight sm:text-2xl" style={{ "--i": 0 } as CSSProperties}>
               <span className="hero-neon">JM</span>
@@ -498,7 +498,7 @@ export const HeroCarousel = ({
         </div>
       )}
 
-      {/* Móvil: arriba a la derecha, LinkedIn, CV y correo (mismo orden que los botones de abajo) y la pausa */}
+      {/* Mobile, top right: LinkedIn, CV and email (same order as the buttons below) and pause */}
       <div className="absolute top-6 right-4 flex items-center gap-2 sm:top-8 sm:right-8 md:hidden">
         {!slide.intro && (
           <>
@@ -524,10 +524,10 @@ export const HeroCarousel = ({
         {pauseButton("hero-icon hero-icon-sm hero-pause")}
       </div>
 
-      {/* Abajo: enlaces y descripción */}
+      {/* Bottom: links and description */}
       <div className="absolute inset-x-0 bottom-0 px-4 pb-8 sm:px-8 sm:pb-10 lg:px-12 lg:pb-14">
         <div className="flex flex-col-reverse gap-6 md:flex-row md:items-end md:gap-10 md:pr-14">
-          {/* Enlaces fijos en todas las secciones menos la entrada: mis webs, LinkedIn, CV y correo */}
+          {/* Links fixed on every section except the intro: my websites, LinkedIn, CV and email */}
           {!slide.intro && (
           <div className="hero-in hidden shrink-0 flex-col gap-3 md:flex md:w-72" style={{ "--i": 2 } as CSSProperties}>
             <ul className="flex gap-4">
@@ -558,7 +558,7 @@ export const HeroCarousel = ({
                 {dict.linkedin}
                 <Linkedin aria-hidden className="h-4 w-4" />
               </a>
-              {/* Mismo contenido que el botón "Ver mi CV" de la sección de proyectos */}
+              {/* Same content as the "View my CV" button in the projects section */}
               <Link href={`/${lang}/cv`} className="hero-btn group">
                 {dict.cv}
                 <ArrowRight

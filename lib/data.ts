@@ -168,7 +168,6 @@ export const businessSkills = [
 export const experiences = [
   {
     company: "Plexus",
-    logoImage: "/images/companies/plexus.webp",
     startDate: "06/2026",
     endDate: null,
     role: {
@@ -207,7 +206,6 @@ export const experiences = [
   },
   {
     company: "Vintegris",
-    logoImage: "/images/companies/vintegris.webp",
     startDate: "01/2023",
     endDate: "06/2026",
     role: {
@@ -243,7 +241,6 @@ export const experiences = [
   },
   {
     company: "Signicat",
-    logoImage: "/images/companies/signicat.webp",
     startDate: "07/2022",
     endDate: "01/2023",
     role: {
@@ -276,7 +273,6 @@ export const experiences = [
   },
   {
     company: "Accenture",
-    logoImage: "/images/companies/accenture.webp",
     startDate: "11/2020",
     endDate: "07/2022",
     role: {
@@ -323,7 +319,6 @@ export const experiences = [
   },
   {
     company: "Golden Race",
-    logoImage: "/images/companies/golden.webp",
     startDate: "12/2019",
     endDate: "11/2020",
     role: {
@@ -356,7 +351,6 @@ export const experiences = [
   },
   {
     company: "CMC",
-    logoImage: "/images/companies/cmc.webp",
     startDate: "08/2017",
     endDate: "12/2019",
     role: {
@@ -388,7 +382,6 @@ export const experiences = [
   },
   {
     company: "Lambda Automotive",
-    logoImage: "/images/companies/lambda.webp",
     startDate: "05/2014",
     endDate: "08/2017",
     role: {
@@ -424,7 +417,6 @@ export const experiences = [
   },
   {
     company: "Delaware",
-    logoImage: "/images/companies/delaware.webp",
     startDate: "06/2008",
     endDate: "05/2014",
     role: {
@@ -448,7 +440,6 @@ export const experiences = [
   },
   {
     company: "Isoft",
-    logoImage: "/images/companies/isoft.webp",
     startDate: "05/2006",
     endDate: "06/2008",
     role: {

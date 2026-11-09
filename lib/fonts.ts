@@ -6,8 +6,8 @@ import {
   Space_Grotesk,
 } from "next/font/google";
 
-// Tipografías de cada proyecto, para que su sección del catálogo se vea como su web.
-// `preload: false`: solo se descargan en la página que las usa.
+// Each project's typefaces, so its catalog section looks like its website.
+// `preload: false`: they are only downloaded on the page that uses them.
 const geist = Geist({ subsets: ["latin"], variable: "--font-p-geist", preload: false });
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-p-jetbrains", preload: false });
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-p-space-grotesk", preload: false });

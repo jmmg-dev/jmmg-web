@@ -29,7 +29,7 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
         />
       </div>
 
-      {/* Teléfono: hace scroll por la web al pasar el ratón */}
+      {/* Phone: scrolls through the website on hover */}
       <div className="project-phone absolute -bottom-8 right-4 hidden w-[21%] overflow-hidden sm:block lg:-right-6">
         <div className="relative aspect-[390/844] overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -53,7 +53,7 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
       data-gradient={project.theme.textGradient ? "" : undefined}
       style={projectThemeVars(project)}
     >
-      {/* Más ancho que el resto de la página para que la pantalla y el móvil se vean más grandes */}
+      {/* Wider than the rest of the page so the screen and the phone look bigger */}
       <div className="reveal mx-auto grid max-w-[76rem] items-center gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-20 lg:px-8">
         <div className={`lg:col-span-8 ${reversed ? "lg:order-2" : ""}`}>
           {project.url ? (
@@ -99,7 +99,7 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
           </ul>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            {/* Siempre los dos botones; sin enlace se muestran desactivados ("Próximamente") */}
+            {/* Always both buttons; without a link they are shown disabled ("Coming soon") */}
             {project.url ? (
               <a
                 href={project.url}

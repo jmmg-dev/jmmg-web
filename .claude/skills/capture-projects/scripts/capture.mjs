@@ -8,9 +8,8 @@
 //   (por defecto, de la primera de `urls` que sirva la web; ver projects.config.mjs)
 //   node .claude/skills/capture-projects/scripts/capture.mjs --check      solo comprueba que respondan
 //
-// Salida en public/projects/<id>/:
+// Salida en public/images/projects/<id>/:
 //   en-desktop-screen-<n>.webp   pantallas del carrusel del navegador
-//   en-mobile-hero.webp          primera pantalla en móvil
 //   en-mobile-full.webp          página larga en móvil (scroll del teléfono)
 //   manifest.json                lo que lee lib/projects.ts
 //
@@ -25,7 +24,7 @@ import { fileURLToPath } from 'node:url';
 import { DEFAULTS, PROJECTS } from '../projects.config.mjs';
 
 const REPO_ROOT = fileURLToPath(new URL('../../../../', import.meta.url));
-const OUT_DIR = path.join(REPO_ROOT, 'public', 'projects');
+const OUT_DIR = path.join(REPO_ROOT, 'public', 'images', 'projects');
 const { lang: LANG } = DEFAULTS;
 
 // Alto máximo (px CSS) de la captura larga de móvil. Con deviceScaleFactor 2 salen
@@ -261,19 +260,18 @@ try {
       await tidy(page);
       const file = `${LANG}-desktop-screen-${n}.webp`;
       await toWebp(await page.screenshot(), path.join(dir, file));
-      manifest.screens.push({ path: screen.path, image: `/projects/${project.id}/${file}` });
-      written.push(path.join('public', 'projects', project.id, file));
+      manifest.screens.push({ path: screen.path, image: `/images/projects/${project.id}/${file}` });
+      written.push(path.join('public', 'images', 'projects', project.id, file));
       await page.close();
     }
     await desktop.close();
 
-    // Móvil: primera pantalla + página larga
+    // Móvil: página larga
     const mobile = await newContext(browser, project, DEFAULTS.mobile, true);
     const mpage = await mobile.newPage();
     console.log(`→ ${project.id} · móvil`);
     await open(mpage, `${baseUrl(project)}/${LANG}`);
     await scrollThrough(mpage);
-    await toWebp(await mpage.screenshot(), path.join(dir, `${LANG}-mobile-hero.webp`));
     if (await expandInnerScroll(mpage)) await mpage.waitForTimeout(300);
     const height = await mpage.evaluate(() => document.documentElement.scrollHeight);
     const full = await mpage.screenshot({
@@ -282,9 +280,8 @@ try {
     });
     await toWebp(full, path.join(dir, `${LANG}-mobile-full.webp`));
     await mobile.close();
-    manifest.mobile = `/projects/${project.id}/${LANG}-mobile-full.webp`;
-    written.push(path.join('public', 'projects', project.id, `${LANG}-mobile-hero.webp`));
-    written.push(path.join('public', 'projects', project.id, `${LANG}-mobile-full.webp`));
+    manifest.mobile = `/images/projects/${project.id}/${LANG}-mobile-full.webp`;
+    written.push(path.join('public', 'images', 'projects', project.id, `${LANG}-mobile-full.webp`));
 
     await writeFile(path.join(dir, 'manifest.json'), JSON.stringify(manifest, null, 2) + '\n');
   }

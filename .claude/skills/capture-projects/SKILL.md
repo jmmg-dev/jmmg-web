@@ -16,7 +16,7 @@ Playwright y comprueba que salen con datos de ejemplo, no vacías.
 |---|---|
 | `.claude/skills/capture-projects/projects.config.mjs` | Qué pantallas se capturan de cada proyecto y qué acciones se hacen antes (pulsar **Example**, hacer scroll al código, pulsar **Run**…). **Es lo único que se edita para cambiar las capturas.** |
 | `.claude/skills/capture-projects/scripts/capture.mjs` | El script. No hace falta tocarlo. |
-| `public/projects/<id>/` | Salida: `en-desktop-screen-<n>.webp`, `en-mobile-hero.webp`, `en-mobile-full.webp` y `manifest.json`. |
+| `public/images/projects/<id>/` | Salida: `en-desktop-screen-<n>.webp`, `en-mobile-full.webp` y `manifest.json`. |
 | `lib/projects.ts` | Textos y tema visual de cada proyecto. Lee de `manifest.json` las pantallas, el móvil y la URL pública, así que **no hay que tocarlo al cambiar pantallas ni al activar un dominio**, solo al añadir un proyecto nuevo. |
 
 ## Procedimiento
@@ -53,7 +53,7 @@ Trabaja siempre desde la raíz del repo (`portfolio-next`).
    herramienta Read no muestra `.webp`, conviértelas antes a PNG en una carpeta temporal
    fuera del repo, por ejemplo:
    ```
-   node -e "const s=require('sharp');s('public/projects/kitforweb/en-desktop-screen-2.webp').resize({width:1000}).png().toFile(require('os').tmpdir()+'/kfw-2.png')"
+   node -e "const s=require('sharp');s('public/images/projects/kitforweb/en-desktop-screen-2.webp').resize({width:1000}).png().toFile(require('os').tmpdir()+'/kfw-2.png')"
    ```
    Criterios:
    - **kitforweb, pantallas 2-4** (JSON to TypeScript, JWT Decoder, Regex Builder): la
