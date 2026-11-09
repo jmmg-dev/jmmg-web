@@ -1960,18 +1960,30 @@ section {
     object-position: 50% 28%;
   }
 
-  /* Play RxJS: la captura se reduce y se coloca con su logo (al 73,7 % x 50,7 % de la imagen)
-     en el centro de la pantalla; el fondo de la sección es el de la captura y no se notan sus bordes */
-  .hero-frame[src*="rxjs-0"] {
-    inset: auto;
-    top: 42%;
-    left: 50%;
+  /* UX (kitforweb y Play RxJS): la captura ocupa el alto de la pantalla y se recorre
+     de izquierda a derecha (solo móvil) */
+  .hero-frame:is([src*="kit-0"], [src*="rxjs-0"]) {
+    inset: 0 auto 0 0;
     width: auto;
-    height: 75svh;
+    height: 100%;
     object-fit: fill;
-    transform: translate(-73.7%, -50.7%);
-    /* Funde los bordes de arriba y abajo (barra de la web incluida) con el fondo */
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    transform: none;
+  }
+
+  .hero-frame:is([src*="kit-0"], [src*="rxjs-0"]):is([data-state="active"], [data-state="previous"]) {
+    animation-name: hero-pan-m;
+  }
+
+  /* Se salta el 15 % de cada lateral (menú y márgenes sin contenido): recorre del 15 % al 85 % */
+  @keyframes hero-pan-m {
+    0%,
+    8% {
+      transform: translateX(-15%);
+    }
+    92%,
+    100% {
+      transform: translateX(min(-15%, calc(100vw - 85%)));
+    }
   }
 
   /* Respuesta de la IA: la frase no cabe en una línea; pasa a varias y aparece con fundido */
