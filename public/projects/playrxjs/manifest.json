@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-09T22:37:54.663Z",
+  "source": "https://play-rxjs.vercel.app",
+  "url": "https://play-rxjs.vercel.app",
+  "screens": [
+    {
+      "path": "",
+      "image": "/projects/playrxjs/en-desktop-screen-1.webp"
+    },
+    {
+      "path": "/operators/combination",
+      "image": "/projects/playrxjs/en-desktop-screen-2.webp"
+    },
+    {
+      "path": "/operators/combination/combineLatest",
+      "image": "/projects/playrxjs/en-desktop-screen-3.webp"
+    },
+    {
+      "path": "/operators/combination/combineLatest",
+      "image": "/projects/playrxjs/en-desktop-screen-4.webp"
+    }
+  ],
+  "mobile": "/projects/playrxjs/en-mobile-full.webp"
+}

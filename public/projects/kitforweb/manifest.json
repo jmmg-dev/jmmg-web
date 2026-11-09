@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-11-09T22:37:30.353Z",
+  "source": "https://kitforweb.com",
+  "url": "https://kitforweb.com",
+  "screens": [
+    {
+      "path": "",
+      "image": "/projects/kitforweb/en-desktop-screen-1.webp"
+    },
+    {
+      "path": "/json-to-typescript",
+      "image": "/projects/kitforweb/en-desktop-screen-2.webp"
+    },
+    {
+      "path": "/jwt-decoder",
+      "image": "/projects/kitforweb/en-desktop-screen-3.webp"
+    },
+    {
+      "path": "/regex-builder",
+      "image": "/projects/kitforweb/en-desktop-screen-4.webp"
+    }
+  ],
+  "mobile": "/projects/kitforweb/en-mobile-full.webp"
+}

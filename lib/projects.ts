@@ -1,4 +1,8 @@
 import { Lang } from "@/models/enums";
+// Generados por el skill capture-projects (.claude/skills/capture-projects)
+import cssLayoutLabCaptures from "@/public/projects/css-layout-lab/manifest.json";
+import kitforwebCaptures from "@/public/projects/kitforweb/manifest.json";
+import playrxjsCaptures from "@/public/projects/playrxjs/manifest.json";
 import type { CSSProperties } from "react";
 
 type Localized = Record<Lang, string>;
@@ -57,7 +61,7 @@ export interface Project {
   description: Localized;
   stack: string[];
   theme: ProjectTheme;
-  /** Pantallas del carrusel de escritorio (capture-projects.mjs). */
+  /** Pantallas del carrusel de escritorio (manifest.json del skill capture-projects). */
   screens: ProjectScreen[];
   /** Captura larga de móvil, para el scroll del teléfono. */
   mobile: string;
@@ -66,11 +70,20 @@ export interface Project {
 
 const MONO = "var(--font-p-jetbrains), ui-monospace, monospace";
 
-const screens = (id: string, paths: string[]): ProjectScreen[] =>
-  paths.map((path, i) => ({
-    path,
-    image: `/projects/${id}/en-desktop-screen-${i + 1}.webp`,
-  }));
+interface CaptureManifest {
+  /** URL pública desde la que se capturó: el dominio definitivo en cuanto esté activo. */
+  url?: string;
+  screens: ProjectScreen[];
+  mobile: string;
+}
+
+/** Pantallas, móvil y URL generados por el skill. Va al final de cada proyecto para
+ *  que su `url` sustituya a la de respaldo escrita a mano. */
+const fromManifest = ({ url, screens, mobile }: CaptureManifest) => ({
+  screens,
+  mobile,
+  ...(url ? { url } : {}),
+});
 
 export const PROJECTS: Project[] = [
   {
@@ -109,8 +122,7 @@ export const PROJECTS: Project[] = [
       radius: "0.5rem",
       buttonRadius: "0.5rem",
     },
-    screens: screens("kitforweb", ["", "/json-to-typescript", "/jwt-decoder", "/regex-builder"]),
-    mobile: "/projects/kitforweb/en-mobile-full.webp",
+    ...fromManifest(kitforwebCaptures),
     logo: {
       wordmark: { src: "/logos/kitforweb/logo-dark.svg", width: 567, height: 91 },
       icon: { src: "/logos/kitforweb/logo-icon.svg" },
@@ -119,7 +131,7 @@ export const PROJECTS: Project[] = [
   {
     id: "playrxjs",
     name: "Play RxJS",
-    url: "https://playrxjs.vercel.app",
+    url: "https://play-rxjs.vercel.app", // respaldo; manda la del manifest
     // TODO: repositorio de GitHub (pendiente de la URL definitiva)
     tagline: {
       en: "Play, run, learn RxJS",
@@ -153,13 +165,7 @@ export const PROJECTS: Project[] = [
       radius: "14px",
       buttonRadius: "999px",
     },
-    screens: screens("playrxjs", [
-      "",
-      "/operators/combination",
-      "/operators/combination/combineLatest",
-      "/basic-concepts/marbleDiagrams",
-    ]),
-    mobile: "/projects/playrxjs/en-mobile-full.webp",
+    ...fromManifest(playrxjsCaptures),
     logo: {
       wordmark: { src: "/logos/playrxjs/logo-play-rxjs.svg", width: 484, height: 106 },
       icon: { src: "/logos/playrxjs/logo-prx.svg" },
@@ -168,7 +174,7 @@ export const PROJECTS: Project[] = [
   {
     id: "css-layout-lab",
     name: "CSS Layout Lab",
-    // TODO: web publicada (pendiente de la URL definitiva)
+    url: "https://css-layout-lab-pearl.vercel.app", // respaldo; manda la del manifest
     repo: "https://github.com/CSS-Layout-Lab/css-layout-lab",
     tagline: {
       en: "Learn CSS layouts by playing with them",
@@ -202,8 +208,7 @@ export const PROJECTS: Project[] = [
       radius: "14px",
       buttonRadius: "999px",
     },
-    screens: screens("css-layout-lab", ["", "/flex", "/grid", "/grid/grid-template-areas"]),
-    mobile: "/projects/css-layout-lab/en-mobile-full.webp",
+    ...fromManifest(cssLayoutLabCaptures),
     logo: {
       wordmark: { src: "/logos/css-layout-lab/css-layout-lab.svg", width: 436, height: 80 },
       icon: { src: "/logos/css-layout-lab/css-layout-lab-icon.svg" },
