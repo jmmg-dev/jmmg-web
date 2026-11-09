@@ -255,6 +255,19 @@ export const HeroCarousel = ({
   const current = slide.frames[pos.frame];
   const { bg, tone } = current ?? INTRO_STYLE;
   const description = current?.description ?? slide.description;
+
+  // Pausa: abajo a la derecha en escritorio y junto a los enlaces de arriba en móvil
+  const pauseButton = (className: string) => (
+    <button
+      type="button"
+      onClick={() => setUserPaused((v) => !v)}
+      aria-label={userPaused ? controls.play : controls.pause}
+      title={userPaused ? controls.play : controls.pause}
+      className={className}
+    >
+      {userPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
+    </button>
+  );
   const duration = current?.duration ?? slide.duration ?? INTRO_MS;
   const activeKey = frameKey(pos);
   const previousKey = previous ? frameKey(previous) : null;
@@ -454,7 +467,7 @@ export const HeroCarousel = ({
 
 
       {slide.intro ? (
-        <div key={`intro-${activeKey}`} className="absolute inset-0 grid place-items-center px-4">
+        <div key={`intro-${activeKey}`} className="absolute inset-0 grid place-items-center px-4 pb-[12svh] md:pb-0">
           <div className="text-center">
             <p className="hero-intro-brand font-bold leading-none tracking-tight">
               <span className="hero-neon">JM</span>
@@ -476,7 +489,7 @@ export const HeroCarousel = ({
               <span className="hero-neon text-[0.65em]">.dev</span>
             </p>
             <h2
-              className="hero-in hero-fg mt-2 text-5xl font-black uppercase leading-none tracking-[0.12em] sm:text-7xl lg:text-8xl"
+              className="hero-in hero-fg mt-6 text-[8.5vw] sm:mt-2 font-black uppercase leading-none tracking-[0.12em] sm:text-7xl lg:text-8xl"
               style={{ "--i": 1 } as CSSProperties}
             >
               {slide.title}
@@ -485,13 +498,39 @@ export const HeroCarousel = ({
         </div>
       )}
 
+      {/* Móvil: arriba a la derecha, LinkedIn, CV y correo (mismo orden que los botones de abajo) y la pausa */}
+      <div className="absolute top-6 right-4 flex items-center gap-2 sm:top-8 sm:right-8 md:hidden">
+        {!slide.intro && (
+          <>
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={dict.linkedin}
+              title={dict.linkedin}
+              className="hero-icon hero-icon-sm"
+              data-variant="primary"
+            >
+              <Linkedin aria-hidden className="h-4 w-4" />
+            </a>
+            <Link href={`/${lang}/cv`} aria-label={dict.cv} title={dict.cv} className="hero-icon hero-icon-sm">
+              <span aria-hidden className="text-xs font-bold tracking-wide">CV</span>
+            </Link>
+            <a href={`mailto:${email}`} aria-label={dict.email} title={dict.email} className="hero-icon hero-icon-sm">
+              <Mail aria-hidden className="h-4 w-4" />
+            </a>
+          </>
+        )}
+        {pauseButton("hero-icon hero-icon-sm hero-pause")}
+      </div>
+
       {/* Abajo: enlaces y descripción */}
       <div className="absolute inset-x-0 bottom-0 px-4 pb-8 sm:px-8 sm:pb-10 lg:px-12 lg:pb-14">
-        <div className="flex flex-col-reverse gap-6 pr-14 md:flex-row md:items-end md:gap-10">
+        <div className="flex flex-col-reverse gap-6 md:flex-row md:items-end md:gap-10 md:pr-14">
           {/* Enlaces fijos en todas las secciones menos la entrada: mis webs, LinkedIn, CV y correo */}
           {!slide.intro && (
-          <div className="hero-in flex shrink-0 flex-col gap-3 md:w-72" style={{ "--i": 2 } as CSSProperties}>
-            <ul className="flex gap-3">
+          <div className="hero-in hidden shrink-0 flex-col gap-3 md:flex md:w-72" style={{ "--i": 2 } as CSSProperties}>
+            <ul className="flex gap-4">
               {projects.map(({ href, label, image, crop }) => (
                 <li key={href}>
                   <a
@@ -500,10 +539,10 @@ export const HeroCarousel = ({
                     rel="noopener noreferrer"
                     aria-label={label}
                     title={label}
-                    className="hero-icon"
+                    className="hero-app"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={image} alt="" className={`hero-icon-logo ${crop ? "object-left" : ""}`} />
+                    <img src={image} alt="" className={crop ? "object-left" : ""} />
                   </a>
                 </li>
               ))}
@@ -538,7 +577,7 @@ export const HeroCarousel = ({
           {description && (
             <p
               key={`desc-${description}`}
-              className="hero-in hero-soft max-w-3xl text-base font-semibold leading-relaxed text-pretty sm:text-lg"
+              className="hero-in hero-soft text-base md:max-w-3xl font-semibold leading-relaxed text-pretty sm:text-lg"
               style={{ "--i": 3 } as CSSProperties}
             >
               {description}
@@ -546,15 +585,7 @@ export const HeroCarousel = ({
           )}
         </div>
 
-        <button
-          type="button"
-          onClick={() => setUserPaused((v) => !v)}
-          aria-label={userPaused ? controls.play : controls.pause}
-          title={userPaused ? controls.play : controls.pause}
-          className="hero-icon hero-pause absolute right-4 bottom-8 sm:right-8 sm:bottom-10 lg:right-12 lg:bottom-14"
-        >
-          {userPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
-        </button>
+        {pauseButton("hero-icon hero-pause hero-pause-desktop absolute right-8 bottom-10 lg:right-12 lg:bottom-14")}
       </div>
     </section>
   );

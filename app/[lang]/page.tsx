@@ -50,7 +50,7 @@ const ProjectsPage = async ({ params }: Props) => {
                 {dict.title}
               </h1>
               {/* Foto, nombre y enlace al CV */}
-              <div className="mt-8 flex items-center gap-5">
+              <div className="mt-8 flex items-center justify-center gap-5 sm:justify-start">
                 <Image
                   src="/images/photo.webp"
                   alt={data.personalInfo.name}
@@ -73,7 +73,7 @@ const ProjectsPage = async ({ params }: Props) => {
             </div>
             <div className="lg:col-span-5 lg:pt-10">
               {/* Logos de mis webs, enlazados */}
-              <ul className="mb-6 flex items-center gap-4">
+              <ul className="mb-6 flex gap-8 sm:gap-4">
                 {projectLinks.map((p) => (
                   <li key={p.id}>
                     <a
@@ -82,7 +82,7 @@ const ProjectsPage = async ({ params }: Props) => {
                       rel="noopener noreferrer"
                       aria-label={p.name}
                       title={p.name}
-                      className="block overflow-hidden rounded-2xl transition-transform hover:-translate-y-0.5 hover:scale-105"
+                      className="block transition-transform hover:-translate-y-0.5 hover:scale-105"
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
