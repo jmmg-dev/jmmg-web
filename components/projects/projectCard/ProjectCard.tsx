@@ -99,6 +99,7 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
           </ul>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
+            {/* Siempre los dos botones; sin enlace se muestran desactivados ("Próximamente") */}
             {project.url ? (
               <a
                 href={project.url}
@@ -110,9 +111,16 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             ) : (
-              <span className="project-btn project-btn-ghost border-dashed">{dict.comingSoon}</span>
+              <span
+                aria-disabled="true"
+                title={dict.comingSoon}
+                className="project-btn project-btn-primary cursor-not-allowed opacity-50"
+              >
+                {dict.visit}
+                <ArrowUpRight className="h-4 w-4" />
+              </span>
             )}
-            {project.repo && (
+            {project.repo ? (
               <a
                 href={project.repo}
                 target="_blank"
@@ -122,6 +130,15 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
                 {dict.code}
                 <Github className="h-4 w-4" />
               </a>
+            ) : (
+              <span
+                aria-disabled="true"
+                title={dict.comingSoon}
+                className="project-btn project-btn-ghost cursor-not-allowed opacity-50"
+              >
+                {dict.code}
+                <Github className="h-4 w-4" />
+              </span>
             )}
           </div>
         </div>

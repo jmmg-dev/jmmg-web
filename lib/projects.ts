@@ -120,6 +120,7 @@ export const PROJECTS: Project[] = [
     id: "playrxjs",
     name: "Play RxJS",
     url: "https://playrxjs.vercel.app",
+    // TODO: repositorio de GitHub (pendiente de la URL definitiva)
     tagline: {
       en: "Play, run, learn RxJS",
       es: "Juega, ejecuta y aprende RxJS",
@@ -167,6 +168,7 @@ export const PROJECTS: Project[] = [
   {
     id: "css-layout-lab",
     name: "CSS Layout Lab",
+    // TODO: web publicada (pendiente de la URL definitiva)
     repo: "https://github.com/CSS-Layout-Lab/css-layout-lab",
     tagline: {
       en: "Learn CSS layouts by playing with them",
