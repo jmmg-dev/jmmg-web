@@ -861,6 +861,27 @@ section {
   transition: background-color 1s ease;
 }
 
+/* Sección de IA: cuadrícula fina en el azul de sus imágenes, como la de Play RxJS
+   pero con celdas más pequeñas. Queda detrás de las imágenes, que son transparentes. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgb(56 189 248 / 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(56 189 248 / 0.14) 1px, transparent 1px);
+  background-position: center;
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 30%, transparent 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+
+.hero[data-slide="ai"]::before {
+  opacity: 1;
+}
+
 /* Imagen de fondo claro: el texto pasa a oscuro */
 .hero[data-tone="light"] {
   --hero-fg: #0f172a;
@@ -913,10 +934,13 @@ section {
   z-index: 0;
 }
 
+/* Pausa: congela imágenes, escenas y capas. Con !important porque sus reglas de
+   animación usan el atajo `animation`, que vuelve a poner el estado en "running". */
 .hero[data-paused] .hero-frame,
 .hero[data-paused] .hero-overlay,
-.hero[data-paused] .hero-overlay * {
-  animation-play-state: paused;
+.hero[data-paused] .hero-overlay *,
+.hero[data-paused] .hero-scene * {
+  animation-play-state: paused !important;
 }
 
 /* Horizontal: más ancha que la pantalla y se recorre de izquierda a derecha */
@@ -1103,9 +1127,6 @@ section {
   z-index: 3;
 }
 
-.hero[data-paused] .hero-scene * {
-  animation-play-state: paused;
-}
 
 /* Tecleo (kitforweb y "npm run dev"): se escribe una línea con su cursor y se pulsa intro.
    --chars lo pone el componente; los tiempos se ajustan por escena. */

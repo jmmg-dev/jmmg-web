@@ -97,11 +97,11 @@ const NPM_RUN_DEV: TypePart[] = [
 
 /** Logos de tecnologías y el efecto con el que entra y sale cada uno. */
 const TECH = [
+  { src: "/hero/tech/angular.svg", fx: "flip" },
+  { src: "/hero/tech/nextjs.svg", fx: "glitch" },
   { src: "/hero/tech/nestjs.webp", fx: "blur" },
   { src: "/hero/tech/tailwind.svg", fx: "skew" },
-  { src: "/hero/tech/angular.svg", fx: "flip" },
   { src: "/hero/tech/docker.svg", fx: "iris" },
-  { src: "/hero/tech/nextjs.svg", fx: "glitch" },
   { src: "/hero/tech/rxjs.svg", fx: "spin" },
   { src: "/hero/tech/webpack.svg", fx: "warp" },
 ] as const;
@@ -294,6 +294,7 @@ export const HeroCarousel = ({
       className="hero relative h-svh min-h-120 w-full overflow-hidden"
       style={{ "--hero-bg": bg } as CSSProperties}
       data-tone={tone}
+      data-slide={slide.id}
       data-paused={playing ? undefined : ""}
     >
       {/* Imágenes de todas las diapositivas, apiladas; la activa aparece con un fundido */}
