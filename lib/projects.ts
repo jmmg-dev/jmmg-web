@@ -13,6 +13,8 @@ export interface ProjectTheme {
   foreground: string;
   muted: string;
   border: string;
+  /** Borde del móvil de la tarjeta; sin él se usa `border`. */
+  phoneBorder?: string;
   surface: string;
   /** Color principal: botón primario. */
   accent: string;
@@ -93,6 +95,7 @@ export const PROJECTS: Project[] = [
       foreground: "lab(90.74% -1.63 -3.3)",
       muted: "lab(67.52% -2.64 -6.84)",
       border: "lab(18.74% -1.27 -7.18)",
+      phoneBorder: "#22D3EE",
       surface: "lab(8.29% -1.09 -7.11)",
       accent: "lab(84.05% -46.9 -19.24)",
       accentForeground: "lab(4.39% -0.61 -5.14)",
@@ -134,6 +137,7 @@ export const PROJECTS: Project[] = [
       foreground: "#f5f2f0",
       muted: "rgb(245 242 240 / 0.7)",
       border: "rgb(242 153 251 / 0.14)",
+      phoneBorder: "#F299FB",
       surface: "#241c26",
       accent: "#f299fb",
       accentForeground: "#2f2630",
@@ -181,6 +185,7 @@ export const PROJECTS: Project[] = [
       foreground: "#1b1e26",
       muted: "rgb(27 30 38 / 0.68)",
       border: "rgb(27 30 38 / 0.1)",
+      phoneBorder: "#F08F63",
       surface: "#ffffff",
       accent: "#1b1e26",
       accentForeground: "#ffffff",
@@ -212,6 +217,7 @@ export const projectThemeVars = ({ theme }: Project) =>
     "--p-fg": theme.foreground,
     "--p-muted": theme.muted,
     "--p-border": theme.border,
+    "--p-phone-border": theme.phoneBorder ?? theme.border,
     "--p-surface": theme.surface,
     "--p-accent": theme.accent,
     "--p-accent-fg": theme.accentForeground,

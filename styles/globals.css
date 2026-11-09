@@ -427,7 +427,8 @@ section {
 /* Teléfono: la captura larga hace scroll al pasar el ratón */
 .project-phone {
   background: var(--p-surface);
-  border: 5px solid color-mix(in srgb, var(--p-fg) 85%, black);
+  /* Color de cada web: azul en kitforweb, morado en Play RxJS y naranja en CSS Layout Lab */
+  border: 3px solid var(--p-phone-border);
   border-radius: 1.4rem;
   box-shadow: 0 25px 60px -20px rgb(0 0 0 / 0.6);
   transition: transform 0.5s ease;

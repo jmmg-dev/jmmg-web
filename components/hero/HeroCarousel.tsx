@@ -4,7 +4,7 @@ import { PROJECTS } from "@/lib/projects";
 import { Lang } from "@/models/enums";
 import type { HeroDict } from "@/models/types";
 import {
-  FileUser,
+  ArrowRight,
   Linkedin,
   Mail,
   Pause,
@@ -516,17 +516,21 @@ export const HeroCarousel = ({
                 className="hero-btn"
                 data-variant="primary"
               >
-                <Linkedin aria-hidden className="h-5 w-5" />
                 {dict.linkedin}
+                <Linkedin aria-hidden className="h-4 w-4" />
               </a>
-              <Link href={`/${lang}/cv`} className="hero-btn">
-                <FileUser aria-hidden className="h-5 w-5" />
+              {/* Mismo contenido que el botón "Ver mi CV" de la sección de proyectos */}
+              <Link href={`/${lang}/cv`} className="hero-btn group">
                 {dict.cv}
+                <ArrowRight
+                  aria-hidden
+                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                />
               </Link>
             </div>
             <a href={`mailto:${email}`} className="hero-btn">
-              <Mail aria-hidden className="h-5 w-5" />
               {dict.email}
+              <Mail aria-hidden className="h-4 w-4" />
             </a>
           </div>
           )}

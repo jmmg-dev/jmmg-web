@@ -1,7 +1,7 @@
 import { projectThemeVars, type Project } from "@/lib/projects";
 import { Lang } from "@/models/enums";
 import type { ProjectsDict } from "@/models/types";
-import { ArrowUpRight, Code } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { ScreenCarousel } from "../screenCarousel/ScreenCarousel";
 
 type ProjectCardProps = {
@@ -118,8 +118,8 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
                 rel="noopener noreferrer"
                 className="project-btn project-btn-ghost"
               >
-                <Code className="h-4 w-4" />
                 {dict.code}
+                <Github className="h-4 w-4" />
               </a>
             )}
           </div>
