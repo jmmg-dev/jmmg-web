@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: { title },
     alternates: {
       canonical: `/${lang}/cv`,
-      languages: { "es-ES": "/es/cv", "en-US": "/en/cv" },
+      languages: { "es-ES": "/es/cv", "en-US": "/en/cv", "x-default": "/en/cv" },
     },
   };
 }

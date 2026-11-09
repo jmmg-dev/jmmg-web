@@ -13,7 +13,8 @@ export function middleware(request: NextRequest) {
 
   if (!hasLocale) {
     const targetLang = langCookie || Lang.en;
-    const rest = pathname === "/" ? "/" : pathname;
+    // "/" va directo a "/en" (sin barra final): una sola redirección, no dos
+    const rest = pathname === "/" ? "" : pathname;
     const redirectResponse = NextResponse.redirect(
       new URL(`/${targetLang}${rest}`, request.url),
     );
