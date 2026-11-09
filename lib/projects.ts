@@ -199,7 +199,7 @@ export const PROJECTS: Project[] = [
     mobile: "/projects/css-layout-lab/en-mobile-full.webp",
     logo: {
       wordmark: { src: "/logos/css-layout-lab/css-layout-lab.svg", width: 436, height: 80 },
-      icon: { src: "/logos/css-layout-lab/css-layout-lab-logo.svg", crop: true },
+      icon: { src: "/logos/css-layout-lab/css-layout-lab-icon.svg" },
     },
   },
 ];

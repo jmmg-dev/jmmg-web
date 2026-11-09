@@ -4,8 +4,10 @@ import Header from "@/components/header/Header";
 import { HeroCarousel } from "@/components/hero/HeroCarousel";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { projectFontVariables } from "@/lib/fonts";
+import { PROJECTS } from "@/lib/projects";
 import { Lang } from "@/models/enums";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 type Props = {
@@ -16,6 +18,11 @@ const ProjectsPage = async ({ params }: Props) => {
   const { lang } = await params;
   const data = await getInformationAction(lang);
   const dict = data.projects;
+  // Mis webs, enlazadas junto a la descripción (CSS Layout Lab aún no tiene web: va a su repositorio)
+  const projectLinks = PROJECTS.flatMap((p) => {
+    const href = p.url ?? p.repo;
+    return href ? [{ ...p, href }] : [];
+  });
 
   return (
     <div className={`min-h-screen bg-background ${projectFontVariables}`}>
@@ -39,25 +46,57 @@ const ProjectsPage = async ({ params }: Props) => {
               <p className="font-mono text-sm uppercase tracking-widest text-primary">
                 {dict.eyebrow}
               </p>
-              <h1 className="mt-4 text-4xl font-bold tracking-tight text-balance sm:text-6xl">
+              <h1 className="mt-4 text-3xl font-bold tracking-tight text-balance sm:text-5xl">
                 {dict.title}
               </h1>
+              {/* Foto, nombre y enlace al CV */}
+              <div className="mt-8 flex items-center gap-5">
+                <Image
+                  src="/images/photo.webp"
+                  alt={data.personalInfo.name}
+                  width={112}
+                  height={112}
+                  className="h-24 w-24 shrink-0 rounded-full object-cover ring-2 ring-primary/40 ring-offset-2 ring-offset-background grayscale sm:h-28 sm:w-28"
+                />
+                <div>
+                  <p className="font-semibold text-foreground">{data.personalInfo.name}</p>
+                  <p className="text-sm text-muted-foreground">{data.info.hero.frontEndArchitect}</p>
+                  <Link
+                    href={`/${lang}/cv`}
+                    className="group mt-3 inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-4 py-2 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
+                  >
+                    {dict.viewCv}
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </Link>
+                </div>
+              </div>
             </div>
             <div className="lg:col-span-5 lg:pt-10">
+              {/* Logos de mis webs, enlazados */}
+              <ul className="mb-6 flex items-center gap-4">
+                {projectLinks.map((p) => (
+                  <li key={p.id}>
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={p.name}
+                      title={p.name}
+                      className="block overflow-hidden rounded-2xl transition-transform hover:-translate-y-0.5 hover:scale-105"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={p.logo.icon.src}
+                        alt=""
+                        width={72}
+                        height={72}
+                        className={`h-16 w-16 object-cover sm:h-18 sm:w-18 ${p.logo.icon.crop ? "object-left" : ""}`}
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
               <p className="text-lg leading-relaxed text-muted-foreground">{dict.intro}</p>
-              <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
-                <div className="text-sm">
-                  <p className="font-semibold text-foreground">{data.personalInfo.name}</p>
-                  <p className="text-muted-foreground">{data.info.hero.frontEndArchitect}</p>
-                </div>
-                <Link
-                  href={`/${lang}/cv`}
-                  className="group inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-4 py-2.5 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
-                >
-                  {dict.viewCv}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </Link>
-              </div>
             </div>
           </div>
         </section>
