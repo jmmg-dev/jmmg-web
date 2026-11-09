@@ -53,8 +53,9 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
       data-gradient={project.theme.textGradient ? "" : undefined}
       style={projectThemeVars(project)}
     >
-      <div className="reveal mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
-        <div className={`lg:col-span-7 ${reversed ? "lg:order-2" : ""}`}>
+      {/* Más ancho que el resto de la página para que la pantalla y el móvil se vean más grandes */}
+      <div className="reveal mx-auto grid max-w-[76rem] items-center gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-20 lg:px-8">
+        <div className={`lg:col-span-8 ${reversed ? "lg:order-2" : ""}`}>
           {project.url ? (
             <a
               href={project.url}
@@ -70,7 +71,7 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
           )}
         </div>
 
-        <div className={`lg:col-span-5 ${reversed ? "lg:order-1" : ""}`}>
+        <div className={`lg:col-span-4 ${reversed ? "lg:order-1" : ""}`}>
           <span className="project-number text-sm">{number} /</span>
           <h2 id={`${project.id}-title`} className="project-title mt-4">
             <span className="sr-only">{project.name}</span>
