@@ -124,17 +124,19 @@ export interface HeroLabels {
   };
   ux: {
     title: string;
+    /** Tagline under kitforweb in the carousel */
+    intuitive: string;
+    /** Tagline under the Play RxJS logo in the carousel */
+    attractive: string;
     description: string;
   };
   dev: {
     title: string;
-    experience: string;
-    skills: string;
+    description: string;
   };
   ai: {
     title: string;
-    control: string;
-    productivity: string;
+    description: string;
   };
   linkedin: string;
   email: string;

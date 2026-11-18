@@ -173,7 +173,7 @@
     "subtitle": "Passion for dev",
     "architecture": {
       "title": "Architecture",
-      "description": "Over 20 years designing, documenting and leading Front End architectures from scratch for Repsol, Vodafone, Banco Santander and HBX Group: modular, scalable systems built so teams can ship fast and with quality."
+      "description": "Extensive experience in software architecture, including designing architectures from scratch. I have worked for major companies such as Repsol, Vodafone, Banco Santander and HBX Group. My architectures stand out for their scalability, reliability, performance and short development times, backed by more than 20 years of experience in the software world."
     },
     "linkedin": "LinkedIn",
     "email": "Send me an email",
@@ -181,17 +181,17 @@
     "scroll": "Skip to content",
     "ux": {
       "title": "UX / UI",
-      "description": "Advanced UX/UI experience: I design clear, consistent interfaces backed by design systems and custom component libraries, with accessibility and performance in mind. A complete view that connects what users see with how it is built underneath."
+      "intuitive": "Intuitive interfaces",
+      "attractive": "Attractive designs",
+      "description": "I have worked on projects with no UX/UI department, which, together with my passion for design, has given me deep knowledge in this field. I design intuitive, attractive interfaces following Jakob Nielsen's usability principles, and I have extensive experience creating design systems."
     },
     "dev": {
       "title": "Dev",
-      "experience": "Over 20 years in the software industry and, even while leading architectures, I still code as one more member of the team: clean, tested code built to scale on projects like Repsol ARIA, awarded Best in Class at Expoquimia.",
-      "skills": "Angular and its ecosystem (NgRx, Signals, RxJS), React and Next.js, TypeScript, Node, micro-frontends, testing and modern CSS. I pick the tool for the problem, not the other way round."
+      "description": "I enjoy working closely with development teams and, on some projects, I have taken on their technical leadership on top of the architect role. This keeps me up to date with the latest development tools and lets me weigh, from the inside, the pros and cons of each architecture."
     },
     "ai": {
       "title": "AI",
-      "control": "I use AI as one more tool under my control: Claude Code and GitHub Copilot work within my rules, my architecture and my standards. I make the decisions, review every change and own the result.",
-      "productivity": "AI multiplies my productivity: I delegate repetitive work, explore alternatives in parallel and keep several fronts moving at once without losing quality, so my time goes where it really adds value."
+      "description": "I master AI and have extensive experience using it. This has helped me grow as a professional and multiply my productivity: by making the most of its potential, I now do in a few days what used to take me months."
     }
   }
 }

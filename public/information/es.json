@@ -173,7 +173,7 @@
     "subtitle": "Pasión por el dev",
     "architecture": {
       "title": "Arquitectura",
-      "description": "Más de 20 años diseñando, documentando y liderando arquitecturas Front End desde cero para Repsol, Vodafone, Banco Santander o HBX Group: sistemas modulares, escalables y pensados para que los equipos entreguen rápido y con calidad."
+      "description": "Amplia experiencia en arquitectura de software, incluido el diseño de arquitecturas desde cero. He trabajado para grandes empresas como Repsol, Vodafone, Banco Santander o HBX Group. Mis arquitecturas destacan por su escalabilidad, fiabilidad, rendimiento y tiempos de desarrollo reducidos, fruto de más de 20 años de experiencia en el mundo del software."
     },
     "linkedin": "LinkedIn",
     "email": "Escríbeme un correo",
@@ -181,17 +181,17 @@
     "scroll": "Ir al contenido",
     "ux": {
       "title": "UX / UI",
-      "description": "Experiencia avanzada en UX/UI: diseño interfaces claras y coherentes, con sistemas de diseño y librerías de componentes propias, cuidando la accesibilidad y el rendimiento. Una visión integral que une lo que el usuario ve con cómo está construido por dentro."
+      "intuitive": "Interfaces intuitivas",
+      "attractive": "Diseños atractivos",
+      "description": "He participado en proyectos sin departamento de UX/UI, lo que, sumado a mi pasión por el diseño, me ha aportado grandes conocimientos en este área. Diseño interfaces intuitivas y atractivas siguiendo los principios de usabilidad de Jakob Nielsen, y cuento con amplia experiencia en la creación de sistemas de diseño."
     },
     "dev": {
       "title": "Dev",
-      "experience": "Más de 20 años en la industria del software y, aun liderando arquitecturas, sigo programando como uno más del equipo: código limpio, probado y pensado para escalar en proyectos como ARIA de Repsol, premiado como Best in Class en Expoquimia.",
-      "skills": "Angular y su ecosistema (NgRx, Signals, RxJS), React y Next.js, TypeScript, Node, micro-frontends, testing y CSS moderno. Elijo la herramienta según el problema, no al revés."
+      "description": "Me gusta involucrarme activamente con los equipos de desarrollo y, en algunos proyectos, además del rol de arquitecto he asumido su liderazgo técnico. Esto me mantiene al día de las novedades en herramientas de desarrollo y me permite valorar, desde dentro, las ventajas e inconvenientes de cada arquitectura."
     },
     "ai": {
       "title": "IA",
-      "control": "Uso la IA como una herramienta más bajo mi control: Claude Code y GitHub Copilot trabajan con mis reglas, mi arquitectura y mis estándares. Yo decido, reviso cada cambio y respondo del resultado.",
-      "productivity": "La IA multiplica mi productividad: delego tareas repetitivas, exploro alternativas en paralelo y llevo varios frentes a la vez sin perder calidad, para dedicar mi tiempo a lo que de verdad aporta valor."
+      "description": "Domino la IA y cuento con una amplia experiencia en su uso. Esto me ha permitido crecer como profesional y multiplicar mi productividad: aprovechando todo su potencial, hoy hago en pocos días lo que antes me llevaba meses."
     }
   }
 }

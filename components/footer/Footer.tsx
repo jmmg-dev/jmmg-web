@@ -1,10 +1,9 @@
+import { GITHUB_ORG } from "@/lib/constants";
 import { PROJECTS } from "@/lib/projects";
 import { Lang } from "@/models/enums";
 import type { Information } from "@/models/interfaces";
 import { ArrowRight, ArrowUpRight, Github, Linkedin } from "lucide-react";
 import Link from "next/link";
-
-const GITHUB_ORG = "https://github.com/jmmg-dev";
 
 /** Footer: brand and tagline, my websites, contact links and copyright. */
 export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {

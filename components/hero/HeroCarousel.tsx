@@ -5,6 +5,7 @@ import { Lang } from "@/models/enums";
 import type { HeroDict } from "@/models/types";
 import {
   ArrowRight,
+  Github,
   Linkedin,
   Mail,
   Pause,
@@ -13,6 +14,7 @@ import {
   SendHorizontal,
   Sparkles,
 } from "lucide-react";
+import { GITHUB_ORG } from "@/lib/constants";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
@@ -48,8 +50,10 @@ type ImageFrame = FrameBase & {
    * Animation on top of the image:
    * - prompt: "Run all the tasks" is typed into an AI prompt box and sent.
    * - answer: the AI replies and completes the tasks one by one.
+   * - intuitive / attractive: UX taglines, where "kitforweb" and the Play RxJS logo were,
+   *   in the style of each website.
    */
-  overlay?: "prompt" | "answer";
+  overlay?: "prompt" | "answer" | "intuitive" | "attractive";
 };
 
 /**
@@ -185,30 +189,32 @@ export const HeroCarousel = ({
       ],
     },
     {
+      id: "dev",
+      title: dict.dev.title,
+      description: dict.dev.description,
+      frames: [
+        { scene: "type-code", duration: 4500, ...code },
+        { scene: "tech-icons", duration: 9800, ...tech },
+      ],
+    },
+    {
       id: "ux",
       title: dict.ux.title,
       description: dict.ux.description,
       frames: [
         { scene: "type-kitforweb", duration: 1800, ...kit },
-        { ...shot("kit-0", 1854, 833), motion: "reveal", duration: 3200, ...kit },
+        { ...shot("kit-0", 1854, 833), motion: "reveal", overlay: "intuitive", duration: 3200, ...kit },
         { scene: "logo-playrxjs", duration: 2600, ...rxjs },
-        { ...shot("rxjs-0", 1897, 903), motion: "still", duration: 2600, ...rxjs },
-      ],
-    },
-    {
-      id: "dev",
-      title: dict.dev.title,
-      frames: [
-        { scene: "type-code", duration: 3000, ...code, description: dict.dev.experience },
-        { scene: "tech-icons", duration: 6800, ...tech, description: dict.dev.skills },
+        { ...shot("rxjs-0", 1897, 903), motion: "still", overlay: "attractive", duration: 3200, ...rxjs },
       ],
     },
     {
       id: "ai",
       title: dict.ai.title,
+      description: dict.ai.description,
       frames: [
-        { ...shot("ia", 1672, 941), motion: "appear", overlay: "prompt", duration: 5600, ...INTRO_STYLE, description: dict.ai.control },
-        { ...shot("ia-2", 1672, 941), motion: "float", overlay: "answer", duration: 8500, ...INTRO_STYLE, description: dict.ai.productivity },
+        { ...shot("ia", 1672, 941), motion: "appear", overlay: "prompt", duration: 5600, ...INTRO_STYLE },
+        { ...shot("ia-2", 1672, 941), motion: "float", overlay: "answer", duration: 8500, ...INTRO_STYLE },
       ],
     },
   ];
@@ -429,7 +435,23 @@ export const HeroCarousel = ({
               data-overlay={f.overlay}
               data-state={state}
             >
-              {f.overlay === "prompt" ? (
+              {f.overlay === "intuitive" ? (
+                <div className="hero-tagline" data-variant="kitforweb">
+                  {/* First word in the light colour, the rest in cyan, like "kit" and "for" */}
+                  <TypeLine
+                    parts={[
+                      { text: `${dict.ux.intuitive.split(" ")[0]} `, color: "#E2E8F0" },
+                      { text: dict.ux.intuitive.split(" ").slice(1).join(" "), color: "#22D3EE" },
+                    ]}
+                    cursor="#22D3EE"
+                  />
+                </div>
+              ) : f.overlay === "attractive" ? (
+                <div className="hero-tagline" data-variant="playrxjs">
+                  {/* Transparent text: the "RxJS" gradient is painted from CSS */}
+                  <TypeLine parts={[{ text: dict.ux.attractive, color: "transparent" }]} cursor="#F299FB" />
+                </div>
+              ) : f.overlay === "prompt" ? (
                 <div className="hero-type-panel" data-variant="prompt">
                   <Sparkles aria-hidden className="hero-prompt-icon" />
                   <TypeLine parts={RUN_ALL_TASKS} cursor="#38BDF8" />
@@ -498,7 +520,28 @@ export const HeroCarousel = ({
         </div>
       )}
 
-      {/* Mobile, top right: LinkedIn, CV and email (same order as the buttons below) and pause */}
+      {/* Desktop, top right: GitHub organisation, the same size as the project icons */}
+      {!slide.intro && (
+        <div
+          className="hero-in absolute top-8 right-8 hidden md:block lg:right-12"
+          style={{ "--i": 0 } as CSSProperties}
+        >
+          <a
+            href={GITHUB_ORG}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            title="GitHub"
+            className="hero-app"
+          >
+            <span className="hero-github">
+              <Github aria-hidden />
+            </span>
+          </a>
+        </div>
+      )}
+
+      {/* Mobile, top right: LinkedIn, CV, email (same order as the buttons below), GitHub and pause */}
       <div className="absolute top-6 right-4 flex items-center gap-2 sm:top-8 sm:right-8 md:hidden">
         {!slide.intro && (
           <>
@@ -518,6 +561,16 @@ export const HeroCarousel = ({
             </Link>
             <a href={`mailto:${email}`} aria-label={dict.email} title={dict.email} className="hero-icon hero-icon-sm">
               <Mail aria-hidden className="h-4 w-4" />
+            </a>
+            <a
+              href={GITHUB_ORG}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              title="GitHub"
+              className="hero-icon hero-icon-sm"
+            >
+              <Github aria-hidden className="h-4 w-4" />
             </a>
           </>
         )}
@@ -577,7 +630,7 @@ export const HeroCarousel = ({
           {description && (
             <p
               key={`desc-${description}`}
-              className="hero-in hero-soft text-base md:max-w-3xl font-semibold leading-relaxed text-pretty sm:text-lg"
+              className="hero-in hero-soft text-base font-semibold leading-relaxed text-pretty sm:text-lg md:max-w-4xl lg:text-xl"
               style={{ "--i": 3 } as CSSProperties}
             >
               {description}

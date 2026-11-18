@@ -897,6 +897,76 @@ section {
   opacity: 1;
 }
 
+/* UX taglines over the kitforweb and Play RxJS captures, where "kitforweb" and the logo were,
+   entering with the capture. */
+
+/* The capture is dimmed with the section background while its tagline is shown */
+.hero-overlay:is([data-overlay="intuitive"], [data-overlay="attractive"]) {
+  background: color-mix(in srgb, var(--hero-bg) 60%, transparent);
+}
+
+/* Panel like the "npm run dev" one, tinted with each website's colours.
+   The text is typed on one line with its cursor, also like "npm run dev". */
+.hero-tagline {
+  max-width: 100%;
+  padding: clamp(0.85rem, 2.2vw, 1.75rem) clamp(1.1rem, 3vw, 2.75rem);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.7);
+  backdrop-filter: blur(10px);
+  /* Small enough on mobile for about 20 characters on one line */
+  font-size: clamp(1rem, 5.2vw, 5.5rem);
+}
+
+.hero-overlay[data-state="active"] .hero-tagline {
+  animation: hero-tagline 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes hero-tagline {
+  from {
+    opacity: 0;
+    transform: scale(1.3);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Typing starts once the panel has entered */
+.hero-tagline .hero-type {
+  --type-delay: 700ms;
+  --type-ms: 1000ms;
+  --blink-at: 1750ms;
+  --enter-at: 2000ms;
+  font-size: inherit;
+}
+
+/* kitforweb: its dark background, light text and cyan cursor */
+.hero-tagline[data-variant="kitforweb"] {
+  border-color: rgb(34 211 238 / 0.35);
+  background: rgb(10 16 23 / 0.82);
+}
+
+/* Play RxJS: its dark background and the gradient of "RxJS" in its logo */
+.hero-tagline[data-variant="playrxjs"] {
+  border-color: rgb(242 153 251 / 0.35);
+  background: rgb(22 17 23 / 0.82);
+}
+
+.hero-tagline[data-variant="playrxjs"] .hero-type {
+  /* No glow on enter: it would show through the transparent gradient text */
+  --type-glow: transparent;
+}
+
+.hero-tagline[data-variant="playrxjs"] .hero-type-text {
+  background: linear-gradient(90deg, #f299fb, #c9b6ff 50%, #a3feff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 .hero-overlay[data-overlay="prompt"][data-state="active"] .hero-type-panel {
   animation: hero-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1.6s both;
 }
@@ -1065,7 +1135,7 @@ section {
 }
 
 /* Tech scene: the logos overlap and disappear, each one with its own effect.
-   A new one enters every 850 ms and each lasts 1.3 s, so they always overlap. */
+   A new one enters every 1.25 s and each lasts 1.9 s, so they always overlap (9.8 s scene). */
 .hero-tech-stage {
   /* Large logos and ring to fill the scene, without overflowing the screen */
   --tech-size: min(56vmin, 34rem);
@@ -1135,8 +1205,8 @@ section {
 }
 
 .hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech {
-  animation-duration: 1300ms;
-  animation-delay: calc(var(--i) * 850ms + 150ms);
+  animation-duration: 1900ms;
+  animation-delay: calc(var(--i) * 1250ms + 150ms);
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
 }
@@ -1507,6 +1577,23 @@ section {
   max-width: none;
   flex-shrink: 0;
   object-fit: cover;
+}
+
+/* GitHub organisation (desktop, top right): an app-style tile the size of the project icons */
+.hero-github {
+  display: grid;
+  place-items: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border: 1px solid rgb(255 255 255 / 0.18);
+  border-radius: 22%;
+  background: transparent;
+  color: var(--hero-fg);
+}
+
+.hero-github svg {
+  width: 55%;
+  height: 55%;
 }
 
 .hero-app:hover,
