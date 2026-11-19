@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Home",
     "projects": "Projects",
     "cv": "CV",
     "information": "Information",
@@ -157,7 +158,7 @@
   "projects": {
     "eyebrow": "Side projects",
     "title": "Things I design and build",
-    "intro": "Free, open learning tools and developer utilities I build outside work. Each one is a real product: designed, built and deployed end to end.",
+    "intro": "Although I specialise in architecture, I see myself as a multidisciplinary profile, able to build any application from scratch. I believe that, with AI, this is the profile companies will need in the future. For confidentiality reasons I can't show the work I've done for other companies here, but here are some of the projects I build for the developer community.",
     "visit": "Visit site",
     "code": "GitHub",
     "comingSoon": "Coming soon",
@@ -191,7 +192,7 @@
     },
     "ai": {
       "title": "AI",
-      "description": "I master AI and have extensive experience using it. This has helped me grow as a professional and multiply my productivity: by making the most of its potential, I now do in a few days what used to take me months."
+      "description": "I master AI and have extensive experience using it. This has helped me grow as a professional and multiply my productivity: by making the most of its potential, I now develop in a few days what used to take me months."
     }
   }
 }

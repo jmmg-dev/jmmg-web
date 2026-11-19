@@ -55,7 +55,9 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
     >
       {/* Wider than the rest of the page so the screen and the phone look bigger */}
       <div className="reveal mx-auto grid max-w-[76rem] items-center gap-14 px-4 sm:px-6 lg:grid-cols-12 lg:gap-20 lg:px-8">
-        <div className={`lg:col-span-8 ${reversed ? "lg:order-2" : ""}`}>
+        {/* Below lg the description goes first and the previews after it.
+            min-w-0: without it the long URL in the browser bar widens the column on mobile. */}
+        <div className={`order-2 min-w-0 lg:col-span-8 ${reversed ? "lg:order-2" : "lg:order-1"}`}>
           {project.url ? (
             <a
               href={project.url}
@@ -71,7 +73,7 @@ export const ProjectCard = ({ project, lang, dict, index }: ProjectCardProps) =>
           )}
         </div>
 
-        <div className={`lg:col-span-4 ${reversed ? "lg:order-1" : ""}`}>
+        <div className={`order-1 min-w-0 lg:col-span-4 ${reversed ? "lg:order-1" : "lg:order-2"}`}>
           <span className="project-number text-sm">{number} /</span>
           <h2 id={`${project.id}-title`} className="project-title mt-4">
             <span className="sr-only">{project.name}</span>

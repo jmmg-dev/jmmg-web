@@ -51,7 +51,8 @@ type ImageFrame = FrameBase & {
    * - prompt: "Run all the tasks" is typed into an AI prompt box and sent.
    * - answer: the AI replies and completes the tasks one by one.
    * - intuitive / attractive: UX taglines, where "kitforweb" and the Play RxJS logo were,
-   *   in the style of each website.
+   *   in the style of each website. "intuitive" is typed; in "attractive" two marble balls
+   *   split apart revealing the text.
    */
   overlay?: "prompt" | "answer" | "intuitive" | "attractive";
 };
@@ -448,8 +449,17 @@ export const HeroCarousel = ({
                 </div>
               ) : f.overlay === "attractive" ? (
                 <div className="hero-tagline" data-variant="playrxjs">
-                  {/* Transparent text: the "RxJS" gradient is painted from CSS */}
-                  <TypeLine parts={[{ text: dict.ux.attractive, color: "transparent" }]} cursor="#F299FB" />
+                  {/* Two balls from the marble diagram split apart from the centre, revealing the
+                      text between them, and then shoot off like the ones orbiting the logo */}
+                  <p className="hero-split">
+                    <span className="hero-split-text">{dict.ux.attractive}</span>
+                    <span className="hero-ball hero-split-ball" data-color="pink" data-side="left">
+                      1
+                    </span>
+                    <span className="hero-ball hero-split-ball" data-color="cyan" data-side="right">
+                      a
+                    </span>
+                  </p>
                 </div>
               ) : f.overlay === "prompt" ? (
                 <div className="hero-type-panel" data-variant="prompt">

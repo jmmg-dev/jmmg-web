@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Inicio",
     "projects": "Proyectos",
     "cv": "CV",
     "information": "Información",
@@ -157,7 +158,7 @@
   "projects": {
     "eyebrow": "Proyectos personales",
     "title": "Lo que diseño y construyo",
-    "intro": "Herramientas de aprendizaje y utilidades para desarrolladores, gratuitas y abiertas, que construyo fuera del trabajo. Cada una es un producto real: diseñado, desarrollado y desplegado de principio a fin.",
+    "intro": "Aunque estoy especializado en arquitectura, me considero un perfil multidisciplinar, capaz de construir cualquier aplicación desde cero. Creo que, con la IA, este es el perfil que necesitarán las empresas en el futuro. Por cuestiones de confidencialidad no puedo mostrar aquí el trabajo que he realizado para otras empresas, pero os dejo algunos de los proyectos que desarrollo para la comunidad.",
     "visit": "Ver web",
     "code": "GitHub",
     "comingSoon": "Próximamente",
@@ -191,7 +192,7 @@
     },
     "ai": {
       "title": "IA",
-      "description": "Domino la IA y cuento con una amplia experiencia en su uso. Esto me ha permitido crecer como profesional y multiplicar mi productividad: aprovechando todo su potencial, hoy hago en pocos días lo que antes me llevaba meses."
+      "description": "Domino la IA y cuento con una amplia experiencia en su uso. Esto me ha permitido crecer como profesional y multiplicar mi productividad: aprovechando todo su potencial, hoy desarrollo en pocos días lo que antes me llevaba meses."
     }
   }
 }

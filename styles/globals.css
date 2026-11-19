@@ -417,6 +417,73 @@ section {
   }
 }
 
+/* Wall next to the project logos (BrickWall): bricks drop into place one after another,
+   most in grey and some in the theme colour, and a flag is raised at the end. Plays once, no loop. */
+.brick {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.brick[data-tone="grey"] {
+  fill: color-mix(in srgb, var(--muted-foreground) 45%, transparent);
+}
+
+.brick[data-tone="theme"] {
+  fill: var(--primary);
+}
+
+.brick-wall[data-built] .brick {
+  animation: brick-drop 0.5s cubic-bezier(0.34, 1.4, 0.64, 1) var(--d) both;
+}
+
+@keyframes brick-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-260%);
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.brick-flag {
+  opacity: 0;
+  fill: var(--primary);
+  transform-box: fill-box;
+  transform-origin: left bottom;
+}
+
+.brick-wall[data-built] .brick-flag {
+  animation: brick-flag 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--d) both;
+}
+
+@keyframes brick-flag {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brick,
+  .brick-flag {
+    opacity: 1;
+  }
+
+  .brick-wall[data-built] :is(.brick, .brick-flag) {
+    animation: none;
+  }
+}
+
 /* Entrance on scroll (only browsers with scroll-driven animations) */
 @supports (animation-timeline: view()) {
   .reveal {
@@ -909,7 +976,8 @@ section {
    The text is typed on one line with its cursor, also like "npm run dev". */
 .hero-tagline {
   max-width: 100%;
-  padding: clamp(0.85rem, 2.2vw, 1.75rem) clamp(1.1rem, 3vw, 2.75rem);
+  --tagline-px: clamp(1.1rem, 3vw, 2.75rem);
+  padding: clamp(0.85rem, 2.2vw, 1.75rem) var(--tagline-px);
   border: 1px solid rgb(255 255 255 / 0.1);
   border-radius: 1rem;
   box-shadow: 0 30px 80px -20px rgb(0 0 0 / 0.7);
@@ -956,15 +1024,117 @@ section {
   background: rgb(22 17 23 / 0.82);
 }
 
-.hero-tagline[data-variant="playrxjs"] .hero-type {
-  /* No glow on enter: it would show through the transparent gradient text */
-  --type-glow: transparent;
+/* "Attractive designs": two balls start together in the centre, move apart to just outside the panel while the text is
+   revealed between them, wait a moment and shoot off sideways like the orbiting balls.
+   Starts once the panel has entered and lasts 2.2 s, like the orbit balls. */
+.hero-split {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-p-jetbrains), ui-monospace, monospace;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.hero-tagline[data-variant="playrxjs"] .hero-type-text {
+.hero-split-text {
+  display: inline-block;
   background: linear-gradient(90deg, #f299fb, #c9b6ff 50%, #a3feff);
   -webkit-background-clip: text;
   background-clip: text;
+  color: transparent;
+}
+
+/* Scoped to .hero-split so it wins over the base .hero-ball rule (top: 0) further down.
+   --ball-out: where the balls stop, just outside the panel (its side padding, half a ball and a gap). */
+.hero-split .hero-split-ball {
+  --ball-out: calc(var(--tagline-px) + clamp(2rem, 3.2vw, 2.75rem) / 2 + 0.75rem);
+  top: 50%;
+  opacity: 0;
+}
+
+.hero-overlay[data-state="active"] .hero-split-text {
+  animation: hero-split-reveal 2.2s 0.6s both;
+}
+
+.hero-overlay[data-state="active"] .hero-split-ball[data-side="left"] {
+  animation: hero-split-left 2.2s 0.6s both;
+}
+
+.hero-overlay[data-state="active"] .hero-split-ball[data-side="right"] {
+  animation: hero-split-right 2.2s 0.6s both;
+}
+
+@keyframes hero-split-reveal {
+  0%,
+  12% {
+    clip-path: inset(0 50% 0 50%);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  60%,
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes hero-split-left {
+  0% {
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  12% {
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  60%,
+  75% {
+    left: calc(0% - var(--ball-out));
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.4);
+  }
+  100% {
+    left: calc(0% - var(--ball-out));
+    opacity: 1;
+    transform: translate(calc(-50% - 120vmax), -50%) scale(0.8);
+  }
+}
+
+@keyframes hero-split-right {
+  0% {
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  12% {
+    left: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  60%,
+  75% {
+    left: calc(100% + var(--ball-out));
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    animation-timing-function: cubic-bezier(0.5, 0, 0.9, 0.4);
+  }
+  100% {
+    left: calc(100% + var(--ball-out));
+    opacity: 1;
+    transform: translate(calc(-50% + 120vmax), -50%) scale(0.8);
+  }
+}
+
+/* Without motion the text is shown straight away and the balls are not needed */
+@media (prefers-reduced-motion: reduce) {
+  .hero-split-ball {
+    display: none;
+  }
 }
 
 .hero-overlay[data-overlay="prompt"][data-state="active"] .hero-type-panel {
@@ -1585,10 +1755,17 @@ section {
   place-items: center;
   width: 4.25rem;
   height: 4.25rem;
-  border: 1px solid rgb(255 255 255 / 0.18);
+  /* Transparent with a fine border, like the CV and email action buttons */
+  border: 1px solid color-mix(in srgb, var(--hero-fg) 22%, transparent);
   border-radius: 22%;
   background: transparent;
   color: var(--hero-fg);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.hero-app:hover .hero-github {
+  border-color: var(--hero-neon);
+  color: var(--hero-neon);
 }
 
 .hero-github svg {
@@ -1614,16 +1791,16 @@ section {
   opacity: 0.7;
 }
 
-/* Mobile: icon links at the top right; LinkedIn filled like its button */
+/* Mobile: icon links at the top right; LinkedIn filled with the theme colour like its button */
 .hero-icon.hero-icon-sm {
   width: 2.5rem;
   height: 2.5rem;
 }
 
 .hero-icon[data-variant="primary"] {
-  background: var(--hero-fg);
-  border-color: var(--hero-fg);
-  color: var(--hero-bg);
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-foreground);
 }
 
 /* Mobile: centred backgrounds and raised animations so they clear the description */
@@ -1690,14 +1867,22 @@ section {
     padding-bottom: 8svh;
   }
 
+  /* UX taglines: at the same height as "kitforweb" and the Play RxJS logo before them,
+     which are raised by the scene padding above */
+  .hero-overlay:is([data-overlay="intuitive"], [data-overlay="attractive"]) {
+    padding-top: 0;
+    padding-bottom: 18svh;
+  }
+
   .hero-tech-stage,
   .hero-answer {
     margin-bottom: 0;
   }
 }
 
-/* Action buttons (LinkedIn, CV, email), like the ones on streaming platforms:
-   the primary one filled and the rest translucent */
+/* Action buttons (LinkedIn, CV, email): transparent with a fine border, like the
+   "View my CV" button next to the photo. LinkedIn is filled with the theme's primary
+   colour: blue in the light theme, green in the dark one. */
 .hero-btn {
   display: inline-flex;
   align-items: center;
@@ -1705,28 +1890,33 @@ section {
   gap: 0.6rem;
   min-height: 3rem;
   padding: 0.6rem 1rem;
-  border-radius: 0.5rem;
-  background: color-mix(in srgb, var(--hero-fg) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--hero-fg) 22%, transparent);
+  border-radius: 0.75rem;
+  background: transparent;
   color: var(--hero-fg);
   font-size: 0.95rem;
   font-weight: 600;
   white-space: nowrap;
   backdrop-filter: blur(6px);
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .hero-btn[data-variant="primary"] {
-  background: var(--hero-fg);
-  color: var(--hero-bg);
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
 }
 
 .hero-btn:hover {
-  background: color-mix(in srgb, var(--hero-fg) 28%, transparent);
+  border-color: var(--hero-neon);
+  color: var(--hero-neon);
   transform: translateY(-1px);
 }
 
 .hero-btn[data-variant="primary"]:hover {
-  background: color-mix(in srgb, var(--hero-fg) 85%, transparent);
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 85%, transparent);
+  color: var(--primary-foreground);
 }
 
 .hero-btn:focus-visible {

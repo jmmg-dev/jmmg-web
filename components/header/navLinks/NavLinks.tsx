@@ -1,4 +1,5 @@
-import type { LucideIcon } from "lucide-react";
+import { House, type LucideIcon } from "lucide-react";
+import Link from "next/link";
 
 export type NavSection = {
   id: string;
@@ -7,6 +8,8 @@ export type NavSection = {
 };
 
 type NavLinksProps = {
+  /** Link back to the home page, shown before the sections */
+  home?: { href: string; label: string };
   sections: NavSection[];
   activeSection: string;
   onSelect: (sectionId: string) => void;
@@ -14,6 +17,7 @@ type NavLinksProps = {
 };
 
 export const NavLinks = ({
+  home,
   sections,
   activeSection,
   onSelect,
@@ -22,6 +26,15 @@ export const NavLinks = ({
   if (variant === "mobile") {
     return (
       <>
+        {home && (
+          <Link
+            href={home.href}
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-secondary"
+          >
+            <House className="h-4 w-4" />
+            <span>{home.label}</span>
+          </Link>
+        )}
         {sections.map((section) => {
           const Icon = section.icon;
           const isActive = activeSection === section.id;
@@ -46,6 +59,15 @@ export const NavLinks = ({
 
   return (
     <>
+      {home && (
+        <Link
+          href={home.href}
+          className="relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground"
+        >
+          <House className="h-4 w-4" />
+          <span>{home.label}</span>
+        </Link>
+      )}
       {sections.map((section) => {
         const Icon = section.icon;
         const isActive = activeSection === section.id;

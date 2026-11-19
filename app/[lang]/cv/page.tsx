@@ -3,7 +3,8 @@ import ExperienceSection from "@/components/experience/ExperienceSection";
 import { Footer } from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import InformationSection from "@/components/information/InformationSection";
-import PublicationsSection from "@/components/publications/PublicationsSection";
+// Publications hidden for now; uncomment this import and the section below to show them again
+// import PublicationsSection from "@/components/publications/PublicationsSection";
 import SkillsSection from "@/components/skills/SkillsSection";
 import { Lang } from "@/models/enums";
 import { Metadata } from "next";
@@ -44,11 +45,13 @@ const CvPage = async ({ params }: Props) => {
           currentlyLabel={data.experience.currently}
           lang={lang}
         />
+        {/* Publications hidden for now (also its link in the header)
         <PublicationsSection
           title={data.nav.publications}
           intro={data.publications.intro}
           lang={lang}
         />
+        */}
         <Footer lang={lang} data={data} />
       </main>
     </div>

@@ -3,14 +3,16 @@
 import { useTheme } from "@/lib/theme";
 import { Lang } from "@/models/enums";
 import { NavDict } from "@/models/types";
-import { BookOpen, FileText, Menu, Settings, User, X } from "lucide-react";
+// BookOpen is the publications icon, hidden for now (see the sections below)
+import { /* BookOpen, */ FileText, Menu, Settings, User, X } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { LanguageSelector } from "./languageSelector/LanguageSelector";
 import { NavLinks, type NavSection } from "./navLinks/NavLinks";
-import { PageSwitch, type Page } from "./pageSwitch/PageSwitch";
 import { ThemeToggle } from "./themeToggle/ThemeToggle";
+
+type Page = "projects" | "cv";
 
 const Header = ({
   dict,
@@ -31,10 +33,10 @@ const Header = ({
           { id: "information", label: dict.information, icon: User },
           { id: "skills", label: dict.skills, icon: Settings },
           { id: "experience", label: dict.experience, icon: FileText },
-          { id: "publications", label: dict.publications, icon: BookOpen },
+          // Publications hidden for now, like its section on the CV page
+          // { id: "publications", label: dict.publications, icon: BookOpen },
         ]
       : [];
-  const pageLabels = { projects: dict.projects, cv: dict.cv };
   const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -131,6 +133,7 @@ const Header = ({
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-1">
             <NavLinks
+              home={sections.length ? { href: `/${selectedLang}`, label: dict.home } : undefined}
               sections={sections}
               activeSection={activeSection}
               onSelect={scrollToSection}
@@ -140,15 +143,6 @@ const Header = ({
 
           {/* Right side controls */}
           <div className="flex items-center gap-2">
-            <div className="hidden md:block">
-              <PageSwitch
-                lang={selectedLang}
-                current={page}
-                labels={pageLabels}
-                variant="desktop"
-              />
-            </div>
-
             <LanguageSelector
               selectedLang={selectedLang}
               onSelect={handlerLanguage}
@@ -156,18 +150,20 @@ const Header = ({
 
             <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors md:hidden"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? (
-                <X className="h-4 w-4" />
-              ) : (
-                <Menu className="h-4 w-4" />
-              )}
-            </button>
+            {/* Mobile Menu Button: only where there are sections to jump to (CV page) */}
+            {sections.length > 0 && (
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors md:hidden"
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? (
+                  <X className="h-4 w-4" />
+                ) : (
+                  <Menu className="h-4 w-4" />
+                )}
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -179,14 +175,8 @@ const Header = ({
         }`}
       >
         <nav className="glass px-4 py-4 space-y-1">
-          <PageSwitch
-            lang={selectedLang}
-            current={page}
-            labels={pageLabels}
-            variant="mobile"
-            onNavigate={() => setIsMenuOpen(false)}
-          />
           <NavLinks
+            home={sections.length ? { href: `/${selectedLang}`, label: dict.home } : undefined}
             sections={sections}
             activeSection={activeSection}
             onSelect={scrollToSection}

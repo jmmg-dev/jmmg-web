@@ -72,7 +72,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
                     href={p.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 text-sm text-foreground transition-colors hover:text-primary"
+                    className="group flex w-fit items-center gap-3 text-sm text-foreground transition-colors hover:text-primary"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -102,7 +102,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
             <ul className="mt-5 space-y-3">
               {links.map(({ href, label, icon: Icon, external }) => {
                 const className =
-                  "group inline-flex items-center gap-3 text-sm text-foreground transition-colors hover:text-primary";
+                  "group flex w-fit items-center gap-3 text-sm text-foreground transition-colors hover:text-primary";
                 const content = (
                   <>
                     <span className="grid h-8 w-8 place-items-center rounded-lg border border-border bg-background/60 transition-colors group-hover:border-primary">

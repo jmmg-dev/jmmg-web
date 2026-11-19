@@ -34,6 +34,7 @@ export interface ProfessionalInfo {
 }
 
 export interface NavLabels {
+  home: string;
   projects: string;
   cv: string;
   information: string;

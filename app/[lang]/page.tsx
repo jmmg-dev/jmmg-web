@@ -2,11 +2,13 @@ import { getInformationAction } from "@/actions/information";
 import { Footer } from "@/components/footer/Footer";
 import Header from "@/components/header/Header";
 import { HeroCarousel } from "@/components/hero/HeroCarousel";
+import { BrickWall } from "@/components/projects/brickWall/BrickWall";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { projectFontVariables } from "@/lib/fonts";
 import { PROJECTS } from "@/lib/projects";
 import { Lang } from "@/models/enums";
-import { ArrowRight } from "lucide-react";
+import { GITHUB_ORG } from "@/lib/constants";
+import { ArrowRight, Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -56,47 +58,89 @@ const ProjectsPage = async ({ params }: Props) => {
                   alt={data.personalInfo.name}
                   width={112}
                   height={112}
-                  className="h-24 w-24 shrink-0 rounded-full object-cover ring-2 ring-primary/40 ring-offset-2 ring-offset-background grayscale sm:h-28 sm:w-28"
+                  className="h-20 w-20 shrink-0 rounded-full object-cover ring-2 ring-primary/40 ring-offset-2 ring-offset-background grayscale sm:h-24 sm:w-24"
                 />
-                <div>
-                  <p className="font-semibold text-foreground">{data.personalInfo.name}</p>
-                  <p className="text-sm text-muted-foreground">{data.info.hero.frontEndArchitect}</p>
-                  <Link
-                    href={`/${lang}/cv`}
-                    className="group mt-3 inline-flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-4 py-2 text-sm font-medium transition-colors hover:border-primary hover:text-primary"
-                  >
-                    {dict.viewCv}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </Link>
+                {/* Name and role, with the CV and GitHub tiles to their right (below them if there is no room).
+                    Both have the height, border and corners of the GitHub tile in the carousel. */}
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+                  <div>
+                    <p className="font-semibold text-foreground">
+                      {data.personalInfo.name}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {data.info.hero.frontEndArchitect}
+                    </p>
+                  </div>
+                  <div className="flex gap-2">
+                    {/* LinkedIn, icon only, filled with the theme colour like in the carousel */}
+                    <a
+                      href={data.personalInfo.urlIn}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      title="LinkedIn"
+                      className="grid h-16 w-16 sm:h-18 sm:w-18 place-items-center rounded-[22%] border border-primary bg-primary text-primary-foreground transition-[opacity,transform] hover:-translate-y-0.5 hover:scale-105 hover:opacity-90"
+                    >
+                      <Linkedin aria-hidden className="h-[45%] w-[45%]" />
+                    </a>
+                    {/* "CV" with the arrow below, in a square like the LinkedIn and GitHub tiles */}
+                    <Link
+                      href={`/${lang}/cv`}
+                      aria-label={dict.viewCv}
+                      title={dict.viewCv}
+                      className="group flex h-16 w-16 sm:h-18 sm:w-18 flex-col items-center justify-center rounded-[22%] border border-border font-mono text-base font-bold leading-none text-foreground transition-[color,border-color,transform] hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+                    >
+                      CV
+                      <ArrowRight
+                        aria-hidden
+                        className="mt-1 h-5 w-5 transition-transform group-hover:translate-x-0.5"
+                      />
+                    </Link>
+                    <a
+                      href={GITHUB_ORG}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                      title="GitHub"
+                      className="grid h-16 w-16 sm:h-18 sm:w-18 place-items-center rounded-[22%] border border-border text-foreground transition-[color,border-color,transform] hover:-translate-y-0.5 hover:scale-105 hover:border-primary hover:text-primary"
+                    >
+                      <Github aria-hidden className="h-[55%] w-[55%]" />
+                    </a>
+                  </div>
                 </div>
+              </div>
+              {/* Linked logos of my websites, with a wall being built next to them */}
+              <div className="mt-3 flex items-end gap-6 sm:mt-1">
+                <ul className="flex gap-2">
+                  {projectLinks.map((p) => (
+                    <li key={p.id}>
+                      <a
+                        href={p.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={p.name}
+                        title={p.name}
+                        className="block transition-transform hover:-translate-y-0.5 hover:scale-105"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={p.logo.icon.src}
+                          alt=""
+                          width={72}
+                          height={72}
+                          className={`h-16 w-16 object-cover sm:h-18 sm:w-18 ${p.logo.icon.crop ? "object-left" : ""}`}
+                        />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+                <BrickWall className="hidden h-24 min-w-0 flex-1 sm:block" />
               </div>
             </div>
             <div className="lg:col-span-5 lg:pt-10">
-              {/* Linked logos of my websites */}
-              <ul className="mb-6 flex gap-8 sm:gap-4">
-                {projectLinks.map((p) => (
-                  <li key={p.id}>
-                    <a
-                      href={p.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={p.name}
-                      title={p.name}
-                      className="block transition-transform hover:-translate-y-0.5 hover:scale-105"
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={p.logo.icon.src}
-                        alt=""
-                        width={72}
-                        height={72}
-                        className={`h-16 w-16 object-cover sm:h-18 sm:w-18 ${p.logo.icon.crop ? "object-left" : ""}`}
-                      />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-lg leading-relaxed text-muted-foreground">{dict.intro}</p>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                {dict.intro}
+              </p>
             </div>
           </div>
         </section>

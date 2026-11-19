@@ -92,12 +92,12 @@ export const PROJECTS: Project[] = [
     url: "https://kitforweb.com",
     repo: "https://github.com/kitforweb/kitforweb",
     tagline: {
-      en: "Web developer tools that never see your data",
-      es: "Utilidades para desarrolladores que nunca ven tus datos",
+      en: "Possibly the most complete developer kit on the web",
+      es: "Posiblemente, el kit de desarrollo más completo de la web",
     },
     description: {
-      en: "Developer utilities for JSON, JWT, regex, CSS, Mermaid and more, running entirely in the browser. Paste production tokens or customer data without fear: nothing leaves your machine, and it keeps working offline.",
-      es: "Utilidades para JSON, JWT, regex, CSS, Mermaid y mucho más, que se ejecutan enteras en el navegador. Puedes pegar tokens de producción o datos de clientes sin miedo: nada sale de tu equipo y funciona sin conexión.",
+      en: "kitforweb is an online tool that brings together the utilities any developer needs in their day-to-day work. It runs entirely in your browser, so everything you process with it stays on your machine and is kept safe.",
+      es: "kitforweb es una herramienta online que reúne las utilidades que cualquier desarrollador necesita en su día a día. Se ejecuta por completo en tu navegador, así que todo lo que proceses en ella se queda en tu equipo y está a salvo.",
     },
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     theme: {
@@ -134,12 +134,12 @@ export const PROJECTS: Project[] = [
     url: "https://play-rxjs.vercel.app", // fallback; the manifest URL wins
     // TODO: GitHub repository (final URL pending)
     tagline: {
-      en: "Play, run, learn RxJS",
-      es: "Juega, ejecuta y aprende RxJS",
+      en: "Learn RxJS by playing",
+      es: "Aprende jugando con RxJS",
     },
     description: {
-      en: "Interactive RxJS documentation with more than 150 operators explained through editable examples. Change the code, run it and watch the console react in real time, with sandboxes and real-life patterns.",
-      es: "Documentación interactiva de RxJS con más de 150 operadores explicados con ejemplos editables. Cambia el código, ejecútalo y observa cómo reacciona la consola en tiempo real, con sandboxes y casos reales.",
+      en: "Play RxJS is an interactive, visual documentation where, through editable examples, you can see in real time how each RxJS feature works.",
+      es: "Play RxJS es una documentación interactiva y visual en la que, a través de ejemplos editables, podrás comprobar en tiempo real cómo funciona cada una de las características de RxJS.",
     },
     stack: ["Angular", "RxJS", "TypeScript"],
     theme: {
@@ -181,8 +181,8 @@ export const PROJECTS: Project[] = [
       es: "Aprende layouts en CSS experimentando con ellos",
     },
     description: {
-      en: "An interactive lab to master CSS layouts, from block and inline to flexbox, grid, container queries and anchor positioning, with live HTML and CSS editors that update the result as you type.",
-      es: "Un laboratorio interactivo para dominar los layouts en CSS, desde block e inline hasta flexbox, grid, container queries y anchor positioning, con editores de HTML y CSS en vivo que actualizan el resultado al escribir.",
+      en: "CSS Layout Lab is an interactive lab to master CSS layouts, from block and inline to more complex features such as flexbox and grid. You can quickly and intuitively see how each one works by editing the code or using the selectors in the examples.",
+      es: "CSS Layout Lab es un laboratorio interactivo para dominar los layouts en CSS, desde block e inline hasta características más complejas como flexbox o grid. Podrás ver de forma rápida e intuitiva cómo funciona cada una, modificando el código o usando los selectores de los ejemplos.",
     },
     stack: ["Next.js", "TypeScript", "CSS Grid", "Flexbox"],
     theme: {
