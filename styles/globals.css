@@ -1673,9 +1673,11 @@ section {
   animation: hero-brand 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* Starts slightly visible, not at 0: Chrome ignores invisible elements for LCP, so with
+   opacity 0 the page had no early LCP candidate and its LCP was estimated very late */
 @keyframes hero-brand {
   from {
-    opacity: 0;
+    opacity: 0.1;
     transform: scale(2.6);
     filter: blur(14px);
   }

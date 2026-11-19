@@ -215,7 +215,12 @@ async function previousUrl(project, dir) {
   return project.urls.at(-1);
 }
 
-const toWebp = (buffer, file) => sharp(buffer).webp({ quality: 82 }).toFile(file);
+// Width the captures are saved at: twice the largest size the portfolio shows them at
+// (browser window ~780 px, phone ~165 px), so they stay sharp on high-density screens
+const DESKTOP_WIDTH = 1600;
+const MOBILE_WIDTH = 400;
+const toWebp = (buffer, file, width) =>
+  sharp(buffer).resize({ width, withoutEnlargement: true }).webp({ quality: 82 }).toFile(file);
 
 const newContext = (browser, project, viewport, isMobile) =>
   browser.newContext({
@@ -259,7 +264,7 @@ try {
       for (const action of screen.actions ?? []) await runAction(page, action, `${project.id} pantalla ${n}`);
       await tidy(page);
       const file = `${LANG}-desktop-screen-${n}.webp`;
-      await toWebp(await page.screenshot(), path.join(dir, file));
+      await toWebp(await page.screenshot(), path.join(dir, file), DESKTOP_WIDTH);
       manifest.screens.push({ path: screen.path, image: `/images/projects/${project.id}/${file}` });
       written.push(path.join('public', 'images', 'projects', project.id, file));
       await page.close();
@@ -278,7 +283,7 @@ try {
       fullPage: true,
       clip: { x: 0, y: 0, width: DEFAULTS.mobile.width, height: Math.min(height, MAX_FULL_HEIGHT) },
     });
-    await toWebp(full, path.join(dir, `${LANG}-mobile-full.webp`));
+    await toWebp(full, path.join(dir, `${LANG}-mobile-full.webp`), MOBILE_WIDTH);
     await mobile.close();
     manifest.mobile = `/images/projects/${project.id}/${LANG}-mobile-full.webp`;
     written.push(path.join('public', 'images', 'projects', project.id, `${LANG}-mobile-full.webp`));
