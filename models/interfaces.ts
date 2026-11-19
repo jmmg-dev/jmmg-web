@@ -145,6 +145,20 @@ export interface HeroLabels {
   scroll: string;
 }
 
+/** Title and description of one page, for search engines and social cards */
+export interface PageSeo {
+  title: string;
+  description: string;
+}
+
+export interface SeoLabels {
+  siteName: string;
+  /** Alt text of the social card image */
+  imageAlt: string;
+  home: PageSeo;
+  cv: PageSeo;
+}
+
 export interface Information {
   nav: NavLabels;
   info: InfoLabels;
@@ -157,4 +171,5 @@ export interface Information {
   footerConnect: string;
   personalInfo: PersonalInfo;
   professionalInfo: ProfessionalInfo;
+  seo: SeoLabels;
 }

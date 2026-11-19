@@ -6,6 +6,8 @@ import { BrickWall } from "@/components/projects/brickWall/BrickWall";
 import { ProjectsSection } from "@/components/projects/ProjectsSection";
 import { projectFontVariables } from "@/lib/fonts";
 import { PROJECTS } from "@/lib/projects";
+import { homeJsonLd } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Lang } from "@/models/enums";
 import { GITHUB_ORG } from "@/lib/constants";
 import { ArrowRight, Github, Linkedin } from "lucide-react";
@@ -28,6 +30,7 @@ const ProjectsPage = async ({ params }: Props) => {
 
   return (
     <div className={`min-h-screen bg-background ${projectFontVariables}`}>
+      <JsonLd data={homeJsonLd(lang, data)} />
       <Header dict={data.nav} selectedLang={lang} page="projects" hideAtTop />
       <main>
         <HeroCarousel

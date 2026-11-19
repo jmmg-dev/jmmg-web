@@ -194,5 +194,17 @@
       "title": "IA",
       "description": "Domino la IA y cuento con una amplia experiencia en su uso. Esto me ha permitido crecer como profesional y multiplicar mi productividad: aprovechando todo su potencial, hoy desarrollo en pocos días lo que antes me llevaba meses."
     }
+  },
+  "seo": {
+    "siteName": "JMMG.dev",
+    "imageAlt": "JMMG.dev · Juan Manuel Muñoz González, Arquitecto Front End",
+    "home": {
+      "title": "Juan Manuel Muñoz González | Arquitecto Front End",
+      "description": "Portfolio de Juan Manuel Muñoz González, Arquitecto Front End: arquitecturas escalables, fiables y de alto rendimiento, desarrollo, UX/UI e IA."
+    },
+    "cv": {
+      "title": "CV | Juan Manuel Muñoz González, Arquitecto Front End",
+      "description": "CV de Juan Manuel Muñoz González, Arquitecto Front End con más de 20 años en el software: experiencia en Repsol, Vodafone, Banco Santander y HBX Group."
+    }
   }
 }

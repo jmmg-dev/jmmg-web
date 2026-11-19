@@ -5,7 +5,9 @@ import Header from "@/components/header/Header";
 import InformationSection from "@/components/information/InformationSection";
 // Publications hidden for now; uncomment this import and the section below to show them again
 // import PublicationsSection from "@/components/publications/PublicationsSection";
+import { JsonLd } from "@/components/seo/JsonLd";
 import SkillsSection from "@/components/skills/SkillsSection";
+import { cvJsonLd, pageMetadata } from "@/lib/seo";
 import { Lang } from "@/models/enums";
 import { Metadata } from "next";
 
@@ -15,19 +17,8 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
-  const isEs = lang === Lang.es;
-  const title = isEs
-    ? "CV | Juan Manuel Muñoz González, Arquitecto Front End"
-    : "CV | Juan Manuel Muñoz González, Front End Architect";
-
-  return {
-    title,
-    openGraph: { title },
-    alternates: {
-      canonical: `/${lang}/cv`,
-      languages: { "es-ES": "/es/cv", "en-US": "/en/cv", "x-default": "/en/cv" },
-    },
-  };
+  const { seo } = await getInformationAction(lang);
+  return pageMetadata(lang, "/cv", seo.cv, seo.siteName);
 }
 
 const CvPage = async ({ params }: Props) => {
@@ -36,6 +27,7 @@ const CvPage = async ({ params }: Props) => {
 
   return (
     <div className="min-h-screen bg-background">
+      <JsonLd data={cvJsonLd(lang, data)} />
       <Header dict={data.nav} selectedLang={lang} page="cv" />
       <main>
         <InformationSection information={data} dict={data.info} />

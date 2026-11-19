@@ -194,5 +194,17 @@
       "title": "AI",
       "description": "I master AI and have extensive experience using it. This has helped me grow as a professional and multiply my productivity: by making the most of its potential, I now develop in a few days what used to take me months."
     }
+  },
+  "seo": {
+    "siteName": "JMMG.dev",
+    "imageAlt": "JMMG.dev · Juan Manuel Muñoz González, Front End Architect",
+    "home": {
+      "title": "Juan Manuel Muñoz González | Front End Architect",
+      "description": "Portfolio of Juan Manuel Muñoz González, Front End Architect: scalable, reliable, high-performance architectures, hands-on development, UX/UI and AI."
+    },
+    "cv": {
+      "title": "CV | Juan Manuel Muñoz González, Front End Architect",
+      "description": "CV of Juan Manuel Muñoz González, Front End Architect with 20+ years in software: experience at Repsol, Vodafone, Banco Santander and HBX Group."
+    }
   }
 }
