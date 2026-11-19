@@ -98,7 +98,7 @@ Trabaja siempre desde la raíz del repo (`portfolio-next`).
 
 ## Dominios
 
-Play RxJS y CSS Layout Lab tendrán `playrxjs.com` y `csslayoutlab.com`. Ya están
+Play RxJS y CSS Layout Lab tendrán `playrxjs.com` y `css-layout-lab.com`. Ya están
 configurados como primera opción en `urls`, así que no hay que tocar nada: la primera
 captura después de que estén activos los usará y el catálogo enlazará a ellos. Si el
 usuario pregunta si ya han cambiado, ejecuta `--check` y mira qué URL se elige.

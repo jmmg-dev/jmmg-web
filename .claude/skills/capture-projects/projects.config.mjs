@@ -66,7 +66,7 @@ export const PROJECTS = [
   },
   {
     id: 'css-layout-lab',
-    urls: ['https://csslayoutlab.com', 'https://css-layout-lab-pearl.vercel.app'],
+    urls: ['https://css-layout-lab.com', 'https://css-layout-lab-pearl.vercel.app'],
     expect: 'CSS Layout Lab',
     localUrl: 'http://localhost:3000',
     colorScheme: 'light',

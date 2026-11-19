@@ -1,119 +1,129 @@
-<div align="center">
+# JMMG.dev
 
-# Juan Manuel Muñoz González — Portfolio
+Personal portfolio of Juan Manuel Muñoz González, Front End Architect. A bilingual Next.js site with a full-screen animated showcase, a catalog of personal projects and an online CV.
 
-### Front End Architect · Micro-frontends · AI-assisted Development
-
-[![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js&logoColor=white)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel&logoColor=white)](https://vercel.com/)
-
-A bilingual, fully responsive personal portfolio built with the Next.js App Router — showcasing 20 years of Front End architecture experience, technical skills, professional history, and community publications.
-
-</div>
+Live site: [jmmg.dev](https://jmmg.dev)
 
 ---
 
-## ✨ Features
+## Features
 
-- 🌐 **Bilingual (EN/ES)** — every string, label, and piece of content is server-rendered in the correct locale from a single JSON source per language, no client-side flash of untranslated content.
-- 🎨 **Light & dark themes** — cookie-persisted, with a tailored neon accent palette per theme.
-- 📊 **Interactive skills dashboard** — technical skills grouped by ecosystem (Angular, React, Architecture, AI tooling...), business skills, languages, and a Recharts-powered professional growth chart.
-- 🧭 **Animated hero & scroll progress bar** — a staggered entrance animation on load and a slim progress indicator in the header as you scroll.
-- 🗂️ **Experience timeline** — alternating timeline layout with per-company technologies, projects, and role descriptions.
-- 📰 **Publications grid** — community articles and open-source projects, each linking out to its live demo.
-- 📄 **Downloadable CV** — ATS-friendly PDF, one click away from the hero section.
-- 📱 **Fully responsive** — every section has been tuned down to mobile breakpoints, not just scaled down from desktop.
+### Home
 
-## 🏗️ Tech Stack
+- **Full-screen carousel** with an intro and one section per discipline (Architecture, Development, UX/UI and AI). Each section combines animated scenes and screenshots, can be paused, and has a dedicated mobile layout.
+- **Project catalog** for kitforweb, Play RxJS and CSS Layout Lab. Every section takes the colours and typefaces of its own website, with a browser window cycling through real screens and a phone preview that scrolls the mobile version.
+- **Build animation**: an SVG castle assembled brick by brick, played once when it enters the viewport.
 
-| Layer | Choice |
+### CV
+
+- Profile, career summary, education and professional milestones.
+- Technical, business and language skills, with a professional growth chart.
+- Experience timeline with technologies and projects per company.
+- Downloadable PDF version.
+
+### Across the site
+
+- **Bilingual (English and Spanish)**, server-rendered from one JSON file per language. The selected language is kept in a cookie.
+- **Light and dark themes**, persisted in a cookie.
+- **SEO per language**: canonical URLs, `hreflang` alternates with `x-default`, Open Graph and Twitter metadata, `sitemap.xml` and `robots.txt`.
+- **Reduced motion support**: every animation has a static fallback.
+
+## Projects
+
+Personal projects featured in the catalog, built for the developer community.
+
+| Project | Description | Website | Source |
+|---|---|---|---|
+| **kitforweb** | Online toolkit with the everyday utilities developers need, running entirely in the browser so data never leaves the user's machine | [kitforweb.com](https://kitforweb.com) | [GitHub](https://github.com/jmmg-dev/kitforweb) |
+| **Play RxJS** | Interactive, visual RxJS documentation with editable examples that run in real time | [playrxjs.com](https://playrxjs.com) | [GitHub](https://github.com/jmmg-dev/play-rxjs) |
+| **CSS Layout Lab** | Interactive lab to master CSS layouts, from block and inline to flexbox and grid | [css-layout-lab.com](https://css-layout-lab.com) | [GitHub](https://github.com/jmmg-dev/css-layout-lab) |
+
+## Tech stack
+
+| Area | Technology |
 |---|---|
 | Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
-| UI | [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) |
-| Styling | [Tailwind CSS v4](https://tailwindcss.com/) with custom OKLCH design tokens |
+| Library | [React 19](https://react.dev/) |
+| Language | [TypeScript 5.7](https://www.typescriptlang.org/) |
+| Styling | [Tailwind CSS 4](https://tailwindcss.com/) with OKLCH design tokens |
 | Charts | [Recharts](https://recharts.org/) |
 | Icons | [lucide-react](https://lucide.dev/) |
 | Analytics | [Vercel Analytics](https://vercel.com/analytics) |
+| Tooling | [Playwright](https://playwright.dev/) and [sharp](https://sharp.pixelplumbing.com/), used to capture the project screenshots |
 
-## 📁 Project Structure
+## Getting started
 
-```
-app/
-  [lang]/            Localized routes — en/es, dynamic segment
-    page.tsx          Home: hero carousel and project catalog
-    cv/page.tsx       CV page, assembled from a single content fetch
-    layout.tsx         Per-locale metadata (title, OG, Twitter cards)
-  theme/              ThemeProviders (light/dark context)
-  icon.png            Favicon (App Router metadata convention)
-  layout.tsx          Root HTML shell
+Requirements: Node.js 20.9 or later.
 
-components/
-  hero/               Full-screen home carousel
-  projects/           Project catalog (desktop and phone previews)
-  footer/             Brand, projects and contact links
-  header/             Nav, language & theme toggles, scroll progress bar
-  information/        Hero, career, degrees, milestones, hobbies
-  skills/             Technical/business/language skills + growth chart
-  experience/         Timeline of professional experience
-  publications/       Articles & open-source projects grid
-  icon/               Dynamic lucide icon loader
-
-lib/                  Static content data (experience, skills, publications, projects) & theme context
-models/               Shared TypeScript interfaces & types
-
-public/
-  images/
-    carousel/         Home carousel frames and tech logos
-    projects/         Catalog captures + manifest.json (generated by the capture-projects skill)
-    logos/            Project logos and icons
-    cv/               CV hero backgrounds
-    publications/     Publication covers
-  information/        🌍 en.json / es.json — single source of truth per language
-
-design/               Source material, not deployed (carousel spec and originals, brand logos)
-.claude/skills/       capture-projects skill to regenerate the catalog captures
-
-styles/               Tailwind v4 config + custom theme tokens
+```bash
+npm install
+npm run dev
 ```
 
-## 🌍 Content & Translations
+The site runs at [http://localhost:3000](http://localhost:3000) and redirects to `/en` or `/es` depending on the last language used.
 
-All page copy — navigation labels, section headings, personal info, career summary, degrees, milestones, and hobbies — lives in **one file per language**:
+### Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Starts the development server |
+| `npm run build` | Creates the production build |
+| `npm run start` | Serves the production build |
+
+## Content and translations
+
+All page copy lives in one file per language:
 
 ```
 public/information/en.json
 public/information/es.json
 ```
 
-These are fetched server-side based on the `[lang]` route segment, so every section renders already translated — no client-side locale state, no flash of the wrong language. Experience, skills, and publications data (which is more code-adjacent) lives in `lib/data.ts`, with inline `{ en, es }` pairs per field.
+Both files are read on the server from the `[lang]` route segment, so every page is rendered already translated, without client-side language state. Experience, skills and publications are defined in `lib/data.ts`, and the project catalog in `lib/projects.ts`, using inline `{ en, es }` pairs.
 
-## 🚀 Getting Started
+## Project screenshots
 
-```bash
-# Install dependencies
-npm install
+The screens shown in the project catalog are captures of each live website, taken with Playwright by the `capture-projects` skill (`.claude/skills/capture-projects`). The skill writes the images and a `manifest.json` per project to `public/images/projects/`, and `lib/projects.ts` reads the screens, the mobile capture and the public URL from those manifests. The captured screens are configured in `.claude/skills/capture-projects/projects.config.mjs`.
 
-# Run the development server (Turbopack)
-npm run dev
+## Project structure
 
-# Build for production
-npm run build
-npm run start
+```
+app/
+  [lang]/              Localized routes (en, es)
+    page.tsx           Home: carousel and project catalog
+    cv/page.tsx        CV
+    layout.tsx         Metadata, canonical URLs and hreflang per language
+  sitemap.ts           Sitemap with language alternates
+  robots.ts            robots.txt
+  theme/               Theme provider
+  layout.tsx           Root layout
+
+components/
+  hero/                Home carousel
+  projects/            Project catalog, previews and build animation
+  header/              Navigation, language and theme controls
+  footer/              Footer
+  information/         CV profile, career, education, milestones and hobbies
+  skills/              Skills and growth chart
+  experience/          Experience timeline
+  publications/        Publications (currently hidden)
+
+lib/                   Content data, projects, fonts, constants and theme context
+models/                Shared TypeScript types
+middleware.ts          Language redirect and cookies
+styles/                Tailwind CSS setup, design tokens and animations
+
+public/
+  images/              Carousel, project captures, logos and CV images
+  information/         Translations (en.json, es.json)
+
+design/                Source material that is not deployed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) — you'll be redirected to `/en` or `/es`.
+## License
 
-## 📄 License
+This is the code of a personal portfolio. It may be used as a structural reference, but its content and personal branding may not be reused.
 
-This project is personal portfolio code. Feel free to use it as a structural reference, but please don't reuse the content or personal branding as your own.
+## Contact
 
----
-
-<div align="center">
-
-Built with ❤️ by **Juan Manuel Muñoz González** — [LinkedIn](https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/)
-
-</div>
+Juan Manuel Muñoz González · [LinkedIn](https://www.linkedin.com/in/juan-manuel-mu%C3%B1oz-gonz%C3%A1lez/) · [GitHub](https://github.com/jmmg-dev)

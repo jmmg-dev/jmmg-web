@@ -90,7 +90,7 @@ export const PROJECTS: Project[] = [
     id: "kitforweb",
     name: "kitforweb",
     url: "https://kitforweb.com",
-    repo: "https://github.com/kitforweb/kitforweb",
+    repo: "https://github.com/jmmg-dev/kitforweb",
     tagline: {
       en: "Possibly the most complete developer kit on the web",
       es: "Posiblemente, el kit de desarrollo más completo de la web",
@@ -131,8 +131,8 @@ export const PROJECTS: Project[] = [
   {
     id: "playrxjs",
     name: "Play RxJS",
-    url: "https://play-rxjs.vercel.app", // fallback; the manifest URL wins
-    // TODO: GitHub repository (final URL pending)
+    url: "https://playrxjs.com", // fallback; the manifest URL wins
+    repo: "https://github.com/jmmg-dev/play-rxjs",
     tagline: {
       en: "Learn RxJS by playing",
       es: "Aprende jugando con RxJS",
@@ -174,8 +174,8 @@ export const PROJECTS: Project[] = [
   {
     id: "css-layout-lab",
     name: "CSS Layout Lab",
-    url: "https://css-layout-lab-pearl.vercel.app", // fallback; the manifest URL wins
-    repo: "https://github.com/CSS-Layout-Lab/css-layout-lab",
+    url: "https://css-layout-lab.com", // fallback; the manifest URL wins
+    repo: "https://github.com/jmmg-dev/css-layout-lab",
     tagline: {
       en: "Learn CSS layouts by playing with them",
       es: "Aprende layouts en CSS experimentando con ellos",
