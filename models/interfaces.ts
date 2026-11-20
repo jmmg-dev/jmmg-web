@@ -41,6 +41,16 @@ export interface NavLabels {
   skills: string;
   experience: string;
   publications: string;
+  support: string;
+}
+
+/** Donations section at the end of the home page */
+export interface SupportLabels {
+  title: string;
+  text: string;
+  thanks: string;
+  /** Button text of each payment method, by its id in SUPPORT_METHODS */
+  methods: Record<string, string>;
 }
 
 export interface InfoLabels {
@@ -169,6 +179,7 @@ export interface Information {
   hero: HeroLabels;
   footer: string;
   footerConnect: string;
+  support: SupportLabels;
   personalInfo: PersonalInfo;
   professionalInfo: ProfessionalInfo;
   seo: SeoLabels;

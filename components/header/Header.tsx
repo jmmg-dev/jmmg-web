@@ -4,7 +4,8 @@ import { useTheme } from "@/lib/theme";
 import { Lang } from "@/models/enums";
 import { NavDict } from "@/models/types";
 // BookOpen is the publications icon, hidden for now (see the sections below)
-import { /* BookOpen, */ FileText, Menu, Settings, User, X } from "lucide-react";
+import { /* BookOpen, */ FileText, Heart, Menu, Settings, User, X } from "lucide-react";
+import { SUPPORT_ID } from "@/lib/constants";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -37,6 +38,10 @@ const Header = ({
           // { id: "publications", label: dict.publications, icon: BookOpen },
         ]
       : [];
+  // Donations section at the end of the home page: an in-page jump there, the home page plus the anchor elsewhere
+  const supportHref = page === "projects" ? `#${SUPPORT_ID}` : `/${selectedLang}#${SUPPORT_ID}`;
+  // In the menu only where there is one (CV page); the home page has just the heart
+  const support = sections.length ? { href: supportHref, label: dict.support } : undefined;
   const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -134,6 +139,7 @@ const Header = ({
           <nav className="hidden md:flex items-center gap-1">
             <NavLinks
               home={sections.length ? { href: `/${selectedLang}`, label: dict.home } : undefined}
+              support={support}
               sections={sections}
               activeSection={activeSection}
               onSelect={scrollToSection}
@@ -143,6 +149,16 @@ const Header = ({
 
           {/* Right side controls */}
           <div className="flex items-center gap-2">
+            {/* Heart to the donations section, on every screen size */}
+            <Link
+              href={supportHref}
+              aria-label={dict.support}
+              title={dict.support}
+              className="p-2 rounded-lg border border-border bg-secondary/50 text-primary hover:border-primary transition-colors"
+            >
+              <Heart aria-hidden className="h-4 w-4 fill-current" />
+            </Link>
+
             <LanguageSelector
               selectedLang={selectedLang}
               onSelect={handlerLanguage}
@@ -177,6 +193,7 @@ const Header = ({
         <nav className="glass px-4 py-4 space-y-1">
           <NavLinks
             home={sections.length ? { href: `/${selectedLang}`, label: dict.home } : undefined}
+            support={support}
             sections={sections}
             activeSection={activeSection}
             onSelect={scrollToSection}

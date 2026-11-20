@@ -8,6 +8,7 @@ import { projectFontVariables } from "@/lib/fonts";
 import { PROJECTS } from "@/lib/projects";
 import { homeJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { SupportSection } from "@/components/support/SupportSection";
 import { Lang } from "@/models/enums";
 import { GITHUB_ORG } from "@/lib/constants";
 import { ArrowRight, Github, Linkedin } from "lucide-react";
@@ -149,6 +150,7 @@ const ProjectsPage = async ({ params }: Props) => {
         </section>
 
         <ProjectsSection lang={lang} dict={dict} />
+        <SupportSection dict={data.support} />
         <Footer lang={lang} data={data} />
       </main>
     </div>

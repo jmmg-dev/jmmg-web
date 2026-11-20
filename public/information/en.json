@@ -6,7 +6,8 @@
     "information": "Information",
     "skills": "Skills",
     "experience": "Experience",
-    "publications": "Publications"
+    "publications": "Publications",
+    "support": "Support"
   },
   "info": {
     "hero": {
@@ -64,6 +65,14 @@
   },
   "footer": "All rights reserved.",
   "footerConnect": "Connect",
+  "support": {
+    "title": "Support my projects",
+    "text": "If you like my work, you can make a small contribution towards its upkeep and the creation of new projects. It helps me keep them ad-free and give you the best possible experience.",
+    "thanks": "Thank you so much! :)",
+    "methods": {
+      "kofi": "Buy me a coffee on Ko-fi"
+    }
+  },
   "personalInfo": {
     "name": "Juan Manuel Muñoz González",
     "date": "15/05/1984",

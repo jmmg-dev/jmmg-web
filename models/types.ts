@@ -7,3 +7,4 @@ export type ExperienceDict = Information["experience"];
 export type PublicationsDict = Information["publications"];
 export type ProjectsDict = Information["projects"];
 export type HeroDict = Information["hero"];
+export type SupportDict = Information["support"];
