@@ -6,6 +6,7 @@ import type { HeroDict } from "@/models/types";
 import {
   ArrowRight,
   Github,
+  Heart,
   Linkedin,
   Mail,
   Pause,
@@ -14,7 +15,7 @@ import {
   SendHorizontal,
   Sparkles,
 } from "lucide-react";
-import { GITHUB_ORG } from "@/lib/constants";
+import { GITHUB_ORG, SUPPORT_ID } from "@/lib/constants";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 
@@ -155,12 +156,15 @@ export const HeroCarousel = ({
   linkedin,
   email,
   controls,
+  support,
 }: {
   lang: Lang;
   dict: HeroDict;
   linkedin: string;
   email: string;
   controls: { pause: string; play: string };
+  /** Label of the link to the donations section */
+  support: string;
 }) => {
   // Links to my websites, with their logo
   const projects = PROJECTS.flatMap((p) => {
@@ -520,8 +524,10 @@ export const HeroCarousel = ({
               <span className="hero-muted font-light">MG</span>
               <span className="hero-neon text-[0.65em]">.dev</span>
             </p>
+            {/* From sm up the size also depends on the width, so the longest title (ARQUITECTURA,
+                about 9.8em with its tracking) leaves room for the icons at the top right */}
             <h2
-              className="hero-in hero-fg mt-6 text-[8.5vw] sm:mt-2 font-black uppercase leading-none tracking-[0.12em] sm:text-7xl lg:text-8xl"
+              className="hero-in hero-fg mt-6 text-[8.5vw] sm:mt-2 font-black uppercase leading-none tracking-[0.12em] sm:text-[min(4.5rem,calc((100vw-16rem)/9.8))] lg:text-[min(6rem,calc((100vw-16rem)/9.8))]"
               style={{ "--i": 1 } as CSSProperties}
             >
               {slide.title}
@@ -530,10 +536,10 @@ export const HeroCarousel = ({
         </div>
       )}
 
-      {/* Desktop, top right: GitHub organisation, the same size as the project icons */}
+      {/* Desktop, top right: GitHub organisation and the donations section, the same size as the project icons */}
       {!slide.intro && (
         <div
-          className="hero-in absolute top-8 right-8 hidden md:block lg:right-12"
+          className="hero-in absolute top-8 right-8 hidden gap-3 md:flex lg:right-12"
           style={{ "--i": 0 } as CSSProperties}
         >
           <a
@@ -546,6 +552,11 @@ export const HeroCarousel = ({
           >
             <span className="hero-github">
               <Github aria-hidden />
+            </span>
+          </a>
+          <a href={`#${SUPPORT_ID}`} aria-label={support} title={support} className="hero-app">
+            <span className="hero-github">
+              <Heart aria-hidden />
             </span>
           </a>
         </div>

@@ -40,6 +40,7 @@ const ProjectsPage = async ({ params }: Props) => {
           linkedin={data.personalInfo.urlIn}
           email={data.personalInfo.email}
           controls={{ pause: dict.pause, play: dict.play }}
+          support={data.nav.support}
         />
 
         <section className="relative overflow-hidden py-24 sm:py-32">
