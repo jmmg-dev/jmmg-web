@@ -1,4 +1,4 @@
-import { Heart, House, type LucideIcon } from "lucide-react";
+import { House, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 export type NavSection = {
@@ -10,8 +10,6 @@ export type NavSection = {
 type NavLinksProps = {
   /** Link back to the home page, shown before the sections */
   home?: { href: string; label: string };
-  /** Link to the donations section, shown after the sections */
-  support?: { href: string; label: string };
   sections: NavSection[];
   activeSection: string;
   onSelect: (sectionId: string) => void;
@@ -20,7 +18,6 @@ type NavLinksProps = {
 
 export const NavLinks = ({
   home,
-  support,
   sections,
   activeSection,
   onSelect,
@@ -56,15 +53,6 @@ export const NavLinks = ({
             </button>
           );
         })}
-        {support && (
-          <Link
-            href={support.href}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-secondary"
-          >
-            <Heart className="h-4 w-4 text-primary" />
-            <span>{support.label}</span>
-          </Link>
-        )}
       </>
     );
   }
@@ -101,15 +89,6 @@ export const NavLinks = ({
           </button>
         );
       })}
-      {support && (
-        <Link
-          href={support.href}
-          className="relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 text-muted-foreground hover:text-foreground"
-        >
-          <Heart className="h-4 w-4 text-primary" />
-          <span>{support.label}</span>
-        </Link>
-      )}
     </>
   );
 };

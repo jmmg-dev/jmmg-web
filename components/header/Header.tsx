@@ -40,8 +40,6 @@ const Header = ({
       : [];
   // Donations section at the end of the home page: an in-page jump there, the home page plus the anchor elsewhere
   const supportHref = page === "projects" ? `#${SUPPORT_ID}` : `/${selectedLang}#${SUPPORT_ID}`;
-  // In the menu only where there is one (CV page); the home page has just the heart
-  const support = sections.length ? { href: supportHref, label: dict.support } : undefined;
   const router = useRouter();
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -139,7 +137,6 @@ const Header = ({
           <nav className="hidden md:flex items-center gap-1">
             <NavLinks
               home={sections.length ? { href: `/${selectedLang}`, label: dict.home } : undefined}
-              support={support}
               sections={sections}
               activeSection={activeSection}
               onSelect={scrollToSection}
@@ -193,7 +190,6 @@ const Header = ({
         <nav className="glass px-4 py-4 space-y-1">
           <NavLinks
             home={sections.length ? { href: `/${selectedLang}`, label: dict.home } : undefined}
-            support={support}
             sections={sections}
             activeSection={activeSection}
             onSelect={scrollToSection}
