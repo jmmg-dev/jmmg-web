@@ -149,16 +149,6 @@ const Header = ({
 
           {/* Right side controls */}
           <div className="flex items-center gap-2">
-            {/* Heart to the donations section, on every screen size */}
-            <Link
-              href={supportHref}
-              aria-label={dict.support}
-              title={dict.support}
-              className="p-2 rounded-lg border border-border bg-secondary/50 text-primary hover:border-primary transition-colors"
-            >
-              <Heart aria-hidden className="h-4 w-4 fill-current" />
-            </Link>
-
             <LanguageSelector
               selectedLang={selectedLang}
               onSelect={handlerLanguage}
@@ -180,6 +170,16 @@ const Header = ({
                 )}
               </button>
             )}
+
+            {/* Heart to the donations section, on every screen size, last of the controls */}
+            <Link
+              href={supportHref}
+              aria-label={dict.support}
+              title={dict.support}
+              className="p-2 rounded-lg border border-border bg-secondary/50 text-primary hover:border-primary transition-colors"
+            >
+              <Heart aria-hidden className="h-4 w-4 fill-current" />
+            </Link>
           </div>
         </div>
       </div>
