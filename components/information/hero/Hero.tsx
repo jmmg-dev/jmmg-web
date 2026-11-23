@@ -3,7 +3,8 @@ import { PersonalInfo } from "@/models/interfaces";
 import { InformationDict } from "@/models/types";
 import {
   AlertTriangle,
-  Calendar,
+  // Calendar is the date of birth icon, hidden for now (see below)
+  // Calendar,
   Download,
   Linkedin,
   Mail,
@@ -86,11 +87,13 @@ export const Hero = async ({
                 {personalInfo.city}, {personalInfo.country}
               </span>
             </div>
+            {/* Date of birth, hidden for now
             <span className="hidden sm:inline text-border">|</span>
             <div className="flex items-center gap-2">
               <Calendar className="w-4 h-4" />
               <span className="text-sm">{personalInfo.date}</span>
             </div>
+            */}
           </div>
 
           <div

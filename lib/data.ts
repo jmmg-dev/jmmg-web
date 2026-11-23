@@ -358,8 +358,8 @@ export const experiences = [
       es: "Full Stack Developer",
     },
     description: {
-      en: "Development and maintenance of banking applications for Unicaja Banco, leading the development team.",
-      es: "Desarrollo y mantenimiento de aplicaciones bancarias para Unicaja Banco, liderando el equipo de desarrollo.",
+      en: "Development and maintenance of banking applications for Unicaja Banco, as principal developer.",
+      es: "Desarrollo y mantenimiento de aplicaciones bancarias para Unicaja Banco, como desarrollador principal.",
     },
     projects: [
       {
