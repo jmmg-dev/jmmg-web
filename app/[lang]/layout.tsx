@@ -12,7 +12,8 @@ type Props = {
  * Only "en" and "es" are languages. Any other first segment (e.g. /llms.txt, which skips the
  * middleware because of the dot) is a 404 instead of failing to read its translation file.
  */
-const isLang = (value: string): value is Lang => (Object.values(Lang) as string[]).includes(value);
+const isLang = (value: string): value is Lang =>
+  (Object.values(Lang) as string[]).includes(value);
 
 /** Home page metadata (and the defaults inherited by the other pages), in the route's language */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

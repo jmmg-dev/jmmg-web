@@ -12,9 +12,9 @@ export const Degrees = async ({
   degrees: Degree[];
 }) => {
   return (
-    <div className="bg-card border border-border rounded-xl p-6 card-interactive">
-      <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
-        <GraduationCap className="w-5 h-5 text-primary" />
+    <div className="card-interactive rounded-xl border border-border bg-card p-6">
+      <h3 className="mb-6 flex items-center gap-3 text-xl font-bold text-foreground">
+        <GraduationCap className="h-5 w-5 text-primary" />
         {dict.degrees}
       </h3>
       <div className="space-y-6">

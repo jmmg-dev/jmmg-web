@@ -20,9 +20,16 @@ const LOCALES: Record<Lang, { hreflang: string; og: string }> = {
  *
  * @param path Path after the language, e.g. "" for the home page or "/cv"
  */
-export const pageMetadata = (lang: Lang, path: string, seo: PageSeo, siteName: string): Metadata => {
+export const pageMetadata = (
+  lang: Lang,
+  path: string,
+  seo: PageSeo,
+  siteName: string,
+): Metadata => {
   const url = `/${lang}${path}`;
-  const languages = Object.fromEntries(LANGS.map((l) => [LOCALES[l].hreflang, `/${l}${path}`]));
+  const languages = Object.fromEntries(
+    LANGS.map((l) => [LOCALES[l].hreflang, `/${l}${path}`]),
+  );
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -39,7 +46,9 @@ export const pageMetadata = (lang: Lang, path: string, seo: PageSeo, siteName: s
       title: seo.title,
       description: seo.description,
       locale: LOCALES[lang].og,
-      alternateLocale: LANGS.filter((l) => l !== lang).map((l) => LOCALES[l].og),
+      alternateLocale: LANGS.filter((l) => l !== lang).map(
+        (l) => LOCALES[l].og,
+      ),
     },
     twitter: {
       card: "summary_large_image",
@@ -66,7 +75,15 @@ const person = (data: Information) => ({
     addressLocality: data.personalInfo.city,
     addressCountry: "ES",
   },
-  knowsAbout: ["Software architecture", "Front End architecture", "UX/UI", "Angular", "React", "Next.js", "TypeScript"],
+  knowsAbout: [
+    "Software architecture",
+    "Front End architecture",
+    "UX/UI",
+    "Angular",
+    "React",
+    "Next.js",
+    "TypeScript",
+  ],
 });
 
 /** Home page: the website and its author */

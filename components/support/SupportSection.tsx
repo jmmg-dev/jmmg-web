@@ -12,17 +12,22 @@ export const SupportSection = ({ dict }: { dict: SupportDict }) => {
     >
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 h-[360px] opacity-40 [background:radial-gradient(50%_60%_at_50%_100%,var(--neon),transparent_70%)] [mask-image:linear-gradient(to_top,black,transparent)] dark:opacity-15"
+        className="absolute inset-x-0 bottom-0 h-[360px] [mask-image:linear-gradient(to_top,black,transparent)] opacity-40 [background:radial-gradient(50%_60%_at_50%_100%,var(--neon),transparent_70%)] dark:opacity-15"
       />
       <div className="reveal relative mx-auto flex max-w-2xl flex-col items-center px-4 text-center sm:px-6">
         <SupportHeart />
-        <h2 id="support-title" className="mt-6 text-3xl font-bold tracking-tight text-balance sm:text-4xl">
+        <h2
+          id="support-title"
+          className="mt-6 text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+        >
           {dict.title}
         </h2>
         <p className="mt-5 max-w-[60ch] text-lg leading-relaxed text-pretty text-muted-foreground">
           {dict.text}
         </p>
-        <p className="mt-3 text-lg font-medium text-foreground">{dict.thanks}</p>
+        <p className="mt-3 text-lg font-medium text-foreground">
+          {dict.thanks}
+        </p>
 
         <ul className="mt-8 flex flex-wrap justify-center gap-3">
           {SUPPORT_METHODS.map(({ id, url, icon: Icon }, index) => (

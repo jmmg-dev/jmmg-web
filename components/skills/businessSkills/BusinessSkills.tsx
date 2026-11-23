@@ -8,14 +8,14 @@ type BusinessSkillsProps = {
 
 export const BusinessSkills = ({ title, skills }: BusinessSkillsProps) => {
   return (
-    <div className="bg-card border border-border rounded-xl p-6 card-interactive lg:h-full flex flex-col">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 rounded-lg bg-primary/10">
-          <Building2 className="w-5 h-5 text-primary" />
+    <div className="card-interactive flex flex-col rounded-xl border border-border bg-card p-6 lg:h-full">
+      <div className="mb-6 flex items-center gap-3">
+        <div className="rounded-lg bg-primary/10 p-2">
+          <Building2 className="h-5 w-5 text-primary" />
         </div>
         <h3 className="text-xl font-bold text-foreground">{title}</h3>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:flex-1 lg:min-h-0 content-start lg:overflow-y-auto pr-2 custom-scrollbar">
+      <div className="custom-scrollbar grid grid-cols-1 content-start gap-5 pr-2 sm:grid-cols-2 lg:min-h-0 lg:flex-1 lg:overflow-y-auto">
         {skills.map((skill, index) => (
           <ProgressBar
             key={skill.id}

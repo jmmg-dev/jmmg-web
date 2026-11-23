@@ -13,11 +13,11 @@ const ExperienceSection = ({
 }) => {
   return (
     <section id="experience" className="py-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-primary rounded-full" />
+          <h2 className="mb-4 flex items-center gap-3 text-3xl font-bold text-foreground sm:text-4xl">
+            <span className="h-0.5 w-8 rounded-full bg-primary" />
             {title}
           </h2>
         </div>
@@ -25,7 +25,7 @@ const ExperienceSection = ({
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border transform md:-translate-x-1/2 hidden md:block" />
+          <div className="absolute top-0 bottom-0 left-0 hidden w-px transform bg-border md:left-1/2 md:block md:-translate-x-1/2" />
 
           {/* Experience Items */}
           <div className="space-y-12">

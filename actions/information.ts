@@ -8,7 +8,7 @@ export const getInformationAction = async (
   try {
     const data = await getInformationService(lang);
     return data;
-  } catch (error) {
+  } catch {
     throw new Error("Error getting information");
   }
 };

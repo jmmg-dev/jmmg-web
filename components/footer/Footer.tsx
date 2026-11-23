@@ -48,7 +48,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
             <span className="font-light text-muted-foreground">MG</span>
             <span className="neon-text text-base">.dev</span>
           </Link>
-          <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-primary">
+          <p className="mt-3 font-mono text-xs tracking-[0.3em] text-primary uppercase">
             {data.hero.subtitle}
           </p>
           <p className="mt-6 text-sm text-foreground">
@@ -62,7 +62,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
         {/* My websites and contact, in two columns on mobile too */}
         <div className="grid grid-cols-2 gap-8 md:col-span-7">
           <nav aria-label={data.nav.projects}>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
               {data.nav.projects}
             </p>
             <ul className="mt-5 space-y-3">
@@ -96,7 +96,7 @@ export const Footer = ({ lang, data }: { lang: Lang; data: Information }) => {
 
           {/* LinkedIn, GitHub and CV */}
           <nav aria-label={data.footerConnect}>
-            <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            <p className="text-xs font-semibold tracking-widest text-muted-foreground uppercase">
               {data.footerConnect}
             </p>
             <ul className="mt-5 space-y-3">

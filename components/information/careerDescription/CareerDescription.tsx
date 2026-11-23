@@ -10,11 +10,11 @@ export const CareerDescription = async ({
 }) => {
   return (
     <div className="mb-16">
-      <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
-        <span className="w-8 h-0.5 bg-primary rounded-full" />
+      <h2 className="mb-6 flex items-center gap-3 text-2xl font-bold text-foreground">
+        <span className="h-0.5 w-8 rounded-full bg-primary" />
         {dict.career}
       </h2>
-      <p className="whitespace-pre-line text-muted-foreground leading-relaxed text-pretty">
+      <p className="leading-relaxed text-pretty whitespace-pre-line text-muted-foreground">
         {professionalInfo.career}
       </p>
     </div>

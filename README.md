@@ -32,24 +32,24 @@ Live site: [jmmg.dev](https://jmmg.dev)
 
 Personal projects featured in the catalog, built for the developer community.
 
-| Project | Description | Website | Source |
-|---|---|---|---|
-| **kitforweb** | Online toolkit with the everyday utilities developers need, running entirely in the browser so data never leaves the user's machine | [kitforweb.com](https://kitforweb.com) | [GitHub](https://github.com/jmmg-dev/kitforweb) |
-| **Play RxJS** | Interactive, visual RxJS documentation with editable examples that run in real time | [playrxjs.com](https://playrxjs.com) | [GitHub](https://github.com/jmmg-dev/play-rxjs) |
-| **CSS Layout Lab** | Interactive lab to master CSS layouts, from block and inline to flexbox and grid | [css-layout-lab.com](https://css-layout-lab.com) | [GitHub](https://github.com/jmmg-dev/css-layout-lab) |
+| Project            | Description                                                                                                                         | Website                                          | Source                                               |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------- |
+| **kitforweb**      | Online toolkit with the everyday utilities developers need, running entirely in the browser so data never leaves the user's machine | [kitforweb.com](https://kitforweb.com)           | [GitHub](https://github.com/jmmg-dev/kitforweb)      |
+| **Play RxJS**      | Interactive, visual RxJS documentation with editable examples that run in real time                                                 | [playrxjs.com](https://playrxjs.com)             | [GitHub](https://github.com/jmmg-dev/play-rxjs)      |
+| **CSS Layout Lab** | Interactive lab to master CSS layouts, from block and inline to flexbox and grid                                                    | [css-layout-lab.com](https://css-layout-lab.com) | [GitHub](https://github.com/jmmg-dev/css-layout-lab) |
 
 ## Tech stack
 
-| Area | Technology |
-|---|---|
-| Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack) |
-| Library | [React 19](https://react.dev/) |
-| Language | [TypeScript 5.7](https://www.typescriptlang.org/) |
-| Styling | [Tailwind CSS 4](https://tailwindcss.com/) with OKLCH design tokens |
-| Charts | [Recharts](https://recharts.org/) |
-| Icons | [lucide-react](https://lucide.dev/) |
-| Analytics | [Vercel Analytics](https://vercel.com/analytics) |
-| Tooling | [Playwright](https://playwright.dev/) and [sharp](https://sharp.pixelplumbing.com/), used to capture the project screenshots |
+| Area      | Technology                                                                                                                   |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Framework | [Next.js 16](https://nextjs.org/) (App Router, Turbopack)                                                                    |
+| Library   | [React 19](https://react.dev/)                                                                                               |
+| Language  | [TypeScript 5.7](https://www.typescriptlang.org/)                                                                            |
+| Styling   | [Tailwind CSS 4](https://tailwindcss.com/) with OKLCH design tokens                                                          |
+| Charts    | [Recharts](https://recharts.org/)                                                                                            |
+| Icons     | [lucide-react](https://lucide.dev/)                                                                                          |
+| Analytics | [Vercel Analytics](https://vercel.com/analytics)                                                                             |
+| Tooling   | [Playwright](https://playwright.dev/) and [sharp](https://sharp.pixelplumbing.com/), used to capture the project screenshots |
 
 ## Getting started
 
@@ -64,11 +64,11 @@ The site runs at [http://localhost:3000](http://localhost:3000) and redirects to
 
 ### Scripts
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Starts the development server |
-| `npm run build` | Creates the production build |
-| `npm run start` | Serves the production build |
+| Script          | Description                   |
+| --------------- | ----------------------------- |
+| `npm run dev`   | Starts the development server |
+| `npm run build` | Creates the production build  |
+| `npm run start` | Serves the production build   |
 
 ## Content and translations
 

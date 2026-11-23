@@ -12,12 +12,12 @@ export const Hobbies = async ({
   hobbies: Hobbie[];
 }) => {
   return (
-    <div className="bg-card border border-border rounded-xl p-6 card-interactive">
-      <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-3">
-        <Heart className="w-5 h-5 text-primary" />
+    <div className="card-interactive rounded-xl border border-border bg-card p-6">
+      <h3 className="mb-6 flex items-center gap-3 text-xl font-bold text-foreground">
+        <Heart className="h-5 w-5 text-primary" />
         {dict.hobbies}
       </h3>
-      <div className="flex flex-wrap gap-3 justify-center">
+      <div className="flex flex-wrap justify-center gap-3">
         {hobbies.map((hobby, index) => {
           return <HobbiesItem key={index} hobby={hobby} />;
         })}

@@ -21,42 +21,42 @@ export const PublicationCard = ({
   technologies,
 }: PublicationCardProps) => {
   return (
-    <div className="group bg-card border border-border rounded-xl card-interactive h-full p-6">
-      <div className="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-4 mb-4">
+    <div className="group card-interactive h-full rounded-xl border border-border bg-card p-6">
+      <div className="mb-4 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:text-left">
         {websiteUrl ? (
           <a
             href={websiteUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative w-full max-w-sm mx-auto h-48 sm:w-52 sm:h-32 sm:max-w-none sm:mx-0 shrink-0 rounded-xl overflow-hidden border border-border block"
+            className="relative mx-auto block h-48 w-full max-w-sm shrink-0 overflow-hidden rounded-xl border border-border sm:mx-0 sm:h-32 sm:w-52 sm:max-w-none"
             aria-label={`Visit ${title} website`}
           >
             <Image src={image} alt={title} fill className="object-cover" />
           </a>
         ) : (
-          <div className="relative w-full max-w-sm mx-auto h-48 sm:w-52 sm:h-32 sm:max-w-none sm:mx-0 shrink-0 rounded-xl overflow-hidden border border-border">
+          <div className="relative mx-auto h-48 w-full max-w-sm shrink-0 overflow-hidden rounded-xl border border-border sm:mx-0 sm:h-32 sm:w-52 sm:max-w-none">
             <Image src={image} alt={title} fill className="object-cover" />
           </div>
         )}
 
-        <div className="flex-1 min-w-0">
-          <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+        <div className="min-w-0 flex-1">
+          <h3 className="mb-2 text-lg font-bold text-foreground transition-colors group-hover:text-primary">
             {title}
           </h3>
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:justify-start">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="w-4 h-4" />
-              <span className="text-sm font-mono">{date}</span>
+              <Calendar className="h-4 w-4" />
+              <span className="font-mono text-sm">{date}</span>
             </div>
             {websiteUrl && (
               <a
                 href={websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+                className="rounded-lg border border-border bg-secondary/50 p-2 text-muted-foreground transition-all hover:border-primary/50 hover:text-primary"
                 aria-label="Visit website"
               >
-                <Globe className="w-4 h-4" />
+                <Globe className="h-4 w-4" />
               </a>
             )}
             {githubUrl && (
@@ -64,20 +64,20 @@ export const PublicationCard = ({
                 href={githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-primary hover:border-primary/50 transition-all"
+                className="rounded-lg border border-border bg-secondary/50 p-2 text-muted-foreground transition-all hover:border-primary/50 hover:text-primary"
                 aria-label="View on GitHub"
               >
-                <Github className="w-4 h-4" />
+                <Github className="h-4 w-4" />
               </a>
             )}
           </div>
 
           {technologies.length > 0 && (
-            <div className="flex flex-wrap gap-2 items-center justify-center sm:justify-start mt-3">
+            <div className="mt-3 flex flex-wrap items-center justify-center gap-2 sm:justify-start">
               {technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 text-xs font-medium bg-primary/10 text-primary border border-primary/20 rounded-full"
+                  className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
                 >
                   {tech}
                 </span>
@@ -87,7 +87,7 @@ export const PublicationCard = ({
         </div>
       </div>
 
-      <p className="text-muted-foreground leading-relaxed text-pretty text-left">
+      <p className="text-left leading-relaxed text-pretty text-muted-foreground">
         {description}
       </p>
     </div>

@@ -46,11 +46,11 @@ const ProjectsPage = async ({ params }: Props) => {
         <section className="relative overflow-hidden py-24 sm:py-32">
           <div
             aria-hidden
-            className="absolute inset-x-0 top-0 h-[420px] opacity-50 [background:radial-gradient(50%_60%_at_50%_0%,var(--neon),transparent_70%)] [mask-image:linear-gradient(to_bottom,black,transparent)] dark:opacity-20"
+            className="absolute inset-x-0 top-0 h-[420px] [mask-image:linear-gradient(to_bottom,black,transparent)] opacity-50 [background:radial-gradient(50%_60%_at_50%_0%,var(--neon),transparent_70%)] dark:opacity-20"
           />
           <div className="reveal relative mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16 lg:px-8">
             <div className="lg:col-span-7">
-              <p className="font-mono text-sm uppercase tracking-widest text-primary">
+              <p className="font-mono text-sm tracking-widest text-primary uppercase">
                 {dict.eyebrow}
               </p>
               <h1 className="mt-4 text-3xl font-bold tracking-tight text-balance sm:text-5xl">
@@ -84,7 +84,7 @@ const ProjectsPage = async ({ params }: Props) => {
                       rel="noopener noreferrer"
                       aria-label="LinkedIn"
                       title="LinkedIn"
-                      className="grid h-16 w-16 sm:h-18 sm:w-18 place-items-center rounded-[22%] border border-primary bg-primary text-primary-foreground transition-[opacity,transform] hover:-translate-y-0.5 hover:scale-105 hover:opacity-90"
+                      className="grid h-16 w-16 place-items-center rounded-[22%] border border-primary bg-primary text-primary-foreground transition-[opacity,transform] hover:-translate-y-0.5 hover:scale-105 hover:opacity-90 sm:h-18 sm:w-18"
                     >
                       <Linkedin aria-hidden className="h-[45%] w-[45%]" />
                     </a>
@@ -93,7 +93,7 @@ const ProjectsPage = async ({ params }: Props) => {
                       href={`/${lang}/cv`}
                       aria-label={dict.viewCv}
                       title={dict.viewCv}
-                      className="group flex h-16 w-16 sm:h-18 sm:w-18 flex-col items-center justify-center rounded-[22%] border border-border font-mono text-base font-bold leading-none text-foreground transition-[color,border-color,transform] hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+                      className="group flex h-16 w-16 flex-col items-center justify-center rounded-[22%] border border-border font-mono text-base leading-none font-bold text-foreground transition-[color,border-color,transform] hover:-translate-y-0.5 hover:border-primary hover:text-primary sm:h-18 sm:w-18"
                     >
                       CV
                       <ArrowRight
@@ -107,7 +107,7 @@ const ProjectsPage = async ({ params }: Props) => {
                       rel="noopener noreferrer"
                       aria-label="GitHub"
                       title="GitHub"
-                      className="grid h-16 w-16 sm:h-18 sm:w-18 place-items-center rounded-[22%] border border-border text-foreground transition-[color,border-color,transform] hover:-translate-y-0.5 hover:scale-105 hover:border-primary hover:text-primary"
+                      className="grid h-16 w-16 place-items-center rounded-[22%] border border-border text-foreground transition-[color,border-color,transform] hover:-translate-y-0.5 hover:scale-105 hover:border-primary hover:text-primary sm:h-18 sm:w-18"
                     >
                       <Github aria-hidden className="h-[55%] w-[55%]" />
                     </a>

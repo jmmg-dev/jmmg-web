@@ -124,7 +124,11 @@ export const PROJECTS: Project[] = [
     },
     ...fromManifest(kitforwebCaptures),
     logo: {
-      wordmark: { src: "/images/logos/kitforweb/logo-dark.svg", width: 567, height: 91 },
+      wordmark: {
+        src: "/images/logos/kitforweb/logo-dark.svg",
+        width: 567,
+        height: 91,
+      },
       icon: { src: "/images/logos/kitforweb/logo-icon.svg" },
     },
   },
@@ -155,7 +159,8 @@ export const PROJECTS: Project[] = [
       accent: "#f299fb",
       accentForeground: "#2f2630",
       highlight: "#a3feff",
-      textGradient: "linear-gradient(120deg, #f299fb 0%, #c9b6ff 50%, #a3feff 100%)",
+      textGradient:
+        "linear-gradient(120deg, #f299fb 0%, #c9b6ff 50%, #a3feff 100%)",
       glow: "rgb(242 153 251 / 0.35)",
       fontHeading: MONO,
       fontBody: "var(--font-p-space-grotesk), system-ui, sans-serif",
@@ -167,7 +172,11 @@ export const PROJECTS: Project[] = [
     },
     ...fromManifest(playrxjsCaptures),
     logo: {
-      wordmark: { src: "/images/logos/playrxjs/logo-play-rxjs.svg", width: 484, height: 106 },
+      wordmark: {
+        src: "/images/logos/playrxjs/logo-play-rxjs.svg",
+        width: 484,
+        height: 106,
+      },
       icon: { src: "/images/logos/playrxjs/logo-prx.svg" },
     },
   },
@@ -200,7 +209,8 @@ export const PROJECTS: Project[] = [
       highlight: "#a8417f",
       textGradient: "linear-gradient(100deg, #f08f63, #d274b4 55%, #4f94e8)",
       glow: "rgb(240 143 99 / 0.3)",
-      fontHeading: "var(--font-p-inter-tight), var(--font-p-instrument), system-ui, sans-serif",
+      fontHeading:
+        "var(--font-p-inter-tight), var(--font-p-instrument), system-ui, sans-serif",
       fontBody: "var(--font-p-instrument), system-ui, sans-serif",
       fontMono: MONO,
       headingWeight: 600,
@@ -210,7 +220,11 @@ export const PROJECTS: Project[] = [
     },
     ...fromManifest(cssLayoutLabCaptures),
     logo: {
-      wordmark: { src: "/images/logos/css-layout-lab/css-layout-lab.svg", width: 436, height: 80 },
+      wordmark: {
+        src: "/images/logos/css-layout-lab/css-layout-lab.svg",
+        width: 436,
+        height: 80,
+      },
       icon: { src: "/images/logos/css-layout-lab/css-layout-lab-icon.svg" },
     },
   },

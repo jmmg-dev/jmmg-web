@@ -48,7 +48,12 @@ const buildBricks = () => {
       const right = Math.min(x1, x + BRICK_W);
       if (right - left < 4) continue;
       // Roughly one in five bricks in the theme colour, scattered without a visible pattern
-      lay(left, right - left, row, (Math.round(left / PITCH_X) * 7 + row * 11) % 5 === 0);
+      lay(
+        left,
+        right - left,
+        row,
+        (Math.round(left / PITCH_X) * 7 + row * 11) % 5 === 0,
+      );
     }
   };
 
@@ -67,7 +72,11 @@ const buildBricks = () => {
     } else if (row === WALL_ROWS) {
       // Wall battlements (every other slot, away from the towers) while the towers keep rising
       fillRow(towers[0][0], towers[0][1], row);
-      for (let x = wall[0] + PITCH_X, col = 1; x + BRICK_W <= wall[1] - PITCH_X; x += PITCH_X, col++) {
+      for (
+        let x = wall[0] + PITCH_X, col = 1;
+        x + BRICK_W <= wall[1] - PITCH_X;
+        x += PITCH_X, col++
+      ) {
         if (col % 2) lay(x, BRICK_W, row, col % 4 === 1);
       }
       fillRow(towers[1][0], towers[1][1], row);
@@ -141,7 +150,13 @@ export const BrickWall = ({ className = "" }: { className?: string }) => {
           className="brick-flag"
           style={{ "--d": `${BUILD_MS + 250 + i * 150}ms` } as CSSProperties}
         >
-          <rect x={cx - 0.75} y={POLE_TOP} width={1.5} height={POLE_H} rx={0.75} />
+          <rect
+            x={cx - 0.75}
+            y={POLE_TOP}
+            width={1.5}
+            height={POLE_H}
+            rx={0.75}
+          />
           <path d={`M ${cx + 0.75} ${POLE_TOP} l 12 4 l -12 4 z`} />
         </g>
       ))}

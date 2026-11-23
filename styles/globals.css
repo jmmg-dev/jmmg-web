@@ -329,7 +329,11 @@ section {
 }
 
 .project-glow {
-  background: radial-gradient(60% 60% at 50% 50%, var(--p-glow), transparent 70%);
+  background: radial-gradient(
+    60% 60% at 50% 50%,
+    var(--p-glow),
+    transparent 70%
+  );
   opacity: 0.55;
   transition: opacity 0.5s ease;
 }
@@ -537,7 +541,11 @@ section {
     linear-gradient(90deg, rgb(56 189 248 / 0.14) 1px, transparent 1px);
   background-position: center;
   background-size: 24px 24px;
-  mask-image: radial-gradient(ellipse 80% 75% at 50% 50%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(
+    ellipse 80% 75% at 50% 50%,
+    #000 30%,
+    transparent 100%
+  );
   opacity: 0;
   pointer-events: none;
   transition: opacity 1s ease;
@@ -618,11 +626,17 @@ section {
   transform: translate(0, -50%);
 }
 
-.hero-frame[data-motion="pan-x"]:is([data-state="active"], [data-state="previous"]) {
+.hero-frame[data-motion="pan-x"]:is(
+    [data-state="active"],
+    [data-state="previous"]
+  ) {
   animation-name: hero-pan-x;
 }
 
-.hero-frame[data-motion="pan-x-rev"]:is([data-state="active"], [data-state="previous"]) {
+.hero-frame[data-motion="pan-x-rev"]:is(
+    [data-state="active"],
+    [data-state="previous"]
+  ) {
   animation-name: hero-pan-x-rev;
 }
 
@@ -659,7 +673,10 @@ section {
   transform: translateY(0);
 }
 
-.hero-frame[data-motion="pan-y"]:is([data-state="active"], [data-state="previous"]) {
+.hero-frame[data-motion="pan-y"]:is(
+    [data-state="active"],
+    [data-state="previous"]
+  ) {
   animation-name: hero-pan-y;
 }
 
@@ -723,7 +740,10 @@ section {
   transform-origin: 50% 40%;
 }
 
-.hero-frame[data-motion="reveal"]:is([data-state="active"], [data-state="previous"]) {
+.hero-frame[data-motion="reveal"]:is(
+    [data-state="active"],
+    [data-state="previous"]
+  ) {
   animation-name: hero-reveal;
 }
 
@@ -752,7 +772,10 @@ section {
   object-position: center;
 }
 
-.hero-frame[data-motion="float"]:is([data-state="active"], [data-state="previous"]) {
+.hero-frame[data-motion="float"]:is(
+    [data-state="active"],
+    [data-state="previous"]
+  ) {
   animation-name: hero-float;
 }
 
@@ -792,7 +815,6 @@ section {
   z-index: 3;
 }
 
-
 /* Typing (kitforweb and "npm run dev"): a line is typed with its cursor and enter is pressed.
    --chars is set by the component; the timings are tuned per scene. */
 .hero-type {
@@ -825,16 +847,29 @@ section {
   border-radius: 0.04em;
 }
 
-:is(.hero-scene, .hero-overlay):is([data-state="active"], [data-state="previous"]) .hero-type-text {
-  animation: hero-typing var(--type-ms) steps(var(--chars), end) var(--type-delay) both;
+:is(.hero-scene, .hero-overlay):is(
+    [data-state="active"],
+    [data-state="previous"]
+  )
+  .hero-type-text {
+  animation: hero-typing var(--type-ms) steps(var(--chars), end)
+    var(--type-delay) both;
 }
 
-:is(.hero-scene, .hero-overlay):is([data-state="active"], [data-state="previous"]) .hero-type-cursor {
+:is(.hero-scene, .hero-overlay):is(
+    [data-state="active"],
+    [data-state="previous"]
+  )
+  .hero-type-cursor {
   animation: hero-blink 0.6s step-end var(--blink-at) infinite;
 }
 
 /* Enter: the line sinks slightly and lights up */
-:is(.hero-scene, .hero-overlay):is([data-state="active"], [data-state="previous"]) .hero-type {
+:is(.hero-scene, .hero-overlay):is(
+    [data-state="active"],
+    [data-state="previous"]
+  )
+  .hero-type {
   animation: hero-enter 350ms ease-out var(--enter-at) both;
 }
 
@@ -946,11 +981,14 @@ section {
 }
 
 /* On send, the button lights up and the arrow shoots off */
-.hero-overlay:is([data-state="active"], [data-state="previous"]) .hero-prompt-send {
+.hero-overlay:is([data-state="active"], [data-state="previous"])
+  .hero-prompt-send {
   animation: hero-send 600ms ease-out 3600ms both;
 }
 
-.hero-overlay:is([data-state="active"], [data-state="previous"]) .hero-prompt-send svg {
+.hero-overlay:is([data-state="active"], [data-state="previous"])
+  .hero-prompt-send
+  svg {
   animation: hero-send-arrow 600ms cubic-bezier(0.5, 0, 0.9, 0.4) 3650ms both;
 }
 
@@ -1047,7 +1085,9 @@ section {
 /* Scoped to .hero-split so it wins over the base .hero-ball rule (top: 0) further down.
    --ball-out: where the balls stop, just outside the panel (its side padding, half a ball and a gap). */
 .hero-split .hero-split-ball {
-  --ball-out: calc(var(--tagline-px) + clamp(2rem, 3.2vw, 2.75rem) / 2 + 0.75rem);
+  --ball-out: calc(
+    var(--tagline-px) + clamp(2rem, 3.2vw, 2.75rem) / 2 + 0.75rem
+  );
   top: 50%;
   opacity: 0;
 }
@@ -1234,7 +1274,8 @@ section {
 
 /* Each task appears and, a moment later, is checked off */
 .hero-overlay[data-state="active"] .hero-answer-tasks li {
-  animation: hero-rise 0.45s cubic-bezier(0.16, 1, 0.3, 1) calc(2.6s + var(--i) * 0.5s) both;
+  animation: hero-rise 0.45s cubic-bezier(0.16, 1, 0.3, 1)
+    calc(2.6s + var(--i) * 0.5s) both;
 }
 
 .hero-overlay[data-state="active"] .hero-answer-check {
@@ -1325,7 +1366,17 @@ section {
   position: absolute;
   inset: 10%;
   border-radius: 9999px;
-  background: conic-gradient(from 0deg, #e0234e, #38bdf8, #dd0031, #1d91b4, #f5f5f5, #b7178c, #8ed6fb, #e0234e);
+  background: conic-gradient(
+    from 0deg,
+    #e0234e,
+    #38bdf8,
+    #dd0031,
+    #1d91b4,
+    #f5f5f5,
+    #b7178c,
+    #8ed6fb,
+    #e0234e
+  );
   filter: blur(60px);
   opacity: 0.28;
 }
@@ -1381,26 +1432,33 @@ section {
   animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech[data-fx="blur"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-tech[data-fx="blur"] {
   animation-name: hero-fx-blur;
 }
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech[data-fx="skew"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-tech[data-fx="skew"] {
   animation-name: hero-fx-skew;
 }
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech[data-fx="flip"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-tech[data-fx="flip"] {
   animation-name: hero-fx-flip;
 }
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech[data-fx="iris"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-tech[data-fx="iris"] {
   animation-name: hero-fx-iris;
 }
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech[data-fx="glitch"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-tech[data-fx="glitch"] {
   animation-name: hero-fx-glitch;
   animation-timing-function: steps(1, end);
 }
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech[data-fx="spin"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-tech[data-fx="spin"] {
   animation-name: hero-fx-spin;
 }
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-tech[data-fx="warp"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-tech[data-fx="warp"] {
   animation-name: hero-fx-warp;
 }
 
@@ -1408,59 +1466,167 @@ section {
 
 /* From far and blurred to sharp; leaves shrinking and blurring */
 @keyframes hero-fx-blur {
-  0% { opacity: 0; transform: scale(2.2); filter: blur(24px); }
-  30%, 65% { opacity: 1; transform: scale(1); filter: blur(0); }
-  100% { opacity: 0; transform: scale(0.6); filter: blur(16px); }
+  0% {
+    opacity: 0;
+    transform: scale(2.2);
+    filter: blur(24px);
+  }
+  30%,
+  65% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.6);
+    filter: blur(16px);
+  }
 }
 
 /* Slides in skewed from the left and leaves to the right */
 @keyframes hero-fx-skew {
-  0% { opacity: 0; transform: translateX(-60%) skewX(35deg); filter: blur(10px); }
-  30%, 65% { opacity: 1; transform: translateX(0) skewX(0); filter: blur(0); }
-  100% { opacity: 0; transform: translateX(60%) skewX(-35deg); filter: blur(10px); }
+  0% {
+    opacity: 0;
+    transform: translateX(-60%) skewX(35deg);
+    filter: blur(10px);
+  }
+  30%,
+  65% {
+    opacity: 1;
+    transform: translateX(0) skewX(0);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(60%) skewX(-35deg);
+    filter: blur(10px);
+  }
 }
 
 /* Flips in 3D around its vertical axis */
 @keyframes hero-fx-flip {
-  0% { opacity: 0; transform: rotateY(-95deg) scale(0.85); }
-  30%, 65% { opacity: 1; transform: rotateY(0) scale(1); }
-  100% { opacity: 0; transform: rotateY(95deg) scale(0.85); }
+  0% {
+    opacity: 0;
+    transform: rotateY(-95deg) scale(0.85);
+  }
+  30%,
+  65% {
+    opacity: 1;
+    transform: rotateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotateY(95deg) scale(0.85);
+  }
 }
 
 /* Opens and closes in a circle, like an iris */
 @keyframes hero-fx-iris {
-  0% { opacity: 1; clip-path: circle(0% at 50% 50%); transform: scale(1.15); }
-  30%, 65% { opacity: 1; clip-path: circle(72% at 50% 50%); transform: scale(1); }
-  100% { opacity: 1; clip-path: circle(0% at 50% 50%); transform: scale(0.9); }
+  0% {
+    opacity: 1;
+    clip-path: circle(0% at 50% 50%);
+    transform: scale(1.15);
+  }
+  30%,
+  65% {
+    opacity: 1;
+    clip-path: circle(72% at 50% 50%);
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    clip-path: circle(0% at 50% 50%);
+    transform: scale(0.9);
+  }
 }
 
 /* Flickers with offsets and colour aberration */
 @keyframes hero-fx-glitch {
-  0% { opacity: 0; }
-  6% { opacity: 1; transform: translate(-8px, 2px) skewX(12deg); filter: drop-shadow(-6px 0 #ff00c8) drop-shadow(6px 0 #00f0ff); }
-  10% { opacity: 0.2; transform: translate(6px, -3px); }
-  14% { opacity: 1; transform: translate(-3px, 0) skewX(-8deg); filter: drop-shadow(5px 0 #ff00c8) drop-shadow(-5px 0 #00f0ff); }
-  20% { opacity: 0.6; transform: translate(4px, 1px); }
-  26% { opacity: 1; transform: none; filter: drop-shadow(0 0 30px rgb(255 255 255 / 0.2)); }
-  70% { opacity: 1; transform: none; filter: drop-shadow(0 0 30px rgb(255 255 255 / 0.2)); }
-  76% { opacity: 1; transform: translate(10px, -2px) skewX(-14deg); filter: drop-shadow(-8px 0 #ff00c8) drop-shadow(8px 0 #00f0ff); }
-  82% { opacity: 0.3; transform: translate(-12px, 3px); }
-  88% { opacity: 0.8; transform: translate(6px, 0) scaleY(0.4); }
-  94%, 100% { opacity: 0; transform: scaleY(0.05); }
+  0% {
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+    transform: translate(-8px, 2px) skewX(12deg);
+    filter: drop-shadow(-6px 0 #ff00c8) drop-shadow(6px 0 #00f0ff);
+  }
+  10% {
+    opacity: 0.2;
+    transform: translate(6px, -3px);
+  }
+  14% {
+    opacity: 1;
+    transform: translate(-3px, 0) skewX(-8deg);
+    filter: drop-shadow(5px 0 #ff00c8) drop-shadow(-5px 0 #00f0ff);
+  }
+  20% {
+    opacity: 0.6;
+    transform: translate(4px, 1px);
+  }
+  26% {
+    opacity: 1;
+    transform: none;
+    filter: drop-shadow(0 0 30px rgb(255 255 255 / 0.2));
+  }
+  70% {
+    opacity: 1;
+    transform: none;
+    filter: drop-shadow(0 0 30px rgb(255 255 255 / 0.2));
+  }
+  76% {
+    opacity: 1;
+    transform: translate(10px, -2px) skewX(-14deg);
+    filter: drop-shadow(-8px 0 #ff00c8) drop-shadow(8px 0 #00f0ff);
+  }
+  82% {
+    opacity: 0.3;
+    transform: translate(-12px, 3px);
+  }
+  88% {
+    opacity: 0.8;
+    transform: translate(6px, 0) scaleY(0.4);
+  }
+  94%,
+  100% {
+    opacity: 0;
+    transform: scaleY(0.05);
+  }
 }
 
 /* Spins in from the centre and spins out */
 @keyframes hero-fx-spin {
-  0% { opacity: 0; transform: rotate(-200deg) scale(0); }
-  30%, 65% { opacity: 1; transform: rotate(0) scale(1); }
-  100% { opacity: 0; transform: rotate(200deg) scale(0); }
+  0% {
+    opacity: 0;
+    transform: rotate(-200deg) scale(0);
+  }
+  30%,
+  65% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(200deg) scale(0);
+  }
 }
 
 /* Rises from lying flat in 3D and flies out towards the camera */
 @keyframes hero-fx-warp {
-  0% { opacity: 0; transform: rotateX(75deg) translateY(30%) scale(0.7); }
-  30%, 65% { opacity: 1; transform: rotateX(0) translateY(0) scale(1); }
-  100% { opacity: 0; transform: scale(3.2); filter: blur(12px); }
+  0% {
+    opacity: 0;
+    transform: rotateX(75deg) translateY(30%) scale(0.7);
+  }
+  30%,
+  65% {
+    opacity: 1;
+    transform: rotateX(0) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3.2);
+    filter: blur(12px);
+  }
 }
 
 @keyframes hero-blink {
@@ -1496,10 +1662,17 @@ section {
     linear-gradient(90deg, rgb(245 242 240 / 0.05) 1px, transparent 1px);
   background-position: center;
   background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 75% 70% at 50% 50%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(
+    ellipse 75% 70% at 50% 50%,
+    #000 35%,
+    transparent 100%
+  );
 }
 
-.hero-scene[data-scene="logo-playrxjs"]:is([data-state="active"], [data-state="previous"])::before {
+.hero-scene[data-scene="logo-playrxjs"]:is(
+    [data-state="active"],
+    [data-state="previous"]
+  )::before {
   animation: hero-fade-in 0.8s ease-out both;
 }
 
@@ -1530,7 +1703,8 @@ section {
   height: auto;
 }
 
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-scene-logo {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-scene-logo {
   animation: hero-brand 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -1542,7 +1716,8 @@ section {
   border-radius: 9999px;
 }
 
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-orbit-ring {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-orbit-ring {
   animation: hero-ring 2.2s ease-out both;
 }
 
@@ -1562,11 +1737,13 @@ section {
   transform: rotate(270deg);
 }
 
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-orbit[data-dir="cw"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-orbit[data-dir="cw"] {
   animation: hero-orbit-cw 1.5s cubic-bezier(0.45, 0, 0.7, 1) 0.15s both;
 }
 
-.hero-scene:is([data-state="active"], [data-state="previous"]) .hero-orbit[data-dir="ccw"] {
+.hero-scene:is([data-state="active"], [data-state="previous"])
+  .hero-orbit[data-dir="ccw"] {
   animation: hero-orbit-ccw 1.5s cubic-bezier(0.45, 0, 0.7, 1) 0.15s both;
 }
 
@@ -1658,9 +1835,23 @@ section {
 .hero-scrim {
   z-index: 2;
   background:
-    linear-gradient(to right, color-mix(in srgb, var(--hero-bg) 92%, transparent) 0%, color-mix(in srgb, var(--hero-bg) 55%, transparent) 30%, transparent 62%),
-    linear-gradient(to top, var(--hero-bg) 0%, color-mix(in srgb, var(--hero-bg) 70%, transparent) 22%, transparent 50%),
-    linear-gradient(to bottom, color-mix(in srgb, var(--hero-bg) 70%, transparent) 0%, transparent 28%);
+    linear-gradient(
+      to right,
+      color-mix(in srgb, var(--hero-bg) 92%, transparent) 0%,
+      color-mix(in srgb, var(--hero-bg) 55%, transparent) 30%,
+      transparent 62%
+    ),
+    linear-gradient(
+      to top,
+      var(--hero-bg) 0%,
+      color-mix(in srgb, var(--hero-bg) 70%, transparent) 22%,
+      transparent 50%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--hero-bg) 70%, transparent) 0%,
+      transparent 28%
+    );
 }
 
 .hero > :not(.hero-frame, .hero-scrim) {
@@ -1693,7 +1884,8 @@ section {
 }
 
 .hero-in {
-  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) calc(var(--i, 0) * 120ms + 200ms) both;
+  animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1)
+    calc(var(--i, 0) * 120ms + 200ms) both;
 }
 
 @keyframes hero-rise {
@@ -1719,7 +1911,11 @@ section {
   color: var(--hero-fg);
   overflow: hidden;
   backdrop-filter: blur(6px);
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .hero-icon:hover,
@@ -1738,7 +1934,9 @@ section {
 /* My websites' icons: no circle, left aligned above the buttons */
 .hero-app {
   display: block;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
 /* Fixed size: the SVGs have different intrinsic sizes that must not leak through */
@@ -1762,7 +1960,9 @@ section {
   border-radius: 22%;
   background: transparent;
   color: var(--hero-fg);
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .hero-app:hover .hero-github {
@@ -1833,7 +2033,10 @@ section {
     transform: none;
   }
 
-  .hero-frame:is([src*="kit-0"], [src*="rxjs-0"]):is([data-state="active"], [data-state="previous"]) {
+  .hero-frame:is([src*="kit-0"], [src*="rxjs-0"]):is(
+      [data-state="active"],
+      [data-state="previous"]
+    ) {
     animation-name: hero-pan-m;
   }
 
@@ -1900,7 +2103,11 @@ section {
   font-weight: 600;
   white-space: nowrap;
   backdrop-filter: blur(6px);
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .hero-btn[data-variant="primary"] {

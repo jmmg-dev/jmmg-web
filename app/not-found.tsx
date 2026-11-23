@@ -35,18 +35,20 @@ export default async function NotFound() {
         {/* Glow in the theme colour, like the intro section of the home page */}
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-[480px] opacity-50 [background:radial-gradient(50%_60%_at_50%_0%,var(--neon),transparent_70%)] [mask-image:linear-gradient(to_bottom,black,transparent)] dark:opacity-20"
+          className="absolute inset-x-0 top-0 h-[480px] [mask-image:linear-gradient(to_bottom,black,transparent)] opacity-50 [background:radial-gradient(50%_60%_at_50%_0%,var(--neon),transparent_70%)] dark:opacity-20"
         />
         <div className="relative flex max-w-xl flex-col items-center text-center">
           <h1 className="flex flex-col items-center">
-            <span className="not-found-code neon-text font-black leading-none tracking-tight text-primary text-[clamp(6rem,22vw,11rem)]">
+            <span className="not-found-code neon-text text-[clamp(6rem,22vw,11rem)] leading-none font-black tracking-tight text-primary">
               404
             </span>
             <span className="mt-4 text-3xl font-bold tracking-tight text-balance text-foreground sm:text-5xl">
               {dict.title}
             </span>
           </h1>
-          <p className="mt-5 text-lg leading-relaxed text-pretty text-muted-foreground">{dict.text}</p>
+          <p className="mt-5 text-lg leading-relaxed text-pretty text-muted-foreground">
+            {dict.text}
+          </p>
           <Link
             href={`/${lang}`}
             className="mt-10 inline-flex items-center gap-2.5 rounded-xl border border-primary bg-primary px-6 py-3 font-semibold text-primary-foreground transition-[opacity,transform] hover:-translate-y-0.5 hover:opacity-90"

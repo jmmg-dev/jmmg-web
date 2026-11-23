@@ -9,12 +9,12 @@ export const MilestoneItem = async ({
   return (
     <>
       <div className="flex items-start gap-4">
-        <span className="flex-shrink-0 text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">
+        <span className="flex-shrink-0 rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
           {milestone.date}
         </span>
         <p className="text-foreground">{milestone.name}</p>
       </div>
-      <p className="text-muted-foreground text-sm mb-7">
+      <p className="mb-7 text-sm text-muted-foreground">
         {milestone.description}
       </p>
     </>

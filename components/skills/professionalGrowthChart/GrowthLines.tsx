@@ -22,8 +22,15 @@ const YEARS = ["2020", "2022", "2024", "2026"] as const;
 /** Recharts line chart. Loaded on demand by ProfessionalGrowthChart, so Recharts is not part of the initial JavaScript. */
 const GrowthLines = ({ data }: { data: GrowthData }) => (
   <ResponsiveContainer width="100%" height="100%">
-    <LineChart data={data} margin={{ top: 5, right: 20, left: -10, bottom: 70 }}>
-      <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" opacity={0.5} />
+    <LineChart
+      data={data}
+      margin={{ top: 5, right: 20, left: -10, bottom: 70 }}
+    >
+      <CartesianGrid
+        strokeDasharray="3 3"
+        stroke="var(--border)"
+        opacity={0.5}
+      />
       <XAxis
         dataKey="name"
         stroke="var(--muted-foreground)"
@@ -52,7 +59,11 @@ const GrowthLines = ({ data }: { data: GrowthData }) => (
       <Legend
         verticalAlign="top"
         height={36}
-        formatter={(value) => <span style={{ color: "var(--foreground)", fontSize: "12px" }}>{value}</span>}
+        formatter={(value) => (
+          <span style={{ color: "var(--foreground)", fontSize: "12px" }}>
+            {value}
+          </span>
+        )}
       />
       {YEARS.map((year, i) => (
         <Line

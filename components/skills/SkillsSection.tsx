@@ -49,30 +49,30 @@ const SkillsSection = ({
   }));
 
   return (
-    <section id="skills" className="py-16 bg-secondary/30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="bg-secondary/30 py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-primary rounded-full" />
+          <h2 className="mb-4 flex items-center gap-3 text-3xl font-bold text-foreground sm:text-4xl">
+            <span className="h-0.5 w-8 rounded-full bg-primary" />
             {title}
           </h2>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
           <TechnicalSkills
             title={dict.technicalSkills}
             groups={translatedTechnicalSkillGroups}
           />
           <div className="flex flex-col gap-8 lg:h-140">
-            <div className="lg:flex-3 lg:min-h-0">
+            <div className="lg:min-h-0 lg:flex-3">
               <BusinessSkills
                 title={dict.businessSkills}
                 skills={translatedBusinessSkills}
               />
             </div>
-            <div className="lg:flex-2 lg:min-h-0">
+            <div className="lg:min-h-0 lg:flex-2">
               <LanguageSkills
                 title={dict.languages}
                 languages={translatedLanguages}

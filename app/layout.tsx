@@ -6,6 +6,8 @@ import { Geist_Mono, Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import "../styles/globals.css";
 
+// The site fonts. Calling them adds their @font-face rules ("Inter", "Geist Mono"), which
+// globals.css uses by name; their variables also go on <html> for anything that needs them.
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -34,7 +36,11 @@ export default async function RootLayout({
   const theme = (cookieStore.get("theme")?.value as Theme) || Theme.dark;
   const lang = cookieStore.get("lang")?.value as Lang;
   return (
-    <html lang={lang} className={theme} suppressHydrationWarning>
+    <html
+      lang={lang}
+      className={`${theme} ${inter.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
       <body className="font-sans antialiased">
         <ThemeProviders initialTheme={theme}>{children}</ThemeProviders>
         {process.env.NODE_ENV === "production" && <Analytics />}

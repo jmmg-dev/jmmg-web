@@ -39,10 +39,10 @@ export const ProfessionalGrowthChart = ({
   }, []);
 
   return (
-    <div className="bg-card border border-border rounded-xl p-6 card-interactive">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 rounded-lg bg-primary/10">
-          <TrendingUp className="w-5 h-5 text-primary" />
+    <div className="card-interactive rounded-xl border border-border bg-card p-6">
+      <div className="mb-6 flex items-center gap-3">
+        <div className="rounded-lg bg-primary/10 p-2">
+          <TrendingUp className="h-5 w-5 text-primary" />
         </div>
         <h3 className="text-xl font-bold text-foreground">{title}</h3>
       </div>

@@ -17,7 +17,13 @@ import {
 } from "lucide-react";
 import { GITHUB_ORG, SUPPORT_ID } from "@/lib/constants";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 
 /**
  * - pan-x / pan-x-rev: wider than the screen, panned left to right or the other way round.
@@ -28,7 +34,8 @@ import { useCallback, useEffect, useRef, useState, type CSSProperties } from "re
  * - float: cut-out image (with transparency), centred and large; enters even bigger, settles
  *   at its size and at the end zooms out and disappears.
  */
-type Motion = "pan-x" | "pan-x-rev" | "pan-y" | "float" | "appear" | "reveal" | "still";
+type Motion =
+  "pan-x" | "pan-x-rev" | "pan-y" | "float" | "appear" | "reveal" | "still";
 
 /** Tone of the image background: decides whether the text is light or dark. */
 type Tone = "dark" | "light";
@@ -82,7 +89,9 @@ const KITFORWEB: TypePart[] = [
 ];
 
 // Always in English, as you would write to an AI agent
-const RUN_ALL_TASKS: TypePart[] = [{ text: "Run all the tasks", color: "#E2E8F0" }];
+const RUN_ALL_TASKS: TypePart[] = [
+  { text: "Run all the tasks", color: "#E2E8F0" },
+];
 
 // AI answer: the same tasks as the panel in the image
 const AI_ANSWER = "On it! Running your tasks in parallel:";
@@ -116,7 +125,11 @@ const TECH = [
 const TypeLine = ({ parts, cursor }: { parts: TypePart[]; cursor: string }) => (
   <p
     className="hero-type"
-    style={{ "--chars": parts.reduce((n, p) => n + p.text.length, 0) } as CSSProperties}
+    style={
+      {
+        "--chars": parts.reduce((n, p) => n + p.text.length, 0),
+      } as CSSProperties
+    }
   >
     <span className="hero-type-text">
       {parts.map((part) => (
@@ -128,7 +141,6 @@ const TypeLine = ({ parts, cursor }: { parts: TypePart[]; cursor: string }) => (
     <span className="hero-type-cursor" style={{ background: cursor }} />
   </p>
 );
-
 
 type Slide = {
   id: string;
@@ -149,6 +161,8 @@ const INTRO_STYLE = { bg: DARK_BG, tone: "dark" as Tone };
 
 const frameKey = ({ slide, frame }: Position) => `${slide}-${frame}`;
 
+/** Current time in ms, for the frame timer (read only inside effects, never while rendering) */
+const now = () => performance.now();
 
 export const HeroCarousel = ({
   lang,
@@ -169,7 +183,16 @@ export const HeroCarousel = ({
   // Links to my websites, with their logo
   const projects = PROJECTS.flatMap((p) => {
     const href = p.url ?? p.repo;
-    return href ? [{ href, label: p.name, image: p.logo.icon.src, crop: p.logo.icon.crop }] : [];
+    return href
+      ? [
+          {
+            href,
+            label: p.name,
+            image: p.logo.icon.src,
+            crop: p.logo.icon.crop,
+          },
+        ]
+      : [];
   });
 
   const kit = { bg: "#0A1017", tone: "dark" as Tone };
@@ -189,8 +212,20 @@ export const HeroCarousel = ({
       title: dict.architecture.title,
       description: dict.architecture.description,
       frames: [
-        { ...shot("architecture-1", 2322, 1306), src: "/images/carousel/architecture-1.svg", motion: "pan-x", duration: 5500, ...INTRO_STYLE },
-        { ...shot("architecture-2", 2101, 2934), src: "/images/carousel/architecture-2.svg", motion: "pan-y", duration: 6500, ...INTRO_STYLE },
+        {
+          ...shot("architecture-1", 2322, 1306),
+          src: "/images/carousel/architecture-1.svg",
+          motion: "pan-x",
+          duration: 5500,
+          ...INTRO_STYLE,
+        },
+        {
+          ...shot("architecture-2", 2101, 2934),
+          src: "/images/carousel/architecture-2.svg",
+          motion: "pan-y",
+          duration: 6500,
+          ...INTRO_STYLE,
+        },
       ],
     },
     {
@@ -208,9 +243,21 @@ export const HeroCarousel = ({
       description: dict.ux.description,
       frames: [
         { scene: "type-kitforweb", duration: 1800, ...kit },
-        { ...shot("kit-0", 1854, 833), motion: "reveal", overlay: "intuitive", duration: 3200, ...kit },
+        {
+          ...shot("kit-0", 1854, 833),
+          motion: "reveal",
+          overlay: "intuitive",
+          duration: 3200,
+          ...kit,
+        },
         { scene: "logo-playrxjs", duration: 2600, ...rxjs },
-        { ...shot("rxjs-0", 1897, 903), motion: "still", overlay: "attractive", duration: 3200, ...rxjs },
+        {
+          ...shot("rxjs-0", 1897, 903),
+          motion: "still",
+          overlay: "attractive",
+          duration: 3200,
+          ...rxjs,
+        },
       ],
     },
     {
@@ -218,47 +265,67 @@ export const HeroCarousel = ({
       title: dict.ai.title,
       description: dict.ai.description,
       frames: [
-        { ...shot("ia", 1672, 941), motion: "appear", overlay: "prompt", duration: 5600, ...INTRO_STYLE },
-        { ...shot("ia-2", 1672, 941), motion: "float", overlay: "answer", duration: 8500, ...INTRO_STYLE },
+        {
+          ...shot("ia", 1672, 941),
+          motion: "appear",
+          overlay: "prompt",
+          duration: 5600,
+          ...INTRO_STYLE,
+        },
+        {
+          ...shot("ia-2", 1672, 941),
+          motion: "float",
+          overlay: "answer",
+          duration: 8500,
+          ...INTRO_STYLE,
+        },
       ],
     },
   ];
 
   const ref = useRef<HTMLElement>(null);
   // `previous`: image that stays underneath while the new one fades in.
-  const [{ pos, previous }, setStep] = useState<{ pos: Position; previous: Position | null }>({
+  // `loadedUpTo`: images are requested per slide, the current one and the next; it grows
+  // with each step instead of in an effect, so moving on does not render twice.
+  const [{ pos, previous, loadedUpTo }, setStep] = useState<{
+    pos: Position;
+    previous: Position | null;
+    loadedUpTo: number;
+  }>({
     pos: { slide: 0, frame: 0 },
     previous: null,
+    loadedUpTo: 1,
   });
-  // Images are requested per slide: the current one and the next.
-  const [loadedUpTo, setLoadedUpTo] = useState(1);
   const [userPaused, setUserPaused] = useState(false);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {
-      threshold: 0.2,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      {
+        threshold: 0.2,
+      },
+    );
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    setLoadedUpTo((n) => Math.max(n, pos.slide + 1));
-  }, [pos.slide]);
-
   const frameCounts = slides.map((s) => s.frames.length).join(",");
   const next = useCallback(() => {
     const counts = frameCounts.split(",").map(Number);
-    setStep(({ pos: current }) => ({
-      previous: current,
-      pos:
+    setStep(({ pos: current, loadedUpTo }) => {
+      const pos =
         current.frame + 1 < counts[current.slide]
           ? { ...current, frame: current.frame + 1 }
-          : { slide: (current.slide + 1) % counts.length, frame: 0 },
-    }));
+          : { slide: (current.slide + 1) % counts.length, frame: 0 };
+      return {
+        previous: current,
+        pos,
+        loadedUpTo: Math.max(loadedUpTo, pos.slide + 1),
+      };
+    });
   }, [frameCounts]);
 
   const playing = !userPaused && visible;
@@ -276,7 +343,11 @@ export const HeroCarousel = ({
       title={userPaused ? controls.play : controls.pause}
       className={className}
     >
-      {userPaused ? <Play className="h-4 w-4" /> : <Pause className="h-4 w-4" />}
+      {userPaused ? (
+        <Play className="h-4 w-4" />
+      ) : (
+        <Pause className="h-4 w-4" />
+      )}
     </button>
   );
   const duration = current?.duration ?? slide.duration ?? INTRO_MS;
@@ -294,20 +365,25 @@ export const HeroCarousel = ({
   // the page the event was lost and the carousel got stuck.
   const timer = useRef({ key: "", remaining: 0 });
   useEffect(() => {
-    if (timer.current.key !== activeKey) timer.current = { key: activeKey, remaining: duration };
+    if (timer.current.key !== activeKey)
+      timer.current = { key: activeKey, remaining: duration };
     if (!playing) return;
-    const startedAt = performance.now();
+    const startedAt = now();
     const id = window.setTimeout(next, timer.current.remaining);
     return () => {
       window.clearTimeout(id);
-      timer.current.remaining = Math.max(0, timer.current.remaining - (performance.now() - startedAt));
+      timer.current.remaining = Math.max(
+        0,
+        timer.current.remaining - (now() - startedAt),
+      );
     };
   }, [activeKey, duration, playing, next]);
 
   // Downloads and decodes the next image ahead of time, so it enters without delay.
   useEffect(() => {
     const img = ref.current?.querySelector(`[data-frame="${nextKey}"]`);
-    if (img instanceof HTMLImageElement && img.src) img.decode().catch(() => {});
+    if (img instanceof HTMLImageElement && img.src)
+      img.decode().catch(() => {});
   }, [nextKey, loadedUpTo]);
 
   return (
@@ -325,7 +401,12 @@ export const HeroCarousel = ({
       {slides.map((s, si) =>
         s.frames.map((f, fi) => {
           const key = frameKey({ slide: si, frame: fi });
-          const state = key === activeKey ? "active" : key === previousKey ? "previous" : "idle";
+          const state =
+            key === activeKey
+              ? "active"
+              : key === previousKey
+                ? "previous"
+                : "idle";
           if ("scene" in f) {
             return (
               <div
@@ -337,12 +418,18 @@ export const HeroCarousel = ({
                 data-state={state}
                 style={{ backgroundColor: f.bg }}
               >
-                {f.scene === "type-kitforweb" && <TypeLine parts={KITFORWEB} cursor="#22D3EE" />}
+                {f.scene === "type-kitforweb" && (
+                  <TypeLine parts={KITFORWEB} cursor="#22D3EE" />
+                )}
                 {f.scene === "type-code" && (
                   <>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={si <= loadedUpTo ? "/images/carousel/code.webp" : undefined}
+                      src={
+                        si <= loadedUpTo
+                          ? "/images/carousel/code.webp"
+                          : undefined
+                      }
                       width={1827}
                       height={964}
                       alt=""
@@ -424,14 +511,22 @@ export const HeroCarousel = ({
         }),
       )}
 
-      <div aria-hidden className="hero-scrim pointer-events-none absolute inset-0" />
+      <div
+        aria-hidden
+        className="hero-scrim pointer-events-none absolute inset-0"
+      />
 
       {/* Animations on top of the images (AI prompt and answer) */}
       {slides.map((s, si) =>
         s.frames.map((f, fi) => {
           if (!("overlay" in f) || !f.overlay) return null;
           const key = frameKey({ slide: si, frame: fi });
-          const state = key === activeKey ? "active" : key === previousKey ? "previous" : "idle";
+          const state =
+            key === activeKey
+              ? "active"
+              : key === previousKey
+                ? "previous"
+                : "idle";
           return (
             <div
               key={`overlay-${key}`}
@@ -445,8 +540,14 @@ export const HeroCarousel = ({
                   {/* First word in the light colour, the rest in cyan, like "kit" and "for" */}
                   <TypeLine
                     parts={[
-                      { text: `${dict.ux.intuitive.split(" ")[0]} `, color: "#E2E8F0" },
-                      { text: dict.ux.intuitive.split(" ").slice(1).join(" "), color: "#22D3EE" },
+                      {
+                        text: `${dict.ux.intuitive.split(" ")[0]} `,
+                        color: "#E2E8F0",
+                      },
+                      {
+                        text: dict.ux.intuitive.split(" ").slice(1).join(" "),
+                        color: "#22D3EE",
+                      },
                     ]}
                     cursor="#22D3EE"
                   />
@@ -456,11 +557,21 @@ export const HeroCarousel = ({
                   {/* Two balls from the marble diagram split apart from the centre, revealing the
                       text between them, and then shoot off like the ones orbiting the logo */}
                   <p className="hero-split">
-                    <span className="hero-split-text">{dict.ux.attractive}</span>
-                    <span className="hero-ball hero-split-ball" data-color="pink" data-side="left">
+                    <span className="hero-split-text">
+                      {dict.ux.attractive}
+                    </span>
+                    <span
+                      className="hero-ball hero-split-ball"
+                      data-color="pink"
+                      data-side="left"
+                    >
                       1
                     </span>
-                    <span className="hero-ball hero-split-ball" data-color="cyan" data-side="right">
+                    <span
+                      className="hero-ball hero-split-ball"
+                      data-color="cyan"
+                      data-side="right"
+                    >
                       a
                     </span>
                   </p>
@@ -501,16 +612,18 @@ export const HeroCarousel = ({
         }),
       )}
 
-
       {slide.intro ? (
-        <div key={`intro-${activeKey}`} className="absolute inset-0 grid place-items-center px-4 pb-[12svh] md:pb-0">
+        <div
+          key={`intro-${activeKey}`}
+          className="absolute inset-0 grid place-items-center px-4 pb-[12svh] md:pb-0"
+        >
           <div className="text-center">
-            <p className="hero-intro-brand font-bold leading-none tracking-tight">
+            <p className="hero-intro-brand leading-none font-bold tracking-tight">
               <span className="hero-neon">JM</span>
               <span className="hero-muted font-light">MG</span>
               <span className="hero-neon text-[0.45em]">.dev</span>
             </p>
-            <p className="hero-intro-subtitle hero-soft mt-6 text-sm font-light uppercase tracking-[0.35em] sm:text-lg">
+            <p className="hero-intro-subtitle hero-soft mt-6 text-sm font-light tracking-[0.35em] uppercase sm:text-lg">
               {dict.subtitle}
             </p>
           </div>
@@ -519,7 +632,10 @@ export const HeroCarousel = ({
         <div key={`copy-${pos.slide}`} className="absolute inset-0">
           {/* Top left: brand and section title */}
           <div className="absolute top-6 left-4 sm:top-8 sm:left-8 lg:left-12">
-            <p className="hero-in text-xl font-bold tracking-tight sm:text-2xl" style={{ "--i": 0 } as CSSProperties}>
+            <p
+              className="hero-in text-xl font-bold tracking-tight sm:text-2xl"
+              style={{ "--i": 0 } as CSSProperties}
+            >
               <span className="hero-neon">JM</span>
               <span className="hero-muted font-light">MG</span>
               <span className="hero-neon text-[0.65em]">.dev</span>
@@ -527,7 +643,7 @@ export const HeroCarousel = ({
             {/* From sm up the size also depends on the width, so the longest title (ARQUITECTURA,
                 about 9.8em with its tracking) leaves room for the icons at the top right */}
             <h2
-              className="hero-in hero-fg mt-6 text-[8.5vw] sm:mt-2 font-black uppercase leading-none tracking-[0.12em] sm:text-[min(4.5rem,calc((100vw-16rem)/9.8))] lg:text-[min(6rem,calc((100vw-16rem)/9.8))]"
+              className="hero-in hero-fg mt-6 text-[8.5vw] leading-none font-black tracking-[0.12em] uppercase sm:mt-2 sm:text-[min(4.5rem,calc((100vw-16rem)/9.8))] lg:text-[min(6rem,calc((100vw-16rem)/9.8))]"
               style={{ "--i": 1 } as CSSProperties}
             >
               {slide.title}
@@ -554,7 +670,12 @@ export const HeroCarousel = ({
               <Github aria-hidden />
             </span>
           </a>
-          <a href={`#${SUPPORT_ID}`} aria-label={support} title={support} className="hero-app">
+          <a
+            href={`#${SUPPORT_ID}`}
+            aria-label={support}
+            title={support}
+            className="hero-app"
+          >
             <span className="hero-github">
               <Heart aria-hidden />
             </span>
@@ -577,10 +698,22 @@ export const HeroCarousel = ({
             >
               <Linkedin aria-hidden className="h-4 w-4" />
             </a>
-            <Link href={`/${lang}/cv`} aria-label={dict.cv} title={dict.cv} className="hero-icon hero-icon-sm">
-              <span aria-hidden className="text-xs font-bold tracking-wide">CV</span>
+            <Link
+              href={`/${lang}/cv`}
+              aria-label={dict.cv}
+              title={dict.cv}
+              className="hero-icon hero-icon-sm"
+            >
+              <span aria-hidden className="text-xs font-bold tracking-wide">
+                CV
+              </span>
             </Link>
-            <a href={`mailto:${email}`} aria-label={dict.email} title={dict.email} className="hero-icon hero-icon-sm">
+            <a
+              href={`mailto:${email}`}
+              aria-label={dict.email}
+              title={dict.email}
+              className="hero-icon hero-icon-sm"
+            >
               <Mail aria-hidden className="h-4 w-4" />
             </a>
             <a
@@ -603,55 +736,62 @@ export const HeroCarousel = ({
         <div className="flex flex-col-reverse gap-6 md:flex-row md:items-end md:gap-10 md:pr-14">
           {/* Links fixed on every section except the intro: my websites, LinkedIn, CV and email */}
           {!slide.intro && (
-          <div className="hero-in hidden shrink-0 flex-col gap-3 md:flex md:w-72" style={{ "--i": 2 } as CSSProperties}>
-            <ul className="flex gap-4">
-              {projects.map(({ href, label, image, crop }) => (
-                <li key={href}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    title={label}
-                    className="hero-app"
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={image} alt="" className={crop ? "object-left" : ""} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="grid grid-cols-2 gap-3">
-              <a
-                href={linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hero-btn"
-                data-variant="primary"
-              >
-                {dict.linkedin}
-                <Linkedin aria-hidden className="h-4 w-4" />
+            <div
+              className="hero-in hidden shrink-0 flex-col gap-3 md:flex md:w-72"
+              style={{ "--i": 2 } as CSSProperties}
+            >
+              <ul className="flex gap-4">
+                {projects.map(({ href, label, image, crop }) => (
+                  <li key={href}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      title={label}
+                      className="hero-app"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={image}
+                        alt=""
+                        className={crop ? "object-left" : ""}
+                      />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <div className="grid grid-cols-2 gap-3">
+                <a
+                  href={linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hero-btn"
+                  data-variant="primary"
+                >
+                  {dict.linkedin}
+                  <Linkedin aria-hidden className="h-4 w-4" />
+                </a>
+                {/* Same content as the "View my CV" button in the projects section */}
+                <Link href={`/${lang}/cv`} className="hero-btn group">
+                  {dict.cv}
+                  <ArrowRight
+                    aria-hidden
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                  />
+                </Link>
+              </div>
+              <a href={`mailto:${email}`} className="hero-btn">
+                {dict.email}
+                <Mail aria-hidden className="h-4 w-4" />
               </a>
-              {/* Same content as the "View my CV" button in the projects section */}
-              <Link href={`/${lang}/cv`} className="hero-btn group">
-                {dict.cv}
-                <ArrowRight
-                  aria-hidden
-                  className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
-                />
-              </Link>
             </div>
-            <a href={`mailto:${email}`} className="hero-btn">
-              {dict.email}
-              <Mail aria-hidden className="h-4 w-4" />
-            </a>
-          </div>
           )}
 
           {description && (
             <p
               key={`desc-${description}`}
-              className="hero-in hero-soft text-base font-semibold leading-relaxed text-pretty sm:text-lg md:max-w-4xl lg:text-xl"
+              className="hero-in hero-soft text-base leading-relaxed font-semibold text-pretty sm:text-lg md:max-w-4xl lg:text-xl"
               style={{ "--i": 3 } as CSSProperties}
             >
               {description}
@@ -659,7 +799,9 @@ export const HeroCarousel = ({
           )}
         </div>
 
-        {pauseButton("hero-icon hero-pause hero-pause-desktop absolute right-8 bottom-10 lg:right-12 lg:bottom-14")}
+        {pauseButton(
+          "hero-icon hero-pause hero-pause-desktop absolute right-8 bottom-10 lg:right-12 lg:bottom-14",
+        )}
       </div>
     </section>
   );

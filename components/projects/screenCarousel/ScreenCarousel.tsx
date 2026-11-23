@@ -1,9 +1,20 @@
 "use client";
 
 import type { ProjectScreen } from "@/lib/projects";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 const INTERVAL_MS = 3800;
+
+// The user's reduced motion preference, kept in sync with the system setting
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+const subscribeReducedMotion = (onChange: () => void) => {
+  const media = window.matchMedia(REDUCED_MOTION);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+};
+const getReducedMotion = () => window.matchMedia(REDUCED_MOTION).matches;
+// On the server (and while hydrating) it is assumed off, as before
+const getServerReducedMotion = () => false;
 
 type ScreenCarouselProps = {
   screens: ProjectScreen[];
@@ -16,33 +27,40 @@ type ScreenCarouselProps = {
  * Browser window that cycles through the website's screens.
  * It only advances while visible and when the user has not asked for reduced motion.
  */
-export const ScreenCarousel = ({ screens, host, alt, eager = false }: ScreenCarouselProps) => {
+export const ScreenCarousel = ({
+  screens,
+  host,
+  alt,
+  eager = false,
+}: ScreenCarouselProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setReducedMotion(media.matches);
-    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
-    media.addEventListener("change", onChange);
-    return () => media.removeEventListener("change", onChange);
-  }, []);
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotion,
+    getServerReducedMotion,
+  );
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {
-      threshold: 0.35,
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      {
+        threshold: 0.35,
+      },
+    );
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
     if (!visible || reducedMotion || screens.length < 2) return;
-    const id = window.setInterval(() => setActive((i) => (i + 1) % screens.length), INTERVAL_MS);
+    const id = window.setInterval(
+      () => setActive((i) => (i + 1) % screens.length),
+      INTERVAL_MS,
+    );
     return () => window.clearInterval(id);
   }, [visible, reducedMotion, screens.length, active]);
 

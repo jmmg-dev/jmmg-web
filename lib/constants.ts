@@ -11,6 +11,5 @@ export const SUPPORT_ID = "support";
  * main button). To add one, add an entry here and its button text under support.methods in
  * public/information/{en,es}.json.
  */
-export const SUPPORT_METHODS: { id: string; url: string; icon: LucideIcon }[] = [
-  { id: "kofi", url: "https://ko-fi.com/jmmgdev", icon: Coffee },
-];
+export const SUPPORT_METHODS: { id: string; url: string; icon: LucideIcon }[] =
+  [{ id: "kofi", url: "https://ko-fi.com/jmmgdev", icon: Coffee }];

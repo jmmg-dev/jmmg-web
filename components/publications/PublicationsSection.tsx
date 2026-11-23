@@ -12,21 +12,21 @@ const PublicationsSection = ({
   lang: Lang;
 }) => {
   return (
-    <section id="publications" className="py-16 bg-secondary/30">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="publications" className="bg-secondary/30 py-16">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 flex items-center gap-3">
-            <span className="w-8 h-0.5 bg-primary rounded-full" />
+          <h2 className="mb-4 flex items-center gap-3 text-3xl font-bold text-foreground sm:text-4xl">
+            <span className="h-0.5 w-8 rounded-full bg-primary" />
             {title}
           </h2>
-          <p className="text-muted-foreground leading-relaxed text-pretty">
+          <p className="leading-relaxed text-pretty text-muted-foreground">
             {intro}
           </p>
         </div>
 
         {/* Publications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {publications.map((pub, index) => (
             <PublicationCard
               key={index}

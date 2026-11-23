@@ -7,12 +7,12 @@ type ProgressBarProps = {
 export const ProgressBar = ({ name, level, delay = 0 }: ProgressBarProps) => {
   return (
     <div className="space-y-2">
-      <div className="flex justify-between items-center">
+      <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-foreground">{name}</span>
       </div>
-      <div className="h-2 bg-muted rounded-full overflow-hidden">
+      <div className="h-2 overflow-hidden rounded-full bg-muted">
         <div
-          className="h-full rounded-full progress-bar progress-track"
+          className="progress-bar progress-track h-full rounded-full"
           style={{
             width: `${level}%`,
             transitionDelay: `${delay}ms`,

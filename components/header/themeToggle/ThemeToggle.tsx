@@ -10,7 +10,7 @@ export const ThemeToggle = ({ theme, onToggle }: ThemeToggleProps) => {
   return (
     <button
       onClick={onToggle}
-      className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-foreground cursor-pointer transition-colors"
+      className="cursor-pointer rounded-lg border border-border bg-secondary/50 p-2 text-muted-foreground transition-colors hover:text-foreground"
       aria-label="Toggle theme"
     >
       {theme === Theme.dark ? (

@@ -4,10 +4,10 @@ import DynamicIcon from "@/components/icon/DynamicIcon";
 export const HobbiesItem = ({ hobby }: { hobby: Hobbie }) => {
   return (
     <div
-      className="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/50  text-primary transition-colors"
+      className="flex items-center gap-2 rounded-lg border border-primary/50 px-4 py-2 text-primary transition-colors"
       title={hobby.label}
     >
-      <DynamicIcon name={hobby.icon} className="w-4 h-4" />
+      <DynamicIcon name={hobby.icon} className="h-4 w-4" />
       <span className="text-sm capitalize">{hobby.label}</span>
     </div>
   );

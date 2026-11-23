@@ -17,13 +17,13 @@ const InformationSection = async ({
 }) => {
   return (
     <section id="information" className="min-h-screen pt-24 pb-16">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Hero dict={dict} personalInfo={information.personalInfo} />
         <CareerDescription
           dict={dict}
           professionalInfo={information.professionalInfo}
         />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="mb-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
           <Degrees dict={dict} degrees={information.professionalInfo.degrees} />
           <Milestones
             dict={dict}

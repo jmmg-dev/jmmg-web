@@ -1,0 +1,10 @@
+.next
+out
+build
+node_modules
+public
+design
+.claude
+next-env.d.ts
+package-lock.json
+*.pdf
