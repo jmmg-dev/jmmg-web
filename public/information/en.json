@@ -73,6 +73,11 @@
       "kofi": "Buy me a coffee on Ko-fi"
     }
   },
+  "notFound": {
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has been moved.",
+    "home": "Back to home"
+  },
   "personalInfo": {
     "name": "Juan Manuel Muñoz González",
     "date": "15/05/1984",

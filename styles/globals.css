@@ -1961,3 +1961,28 @@ section {
     animation: none;
   }
 }
+
+/* ---------- 404 page (app/not-found.tsx) ---------- */
+/* "404" comes in from big and blurred, like the brand in the home intro */
+.not-found-code {
+  animation: not-found-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes not-found-in {
+  from {
+    opacity: 0.1;
+    transform: scale(1.4);
+    filter: blur(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .not-found-code {
+    animation: none;
+  }
+}

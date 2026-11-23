@@ -13,7 +13,8 @@ import { LanguageSelector } from "./languageSelector/LanguageSelector";
 import { NavLinks, type NavSection } from "./navLinks/NavLinks";
 import { ThemeToggle } from "./themeToggle/ThemeToggle";
 
-type Page = "projects" | "cv";
+/** "other" is any page without its own sections or language switch target, such as the 404 page */
+type Page = "projects" | "cv" | "other";
 
 const Header = ({
   dict,

@@ -29,7 +29,11 @@ export function middleware(request: NextRequest) {
     return redirectResponse;
   }
 
-  const response = NextResponse.next();
+  // The language also travels as a request header, for pages that do not get it as a param
+  // (the 404 page, which renders for any URL that does not exist)
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-lang", pathname.split("/")[1]);
+  const response = NextResponse.next({ request: { headers: requestHeaders } });
   if (!themeCookie) {
     createCookie(response, "theme", Theme.dark);
   }

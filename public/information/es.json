@@ -73,6 +73,11 @@
       "kofi": "Invítame a un café en Ko-fi"
     }
   },
+  "notFound": {
+    "title": "Página no encontrada",
+    "text": "La página que buscas no existe o se ha movido.",
+    "home": "Volver al inicio"
+  },
   "personalInfo": {
     "name": "Juan Manuel Muñoz González",
     "date": "15/05/1984",

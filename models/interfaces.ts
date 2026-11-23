@@ -53,6 +53,13 @@ export interface SupportLabels {
   methods: Record<string, string>;
 }
 
+/** Page shown for URLs that do not exist */
+export interface NotFoundLabels {
+  title: string;
+  text: string;
+  home: string;
+}
+
 export interface InfoLabels {
   hero: {
     frontEndArchitect: string;
@@ -180,6 +187,7 @@ export interface Information {
   footer: string;
   footerConnect: string;
   support: SupportLabels;
+  notFound: NotFoundLabels;
   personalInfo: PersonalInfo;
   professionalInfo: ProfessionalInfo;
   seo: SeoLabels;
