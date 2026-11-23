@@ -133,8 +133,9 @@ const Header = ({
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          {/* Desktop Navigation, from lg: below that the CV sections and the controls do not fit
+              in one row (at 768 px the heart was cut off), so tablets use the menu button */}
+          <nav className="hidden lg:flex items-center gap-1">
             <NavLinks
               home={sections.length ? { href: `/${selectedLang}`, label: dict.home } : undefined}
               sections={sections}
@@ -153,11 +154,21 @@ const Header = ({
 
             <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
+            {/* Heart to the donations section, on every screen size (only the mobile menu button goes after it) */}
+            <Link
+              href={supportHref}
+              aria-label={dict.support}
+              title={dict.support}
+              className="p-2 rounded-lg border border-border bg-secondary/50 text-primary hover:border-primary transition-colors"
+            >
+              <Heart aria-hidden className="h-4 w-4 fill-current" />
+            </Link>
+
             {/* Mobile Menu Button: only where there are sections to jump to (CV page) */}
             {sections.length > 0 && (
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors md:hidden"
+                className="p-2 rounded-lg border border-border bg-secondary/50 text-muted-foreground hover:text-foreground transition-colors lg:hidden"
                 aria-label="Toggle menu"
               >
                 {isMenuOpen ? (
@@ -167,23 +178,13 @@ const Header = ({
                 )}
               </button>
             )}
-
-            {/* Heart to the donations section, on every screen size, last of the controls */}
-            <Link
-              href={supportHref}
-              aria-label={dict.support}
-              title={dict.support}
-              className="p-2 rounded-lg border border-border bg-secondary/50 text-primary hover:border-primary transition-colors"
-            >
-              <Heart aria-hidden className="h-4 w-4 fill-current" />
-            </Link>
           </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
           isMenuOpen ? "max-h-96 border-t border-border" : "max-h-0"
         }`}
       >
