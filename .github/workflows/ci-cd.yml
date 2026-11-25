@@ -1,0 +1,41 @@
+name: CI/CD
+
+# Checks that the code is linted and formatted on every push and pull request to the
+# production branch. The job name ("checks") is what Vercel Deployment Checks or branch
+# protection rules refer to.
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+# A newer push to the same branch cancels the run that is still going
+concurrency:
+  group: ci-cd-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint -- --max-warnings=0
+
+      - name: Format
+        run: npm run format:check
