@@ -29,13 +29,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       index: true,
       follow: true,
     },
-    // Google Search Console: one code per property (removing one unverifies its property)
-    verification: {
-      google: [
-        "M42-CWYHkJsp3HGRXlv_ynK4N46oRi8Y6txTAqY311k",
-        "yE-w1vBrVbnYDkfNOE2WPuboDzRJlrZHayBr_eR_oYE",
-      ],
-    },
   };
 }
 
